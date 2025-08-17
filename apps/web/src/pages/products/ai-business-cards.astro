@@ -1,0 +1,917 @@
+---
+import Layout from "../../layouts/layout.astro";
+---
+
+<Layout title="AI Business Cards - Universal Business Discovery | Zabaca">
+	<main class="zabaca-inspired">
+		<!-- Custom Nav with Zabaca styling -->
+		<nav class="zabaca-nav">
+			<div class="nav-container">
+				<!-- Logo -->
+				<a href="/" class="logo">Zabaca</a>
+				
+				<!-- Center Links -->
+				<div class="nav-links">
+					<div class="nav-dropdown">
+						<a href="#" class="dropdown-trigger">Products</a>
+						<div class="dropdown-menu">
+							<a href="/products/stiqr">Stiqr</a>
+							<a href="/products/ai-business-cards">AI Business Cards</a>
+							<a href="/products/temporal-bridge">TemporalBridge</a>
+						</div>
+					</div>
+					<a href="/careers">Careers</a>
+					<a href="/press">Press</a>
+				</div>
+				
+				<!-- Right Actions -->
+				<div class="nav-actions">
+					<a href="/app" class="start-button">
+						<span>Start for free</span>
+					</a>
+					<a href="/login" class="login-link">Login</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Hero Section -->
+		<div class="hero-wrapper">
+			<!-- Animated background shapes -->
+			<div class="absolute inset-0 overflow-hidden">
+				<div class="absolute top-20 right-20 w-72 h-72 bg-yellow-400 rounded-3xl rotate-12 animate-float"></div>
+				<div class="absolute bottom-20 right-40 w-96 h-96 bg-blue-400 rounded-full opacity-60 animate-float-delayed"></div>
+			</div>
+			
+			<div class="relative z-10">
+				<section class="hero-section">
+					<div class="container mx-auto px-4 max-w-6xl">
+						<div class="text-left max-w-3xl">
+							<h1 class="hero-title">
+								The Universal Business
+								<br />
+								Card for the AI Age
+							</h1>
+
+							<p class="hero-subtitle">
+								Zabaca seamlessly integrates your business services into one platform so that AI agents can discover and interact with you in a single click.
+							</p>
+
+							<div class="hero-cta">
+								<div class="username-form">
+									<div class="url-input-container">
+										<span class="url-prefix">zabaca.com/</span>
+										<input type="text" placeholder="yourbusiness" class="username-input" />
+									</div>
+									<button class="claim-button">Claim your username</button>
+								</div>
+								<p class="cta-subtext">Get your free AI business card • No credit card required</p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<!-- Features Section -->
+		<div class="features-section">
+			<div class="features-container">
+				<div class="section-header">
+					<h2>How It Works</h2>
+					<p>Get your business AI-ready in under 5 minutes. Just sign up, connect, and share your profile.</p>
+				</div>
+				
+				<div class="features-grid">
+					<!-- Feature 1: One-Click Integration -->
+					<div class="feature-row">
+						<div class="feature-card blue-card">
+							<div class="feature-header">
+								<div class="feature-icon">
+									<svg viewBox="0 0 40 40" fill="none">
+										<rect width="40" height="40" rx="12" fill="white"/>
+										<circle cx="15" cy="20" r="5" fill="#00c2ff"/>
+										<circle cx="25" cy="20" r="5" fill="#00c2ff"/>
+										<rect x="17" y="18" width="6" height="4" fill="#00c2ff"/>
+									</svg>
+								</div>
+								<h3>One-Click Integration</h3>
+							</div>
+							<p>Connect your existing tools like Calendly, Stripe, Intercom, and more through secure OAuth. No coding required - just click and connect.</p>
+						</div>
+					</div>
+
+					<!-- Feature 2: AI-Powered Discovery -->
+					<div class="feature-row reverse">
+						<div class="feature-card pink-card">
+							<div class="feature-header">
+								<div class="feature-icon">
+									<svg viewBox="0 0 40 40" fill="none">
+										<rect width="40" height="40" rx="12" fill="white"/>
+										<path d="M20 10 L25 15 L20 20 L15 15 Z M20 20 L25 25 L20 30 L15 25 Z" fill="#ff00b8"/>
+									</svg>
+								</div>
+								<h3>AI-Powered Discovery</h3>
+							</div>
+							<p>AI agents can instantly discover and interact with your business services through your unique vanity URL (zabaca.com/yourbusiness).</p>
+						</div>
+						<div class="feature-demo">
+							<!-- Chat Interface Demo -->
+							<div class="chat-bubble-demo">
+								<p>Your customers can now use AI to schedule</p>
+								<div class="chat-rocket">🚀</div>
+							</div>
+							
+							<div class="chat-interface">
+								<div class="chat-messages">
+									<div class="message-row user-message">
+										<div class="message-content">
+											<p>Use zabaca to schedule a barber appointment for 3pm with BarberX</p>
+										</div>
+									</div>
+									
+									<div class="message-row ai-message">
+										<div class="message-content">
+											<div class="discovery-block">
+												<div class="discovery-icon">⚡</div>
+												<div class="discovery-text">Discovering scheduling service</div>
+											</div>
+											
+											<div class="api-block">
+												<div class="api-method">GET</div>
+												<div class="api-url">https://api.zabaca.com/barberx/services/scheduling</div>
+											</div>
+											
+											<div class="code-block">
+												<code>{'{ "platform": "calendly", "available": true, "types": ["haircut", "shave", "beard-trim"] }'}</code>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- API Profile Demo Section -->
+		<div class="demo-section">
+			<div class="demo-container">
+				<div class="section-header">
+					<h2>Your AI Profile</h2>
+					<p>See how AI agents will discover and interact with your business</p>
+				</div>
+				
+				<div class="api-demo">
+					<div class="api-url-bar">
+						<span class="api-url">zabaca.com/yourbusiness</span>
+					</div>
+					<div class="api-response">
+						<pre><code>{`{
+  "profile": {
+    "name": "Your Business Name",
+    "business": "Product Strategy Consultant",
+    "verified": true,
+    "last_updated": "2025-01-26T10:30:00Z"
+  },
+  "services": {
+    "scheduling": {
+      "platform": "cal.com",
+      "endpoint": "https://api.zabaca.com/yourbusiness/schedule",
+      "public_access": true,
+      "types": ["consultation", "workshop", "coffee-chat"]
+    },
+    "payments": {
+      "platform": "stripe",
+      "endpoint": "https://api.zabaca.com/yourbusiness/payments",
+      "public_access": true,
+      "methods": ["credit_card", "ach"]
+    },
+    "support": {
+      "platform": "intercom",
+      "endpoint": "https://api.zabaca.com/yourbusiness/support",
+      "public_access": true,
+      "channels": ["chat", "email"]
+    }
+  }
+}`}</code></pre>
+					</div>
+				</div>
+				
+				<div class="testimonial">
+					<blockquote>
+						"Within 24 hours of setting up my Zabaca profile, I had AI assistants booking consultations directly into my calendar."
+					</blockquote>
+					<cite>- Michael Torres, Marketing Consultant</cite>
+				</div>
+			</div>
+		</div>
+
+		<!-- Contact Section -->
+		<div class="contact-section">
+			<div class="contact-container">
+				<div class="section-header">
+					<h2>Get Your Zabaca Profile</h2>
+					<p>Join thousands of businesses making themselves discoverable to AI agents</p>
+				</div>
+				
+				<div class="contact-cta">
+					<div class="username-form">
+						<div class="url-input-container">
+							<span class="url-prefix">zabaca.com/</span>
+							<input type="text" placeholder="yourbusiness" class="username-input" />
+						</div>
+						<button class="claim-button">Claim your username</button>
+					</div>
+					<div class="contact-details">
+						<p>Get your free AI business card • No credit card required</p>
+						<p>Prefer email? <a href="mailto:hello@zabaca.com">hello@zabaca.com</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	/* Import web fonts */
+	@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+	
+	/* Base styles */
+	.zabaca-inspired {
+		font-family: 'Fredoka', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		color: #131416;
+		font-weight: 500;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	/* Navigation styles (same as Stiqr page) */
+	.zabaca-nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-color: #4ff37d;
+		z-index: 40;
+		padding: 16px 8px;
+	}
+	
+	.nav-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 16px;
+	}
+	
+	.logo {
+		font-size: 24px;
+		font-weight: 700;
+		color: #131416;
+		text-decoration: none;
+		letter-spacing: -0.03em;
+	}
+	
+	.nav-links {
+		display: flex;
+		gap: 32px;
+		align-items: center;
+	}
+	
+	.nav-dropdown {
+		position: relative;
+	}
+	
+	.dropdown-trigger {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+	
+	.dropdown-trigger:hover {
+		opacity: 0.7;
+	}
+	
+	.dropdown-menu {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		background: white;
+		border-radius: 8px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		padding: 8px 0;
+		min-width: 180px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-10px);
+		transition: all 0.2s ease;
+	}
+	
+	.nav-dropdown:hover .dropdown-menu {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+	
+	.dropdown-menu a {
+		display: block;
+		padding: 8px 16px;
+		color: #131416;
+		text-decoration: none;
+		font-size: 14px;
+		transition: background-color 0.2s;
+	}
+	
+	.dropdown-menu a:hover {
+		background-color: #f5f5f5;
+	}
+	
+	.nav-links > a {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+	
+	.nav-links > a:hover {
+		opacity: 0.7;
+	}
+	
+	.nav-actions {
+		display: flex;
+		gap: 24px;
+		align-items: center;
+	}
+	
+	.start-button {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		padding: 12px 24px;
+		background-color: #131416;
+		color: white;
+		text-decoration: none;
+		border-radius: 100px;
+		font-weight: 600;
+		font-size: 16px;
+		transition: all 0.3s ease;
+		overflow: hidden;
+	}
+	
+	.start-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+	
+	.login-link {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+	
+	.login-link:hover {
+		opacity: 0.7;
+	}
+
+	/* Hero section */
+	.hero-wrapper {
+		position: relative;
+		background-color: #4ff37d;
+		margin-top: 72px;
+		padding: 4rem 0 8rem 0;
+		border-bottom-left-radius: 50% 120px;
+		border-bottom-right-radius: 50% 120px;
+	}
+	
+	.hero-section {
+		padding: 4rem 0;
+	}
+	
+	.hero-title {
+		font-size: 4rem;
+		font-weight: 700;
+		color: #131416;
+		line-height: 1.1;
+		letter-spacing: -0.04em;
+		margin-bottom: 1.5rem;
+	}
+	
+	.hero-subtitle {
+		font-size: 1.25rem;
+		color: #131416;
+		font-weight: 400;
+		line-height: 1.6;
+		margin-bottom: 2rem;
+		max-width: 600px;
+	}
+	
+	.hero-cta {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: flex-start;
+	}
+	
+	.username-form {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	
+	.url-input-container {
+		display: flex;
+		align-items: center;
+		background: white;
+		border: 2px solid #131416;
+		border-radius: 100px;
+		padding: 0 1rem;
+		overflow: hidden;
+	}
+	
+	.url-prefix {
+		color: #131416;
+		font-weight: 500;
+		white-space: nowrap;
+	}
+	
+	.username-input {
+		border: none;
+		outline: none;
+		padding: 12px 8px;
+		font-size: 16px;
+		font-family: inherit;
+		background: transparent;
+		min-width: 150px;
+	}
+	
+	.claim-button {
+		background-color: #131416;
+		color: white;
+		border: none;
+		padding: 14px 24px;
+		border-radius: 100px;
+		font-weight: 600;
+		font-size: 16px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		font-family: inherit;
+	}
+	
+	.claim-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+	
+	.cta-subtext {
+		color: #131416;
+		font-size: 14px;
+		opacity: 0.8;
+	}
+
+	/* Features section */
+	.features-section {
+		background-color: white;
+		padding: 5rem 0;
+	}
+	
+	.features-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+	
+	.section-header {
+		text-align: center;
+		margin-bottom: 4rem;
+	}
+	
+	.section-header h2 {
+		font-size: 3.5rem;
+		font-weight: 700;
+		color: #131416;
+		margin-bottom: 1rem;
+	}
+	
+	.section-header p {
+		font-size: 1.25rem;
+		color: #131416;
+		opacity: 0.8;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	
+	.features-grid {
+		display: flex;
+		flex-direction: column;
+		gap: 4rem;
+	}
+	
+	.feature-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		align-items: center;
+	}
+	
+	.feature-row.reverse {
+		direction: rtl;
+	}
+	
+	.feature-row.reverse > * {
+		direction: ltr;
+	}
+	
+	.feature-card {
+		padding: 2.5rem;
+		border-radius: 32px;
+		transform: rotate(-1deg);
+		transition: transform 0.3s ease;
+		max-width: 500px;
+		justify-self: center;
+	}
+	
+	.feature-card:hover {
+		transform: rotate(0deg) scale(1.02);
+	}
+	
+	.blue-card {
+		background: #00c2ff;
+	}
+	
+	.pink-card {
+		background: #ff00b8;
+	}
+	
+	.feature-header {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		margin-bottom: 1.5rem;
+	}
+	
+	.feature-icon svg {
+		width: 48px;
+		height: 48px;
+	}
+	
+	.feature-card h3 {
+		font-size: 1.75rem;
+		font-weight: 600;
+		color: #131416;
+		margin: 0;
+	}
+	
+	.feature-card p {
+		font-size: 1.125rem;
+		color: #131416;
+		line-height: 1.6;
+		opacity: 0.9;
+		margin: 0;
+	}
+
+	/* Chat Interface Demo */
+	.feature-demo {
+		position: relative;
+		justify-self: center;
+	}
+	
+	.chat-bubble-demo {
+		position: absolute;
+		top: -20px;
+		right: -40px;
+		background: #ff00b8;
+		padding: 1rem 1.5rem;
+		border-radius: 20px;
+		transform: rotate(8deg);
+		box-shadow: 0 4px 12px rgba(255, 0, 184, 0.3);
+		width: 240px;
+		z-index: 20;
+	}
+
+	.chat-bubble-demo p {
+		font-size: 1rem;
+		font-weight: 600;
+		color: #131416;
+		margin: 0;
+		line-height: 1.3;
+		text-align: center;
+	}
+
+	.chat-rocket {
+		position: absolute;
+		bottom: -8px;
+		right: 15px;
+		font-size: 1.75rem;
+		transform: rotate(-15deg);
+	}
+	
+	.chat-interface {
+		background: #fafafa;
+		border-radius: 20px;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+		min-width: 400px;
+		border: 2px solid #131416;
+	}
+
+	.chat-messages {
+		padding: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.message-row {
+		display: flex;
+		gap: 0.75rem;
+		align-items: flex-start;
+	}
+
+	.user-message .message-content {
+		background: #4ff37d;
+		color: #131416;
+		padding: 0.75rem 1rem;
+		border-radius: 16px 16px 16px 4px;
+		max-width: 85%;
+	}
+
+	.user-message .message-content p {
+		font-size: 1rem;
+		margin: 0;
+		line-height: 1.4;
+	}
+
+	.ai-message {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.ai-message .message-content {
+		background: white;
+		padding: 0.75rem;
+		border-radius: 14px;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+		border: 1px solid #e0e0e0;
+	}
+
+	.discovery-block {
+		background: #fff3cd;
+		border: 1px solid #ffeaa7;
+		border-radius: 10px;
+		padding: 0.6rem 0.875rem;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.discovery-text {
+		font-size: 0.875rem;
+		color: #856404;
+		font-weight: 500;
+	}
+
+	.api-block {
+		background: #f8f9fa;
+		border: 1px solid #e9ecef;
+		border-radius: 10px;
+		padding: 0.6rem 0.875rem;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-bottom: 0.75rem;
+		font-family: 'Monaco', 'Consolas', monospace;
+		font-size: 0.75rem;
+	}
+
+	.api-method {
+		background: #28a745;
+		color: white;
+		padding: 0.25rem 0.5rem;
+		border-radius: 4px;
+		font-weight: 600;
+		font-size: 0.75rem;
+	}
+
+	.api-url {
+		color: #0066cc;
+		flex: 1;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.code-block {
+		background: #f8f9fa;
+		border: 1px solid #e9ecef;
+		border-radius: 10px;
+		padding: 0.75rem;
+		overflow-x: auto;
+	}
+
+	.code-block code {
+		font-family: 'Monaco', 'Consolas', monospace;
+		font-size: 0.75rem;
+		color: #d73a49;
+		line-height: 1.3;
+	}
+
+	/* Demo section */
+	.demo-section {
+		background-color: #ffdc00;
+		padding: 5rem 0;
+	}
+	
+	.demo-container {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+	
+	.api-demo {
+		background: white;
+		border: 3px solid #131416;
+		border-radius: 16px;
+		overflow: hidden;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+		margin-bottom: 3rem;
+	}
+	
+	.api-url-bar {
+		background: #131416;
+		color: #4ff37d;
+		padding: 1rem 1.5rem;
+		font-family: 'Monaco', 'Consolas', monospace;
+		font-weight: 500;
+	}
+	
+	.api-response {
+		padding: 2rem;
+		background: white;
+	}
+	
+	.api-response pre {
+		margin: 0;
+		overflow-x: auto;
+	}
+	
+	.api-response code {
+		font-family: 'Monaco', 'Consolas', monospace;
+		font-size: 0.875rem;
+		line-height: 1.6;
+		color: #131416;
+	}
+	
+	.testimonial {
+		text-align: center;
+		max-width: 700px;
+		margin: 0 auto;
+	}
+	
+	.testimonial blockquote {
+		font-size: 1.25rem;
+		font-style: italic;
+		color: #131416;
+		line-height: 1.6;
+		margin-bottom: 1rem;
+		border: none;
+		padding: 0;
+	}
+	
+	.testimonial cite {
+		font-size: 1rem;
+		color: #131416;
+		font-weight: 600;
+		font-style: normal;
+	}
+
+	/* Contact section */
+	.contact-section {
+		background-color: #33cfff;
+		padding: 5rem 0;
+		border-top-left-radius: 50% 100px;
+		border-top-right-radius: 50% 100px;
+		margin-top: -50px;
+	}
+	
+	.contact-container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 0 2rem;
+		text-align: center;
+	}
+	
+	.contact-cta {
+		margin-top: 2rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+	}
+	
+	.contact-details p {
+		color: #131416;
+		margin: 0.5rem 0;
+	}
+	
+	.contact-details a {
+		color: #131416;
+		text-decoration: underline;
+	}
+
+	/* Animations */
+	@keyframes float {
+		0%, 100% { 
+			transform: translateY(0) rotate(12deg); 
+		}
+		50% { 
+			transform: translateY(-30px) rotate(15deg); 
+		}
+	}
+	
+	@keyframes float-delayed {
+		0%, 100% { 
+			transform: translateY(0); 
+		}
+		50% { 
+			transform: translateY(30px); 
+		}
+	}
+	
+	.animate-float {
+		animation: float 6s ease-in-out infinite;
+	}
+	
+	.animate-float-delayed {
+		animation: float-delayed 8s ease-in-out infinite;
+	}
+
+	/* Responsive design */
+	@media (max-width: 1024px) {
+		.hero-title {
+			font-size: 3rem;
+		}
+		
+		.section-header h2 {
+			font-size: 2.5rem;
+		}
+		
+		.feature-row {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		
+		.feature-row.reverse {
+			direction: ltr;
+		}
+		
+		.feature-demo {
+			order: 2;
+		}
+		
+		.feature-card {
+			order: 1;
+			justify-self: center;
+		}
+		
+		.chat-interface {
+			min-width: 350px;
+		}
+		
+		.chat-bubble-demo {
+			top: -15px;
+			right: -20px;
+			width: 200px;
+			transform: rotate(4deg);
+		}
+	}
+	
+	@media (max-width: 768px) {
+		.nav-links {
+			display: none;
+		}
+		
+		.hero-title {
+			font-size: 2.5rem;
+		}
+		
+		.section-header h2 {
+			font-size: 2rem;
+		}
+		
+		.username-form {
+			flex-direction: column;
+			align-items: stretch;
+		}
+		
+		.url-input-container {
+			justify-content: center;
+		}
+	}
+</style>

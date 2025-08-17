@@ -1,0 +1,718 @@
+---
+import Layout from "../../layouts/layout.astro";
+---
+
+<Layout title="Stiqr - AI Meeting Visualizer | Zabaca">
+	<main class="zabaca-inspired">
+		<!-- Custom Nav with Zabaca styling -->
+		<nav class="zabaca-nav">
+			<div class="nav-container">
+				<!-- Logo -->
+				<a href="/" class="logo">Zabaca</a>
+				
+				<!-- Center Links -->
+				<div class="nav-links">
+					<div class="nav-dropdown">
+						<a href="#" class="dropdown-trigger">Products</a>
+						<div class="dropdown-menu">
+							<a href="/products/stiqr">Stiqr</a>
+							<a href="/products/ai-business-cards">AI Business Cards</a>
+							<a href="/products/temporal-bridge">TemporalBridge</a>
+						</div>
+					</div>
+					<a href="/careers">Careers</a>
+					<a href="/press">Press</a>
+				</div>
+				
+				<!-- Right Actions -->
+				<div class="nav-actions">
+					<a href="https://stiqr.ai" class="start-button" target="_blank">
+						<span>Try Stiqr</span>
+					</a>
+					<a href="/login" class="login-link">Login</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Hero Section -->
+		<div class="hero-wrapper">
+			<!-- Animated background shapes -->
+			<div class="absolute inset-0 overflow-hidden">
+				<div class="absolute top-20 right-20 w-72 h-72 bg-yellow-400 rounded-3xl rotate-12 animate-float"></div>
+				<div class="absolute bottom-20 right-40 w-96 h-96 bg-blue-400 rounded-full opacity-60 animate-float-delayed"></div>
+			</div>
+			
+			<div class="relative z-10">
+				<section class="hero-section">
+					<div class="container mx-auto px-4 max-w-6xl">
+						<div class="text-left max-w-3xl">
+							<h1 class="hero-title">
+								Your AI Meeting Visualizer
+								<br />
+								That Draws Ideas in Real-Time
+							</h1>
+
+							<p class="hero-subtitle">
+								Stiqr automatically joins virtual meetings and transforms conversations into live visual diagrams, charts, and workflows. For teams who struggle to keep up with complex discussions and lose valuable insights in walls of text.
+							</p>
+
+							<div class="hero-cta">
+								<a href="https://stiqr.ai" class="cta-button" target="_blank">
+									Start Free Trial
+								</a>
+								<p class="cta-subtext">14-day free trial • No credit card required</p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<!-- Features Section -->
+		<div class="features-section">
+			<div class="features-container">
+				<div class="section-header">
+					<h2>How Stiqr Works</h2>
+					<p>Transform abstract discussions into concrete visual understanding, all at the speed of conversation.</p>
+				</div>
+				
+				<div class="features-grid">
+					<!-- Feature 1: Auto-Join -->
+					<div class="feature-card blue-card">
+						<div class="feature-header">
+							<div class="feature-icon">
+								<svg viewBox="0 0 40 40" fill="none">
+									<rect width="40" height="40" rx="12" fill="white"/>
+									<circle cx="20" cy="16" r="6" fill="#00c2ff"/>
+									<path d="M12 28 L16 24 L24 24 L28 28" stroke="#00c2ff" stroke-width="2" fill="none"/>
+								</svg>
+							</div>
+							<h3>Intelligent Meeting Bot</h3>
+						</div>
+						<p>Stiqr joins your Zoom or Google Meet calls as an intelligent participant. Simply invite it to your meeting and watch the magic happen.</p>
+					</div>
+
+					<!-- Feature 2: Real-time Visualization -->
+					<div class="feature-card pink-card">
+						<div class="feature-header">
+							<div class="feature-icon">
+								<svg viewBox="0 0 40 40" fill="none">
+									<rect width="40" height="40" rx="12" fill="white"/>
+									<path d="M10 30 L15 25 L20 28 L25 20 L30 25" stroke="#ff00b8" stroke-width="2" fill="none"/>
+									<circle cx="15" cy="25" r="2" fill="#ff00b8"/>
+									<circle cx="20" cy="28" r="2" fill="#ff00b8"/>
+									<circle cx="25" cy="20" r="2" fill="#ff00b8"/>
+								</svg>
+							</div>
+							<h3>Live Visual Generation</h3>
+						</div>
+						<p>As your team discusses system architectures or data trends, Stiqr instantly generates professional visualizations on a shared infinite whiteboard.</p>
+					</div>
+
+					<!-- Feature 3: Interactive Results -->
+					<div class="feature-card orange-card">
+						<div class="feature-header">
+							<div class="feature-icon">
+								<svg viewBox="0 0 40 40" fill="none">
+									<rect width="40" height="40" rx="12" fill="white"/>
+									<rect x="12" y="12" width="16" height="16" rx="2" stroke="#ff843f" stroke-width="2" fill="none"/>
+									<circle cx="16" cy="16" r="1" fill="#ff843f"/>
+									<circle cx="24" cy="16" r="1" fill="#ff843f"/>
+									<circle cx="16" cy="24" r="1" fill="#ff843f"/>
+									<circle cx="24" cy="24" r="1" fill="#ff843f"/>
+								</svg>
+							</div>
+							<h3>Interactive & Editable</h3>
+						</div>
+						<p>Every visualization is interactive, editable, and saved as reusable components. Your team can collaborate and refine ideas in real-time.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Demo Section -->
+		<div class="demo-section">
+			<div class="demo-container">
+				<div class="section-header">
+					<h2>See Stiqr in Action</h2>
+					<p>Watch how conversations become visual diagrams automatically</p>
+				</div>
+				
+				<div class="demo-showcase">
+					<div class="demo-conversation">
+						<div class="conversation-bubble user">
+							"Our API routes requests to three microservices for user auth, payment processing, and data analytics."
+						</div>
+						<div class="arrow-down">↓</div>
+						<div class="conversation-bubble ai">
+							Generating system architecture diagram...
+						</div>
+					</div>
+					
+					<div class="demo-visual">
+						<div class="whiteboard-preview">
+							<div class="diagram-placeholder">
+								<div class="node">API Gateway</div>
+								<div class="connection-line"></div>
+								<div class="microservices">
+									<div class="node small">Auth Service</div>
+									<div class="node small">Payment Service</div>
+									<div class="node small">Analytics Service</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Testimonial Section -->
+		<div class="testimonial-section">
+			<div class="testimonial-container">
+				<blockquote class="testimonial">
+					"Stiqr transformed our architecture reviews completely. What used to take hours of post-meeting documentation now happens live. Our engineers can focus on problem-solving instead of frantically sketching diagrams."
+				</blockquote>
+				<cite class="testimonial-author">- Marcus Rodriguez, CTO at TechCorp</cite>
+			</div>
+		</div>
+
+		<!-- Contact Section -->
+		<div class="contact-section">
+			<div class="contact-container">
+				<div class="section-header">
+					<h2>Ready to Transform Your Meetings?</h2>
+					<p>Start your free trial today and see how Stiqr can revolutionize your team's visual collaboration.</p>
+				</div>
+				
+				<div class="contact-cta">
+					<a href="https://stiqr.ai" class="cta-button primary" target="_blank">
+						Start Free Trial
+					</a>
+					<div class="contact-details">
+						<p>14-day free trial • No credit card required</p>
+						<p>Questions? Email us at <a href="mailto:hello@stiqr.ai">hello@stiqr.ai</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	/* Import web fonts */
+	@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+	
+	/* Base styles */
+	.zabaca-inspired {
+		font-family: 'Fredoka', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		color: #131416;
+		font-weight: 500;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	/* Navigation styles */
+	.zabaca-nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-color: #4ff37d;
+		z-index: 40;
+		padding: 16px 8px;
+	}
+	
+	.nav-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 16px;
+	}
+	
+	.logo {
+		font-size: 24px;
+		font-weight: 700;
+		color: #131416;
+		text-decoration: none;
+		letter-spacing: -0.03em;
+	}
+	
+	.nav-links {
+		display: flex;
+		gap: 32px;
+		align-items: center;
+	}
+	
+	.nav-dropdown {
+		position: relative;
+	}
+	
+	.dropdown-trigger {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+	
+	.dropdown-trigger:hover {
+		opacity: 0.7;
+	}
+	
+	.dropdown-menu {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		background: white;
+		border-radius: 8px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		padding: 8px 0;
+		min-width: 180px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-10px);
+		transition: all 0.2s ease;
+	}
+	
+	.nav-dropdown:hover .dropdown-menu {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+	
+	.dropdown-menu a {
+		display: block;
+		padding: 8px 16px;
+		color: #131416;
+		text-decoration: none;
+		font-size: 14px;
+		transition: background-color 0.2s;
+	}
+	
+	.dropdown-menu a:hover {
+		background-color: #f5f5f5;
+	}
+	
+	.nav-links > a {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+	
+	.nav-links > a:hover {
+		opacity: 0.7;
+	}
+	
+	.nav-actions {
+		display: flex;
+		gap: 24px;
+		align-items: center;
+	}
+	
+	.start-button {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		padding: 12px 24px;
+		background-color: #131416;
+		color: white;
+		text-decoration: none;
+		border-radius: 100px;
+		font-weight: 600;
+		font-size: 16px;
+		transition: all 0.3s ease;
+		overflow: hidden;
+	}
+	
+	.start-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+	
+	.login-link {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+	
+	.login-link:hover {
+		opacity: 0.7;
+	}
+
+	/* Hero section */
+	.hero-wrapper {
+		position: relative;
+		background-color: #4ff37d;
+		margin-top: 72px;
+		padding: 4rem 0 8rem 0;
+		border-bottom-left-radius: 50% 120px;
+		border-bottom-right-radius: 50% 120px;
+	}
+	
+	.hero-section {
+		padding: 4rem 0;
+	}
+	
+	.hero-title {
+		font-size: 4rem;
+		font-weight: 700;
+		color: #131416;
+		line-height: 1.1;
+		letter-spacing: -0.04em;
+		margin-bottom: 1.5rem;
+	}
+	
+	.hero-subtitle {
+		font-size: 1.25rem;
+		color: #131416;
+		font-weight: 400;
+		line-height: 1.6;
+		margin-bottom: 2rem;
+		max-width: 600px;
+	}
+	
+	.hero-cta {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: flex-start;
+	}
+	
+	.cta-button {
+		background-color: #131416;
+		color: white;
+		padding: 16px 32px;
+		border-radius: 100px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 18px;
+		transition: all 0.3s ease;
+	}
+	
+	.cta-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+	
+	.cta-subtext {
+		color: #131416;
+		font-size: 14px;
+		opacity: 0.8;
+	}
+
+	/* Features section */
+	.features-section {
+		background-color: white;
+		padding: 5rem 0;
+	}
+	
+	.features-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+	
+	.section-header {
+		text-align: center;
+		margin-bottom: 4rem;
+	}
+	
+	.section-header h2 {
+		font-size: 3.5rem;
+		font-weight: 700;
+		color: #131416;
+		margin-bottom: 1rem;
+	}
+	
+	.section-header p {
+		font-size: 1.25rem;
+		color: #131416;
+		opacity: 0.8;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	
+	.features-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 3rem;
+	}
+	
+	.feature-card {
+		padding: 2.5rem;
+		border-radius: 32px;
+		transform: rotate(-1deg);
+		transition: transform 0.3s ease;
+	}
+	
+	.feature-card:hover {
+		transform: rotate(0deg) scale(1.02);
+	}
+	
+	.feature-card:nth-child(2) {
+		transform: rotate(1deg);
+	}
+	
+	.feature-card:nth-child(2):hover {
+		transform: rotate(0deg) scale(1.02);
+	}
+	
+	.blue-card {
+		background: #00c2ff;
+	}
+	
+	.pink-card {
+		background: #ff00b8;
+	}
+	
+	.orange-card {
+		background: #ff843f;
+	}
+	
+	.feature-header {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		margin-bottom: 1.5rem;
+	}
+	
+	.feature-icon svg {
+		width: 48px;
+		height: 48px;
+	}
+	
+	.feature-card h3 {
+		font-size: 1.75rem;
+		font-weight: 600;
+		color: #131416;
+		margin: 0;
+	}
+	
+	.feature-card p {
+		font-size: 1.125rem;
+		color: #131416;
+		line-height: 1.6;
+		opacity: 0.9;
+		margin: 0;
+	}
+
+	/* Demo section */
+	.demo-section {
+		background-color: #ffdc00;
+		padding: 5rem 0;
+	}
+	
+	.demo-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+	
+	.demo-showcase {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		align-items: center;
+	}
+	
+	.demo-conversation {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+	
+	.conversation-bubble {
+		padding: 1.5rem;
+		border-radius: 16px;
+		font-size: 1.125rem;
+		line-height: 1.5;
+	}
+	
+	.conversation-bubble.user {
+		background: white;
+		color: #131416;
+		border: 2px solid #131416;
+	}
+	
+	.conversation-bubble.ai {
+		background: #131416;
+		color: white;
+		font-style: italic;
+	}
+	
+	.arrow-down {
+		text-align: center;
+		font-size: 2rem;
+		color: #131416;
+	}
+	
+	.whiteboard-preview {
+		background: white;
+		border: 3px solid #131416;
+		border-radius: 16px;
+		padding: 2rem;
+		min-height: 300px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.diagram-placeholder {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+	
+	.node {
+		background: #4ff37d;
+		color: #131416;
+		padding: 1rem 1.5rem;
+		border-radius: 8px;
+		font-weight: 600;
+		border: 2px solid #131416;
+	}
+	
+	.node.small {
+		padding: 0.5rem 1rem;
+		font-size: 0.875rem;
+	}
+	
+	.microservices {
+		display: flex;
+		gap: 1rem;
+	}
+	
+	.connection-line {
+		width: 2px;
+		height: 30px;
+		background: #131416;
+	}
+
+	/* Testimonial section */
+	.testimonial-section {
+		background-color: #33cfff;
+		padding: 4rem 0;
+	}
+	
+	.testimonial-container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 0 2rem;
+		text-align: center;
+	}
+	
+	.testimonial {
+		font-size: 1.5rem;
+		font-style: italic;
+		color: #131416;
+		line-height: 1.6;
+		margin-bottom: 1rem;
+	}
+	
+	.testimonial-author {
+		font-size: 1.125rem;
+		color: #131416;
+		font-weight: 600;
+	}
+
+	/* Contact section */
+	.contact-section {
+		background-color: white;
+		padding: 5rem 0;
+	}
+	
+	.contact-container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 0 2rem;
+		text-align: center;
+	}
+	
+	.contact-cta {
+		margin-top: 2rem;
+	}
+	
+	.cta-button.primary {
+		font-size: 20px;
+		padding: 18px 36px;
+		margin-bottom: 1.5rem;
+	}
+	
+	.contact-details p {
+		color: #131416;
+		margin: 0.5rem 0;
+	}
+	
+	.contact-details a {
+		color: #131416;
+		text-decoration: underline;
+	}
+
+	/* Animations */
+	@keyframes float {
+		0%, 100% { 
+			transform: translateY(0) rotate(12deg); 
+		}
+		50% { 
+			transform: translateY(-30px) rotate(15deg); 
+		}
+	}
+	
+	@keyframes float-delayed {
+		0%, 100% { 
+			transform: translateY(0); 
+		}
+		50% { 
+			transform: translateY(30px); 
+		}
+	}
+	
+	.animate-float {
+		animation: float 6s ease-in-out infinite;
+	}
+	
+	.animate-float-delayed {
+		animation: float-delayed 8s ease-in-out infinite;
+	}
+
+	/* Responsive design */
+	@media (max-width: 1024px) {
+		.hero-title {
+			font-size: 3rem;
+		}
+		
+		.section-header h2 {
+			font-size: 2.5rem;
+		}
+		
+		.demo-showcase {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		
+		.features-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+	
+	@media (max-width: 768px) {
+		.nav-links {
+			display: none;
+		}
+		
+		.hero-title {
+			font-size: 2.5rem;
+		}
+		
+		.section-header h2 {
+			font-size: 2rem;
+		}
+	}
+</style>

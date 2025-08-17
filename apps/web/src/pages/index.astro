@@ -16,6 +16,14 @@ import Layout from "../layouts/layout.astro";
 				
 				<!-- Center Links -->
 				<div class="nav-links">
+					<div class="nav-dropdown">
+						<a href="#" class="dropdown-trigger">Products</a>
+						<div class="dropdown-menu">
+							<a href="/products/stiqr">Stiqr</a>
+							<a href="/products/ai-business-cards">AI Business Cards</a>
+							<a href="/products/temporal-bridge">TemporalBridge</a>
+						</div>
+					</div>
 					<a href="/careers">Careers</a>
 					<a href="/press">Press</a>
 				</div>
@@ -47,121 +55,99 @@ import Layout from "../layouts/layout.astro";
 			</div>
 		</div>
 
-		<!-- Service Cards Section with modern layout -->
-		<div class="cards-section">
-			<div class="cards-container">
+		<!-- Our Products Section -->
+		<div class="products-section" id="products">
+			<div class="products-container">
 				<!-- Section heading -->
 				<div class="section-header">
-					<h2>How It Works</h2>
-					<p>Get your business AI-ready in under 5 minutes. Just sign up, connect, and share your profile.</p>
+					<h2>Our Products</h2>
+					<p>Discover our suite of AI-powered tools designed to transform how you work, connect, and remember.</p>
 				</div>
 				
-				<!-- Card/Image pairs in rows -->
-				<div class="cards-rows">
-					<!-- Row 1: Blue card (image first) -->
-					<div class="card-row reverse">
-						<div class="image-wrapper">
-							<!--<img src="/images/ai-discovery.png" alt="AI Discovery" />-->
+				<!-- Product Cards Grid -->
+				<div class="products-grid">
+					<!-- Stiqr Product Card -->
+					<a href="/products/stiqr" class="product-card stiqr-card">
+						<div class="product-header">
+							<div class="product-icon">
+								<svg viewBox="0 0 40 40" fill="none">
+									<rect width="40" height="40" rx="12" fill="white"/>
+									<path d="M10 30 L15 25 L20 28 L25 20 L30 25" stroke="#00c2ff" stroke-width="2" fill="none"/>
+									<circle cx="15" cy="25" r="2" fill="#00c2ff"/>
+									<circle cx="20" cy="28" r="2" fill="#00c2ff"/>
+									<circle cx="25" cy="20" r="2" fill="#00c2ff"/>
+								</svg>
+							</div>
+							<div class="product-text">
+								<h3>Stiqr</h3>
+								<p class="product-tagline">AI Meeting Visualizer</p>
+							</div>
+						</div>
+						<p class="product-description">
+							Transforms conversations into live visual diagrams, charts, and workflows. 
+							Watch your ideas take shape automatically as you speak.
+						</p>
+						<div class="product-cta">
+							<span>Explore Stiqr</span>
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+							</svg>
+						</div>
+					</a>
 
-						</div>
-						<div class="card-wrapper">
-							<div class="card blue-card">
-								<div class="card-header">
-									<div class="card-icon">
-										<svg viewBox="0 0 40 40" fill="none">
-											<rect width="40" height="40" rx="12" fill="white"/>
-											<circle cx="15" cy="20" r="5" fill="#00c2ff"/>
-											<circle cx="25" cy="20" r="5" fill="#00c2ff"/>
-											<rect x="17" y="18" width="6" height="4" fill="#00c2ff"/>
-										</svg>
-									</div>
-									<h3>One-Click Integration</h3>
-								</div>
-								<p>Connect your existing tools like Calendly, Stripe, Intercom, and more through secure OAuth. No coding required - just click and connect.</p>
+					<!-- AI Business Cards Product Card -->
+					<a href="/products/ai-business-cards" class="product-card ai-cards-card">
+						<div class="product-header">
+							<div class="product-icon">
+								<svg viewBox="0 0 40 40" fill="none">
+									<rect width="40" height="40" rx="12" fill="white"/>
+									<path d="M20 10 L25 15 L20 20 L15 15 Z M20 20 L25 25 L20 30 L15 25 Z" fill="#ff00b8"/>
+								</svg>
+							</div>
+							<div class="product-text">
+								<h3>AI Business Cards</h3>
+								<p class="product-tagline">Universal Business Discovery</p>
 							</div>
 						</div>
-					</div>
+						<p class="product-description">
+							Your universal business card for the AI age. Let AI agents discover 
+							and interact with your services through one simple URL.
+						</p>
+						<div class="product-cta">
+							<span>Explore AI Business Cards</span>
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+							</svg>
+						</div>
+					</a>
 
-					<!-- Row 2: Pink card with chat interface -->
-					<div class="card-row">
-						<div class="card-wrapper">
-							<div class="card pink-card">
-								<div class="card-header">
-									<div class="card-icon">
-										<svg viewBox="0 0 40 40" fill="none">
-											<rect width="40" height="40" rx="12" fill="white"/>
-											<path d="M20 10 L25 15 L20 20 L15 15 Z M20 20 L25 25 L20 30 L15 25 Z" fill="#ff00b8"/>
-										</svg>
-									</div>
-									<h3>AI-Powered Discovery</h3>
-								</div>
-								<p>AI agents can instantly discover and interact with your business services through your unique vanity URL (zabaca.com/yourbusiness).</p>
+					<!-- TemporalBridge Product Card -->
+					<a href="/products/temporal-bridge" class="product-card temporal-card">
+						<div class="product-header">
+							<div class="product-icon">
+								<svg viewBox="0 0 40 40" fill="none">
+									<rect width="40" height="40" rx="12" fill="white"/>
+									<circle cx="20" cy="20" r="8" stroke="#ff843f" stroke-width="2" fill="none"/>
+									<circle cx="20" cy="20" r="3" fill="#ff843f"/>
+									<path d="M12 12 L28 28 M28 12 L12 28" stroke="#ff843f" stroke-width="1" opacity="0.5"/>
+								</svg>
+							</div>
+							<div class="product-text">
+								<h3>TemporalBridge</h3>
+								<p class="product-tagline">AI Memory Across Time</p>
 							</div>
 						</div>
-						<div class="image-wrapper">
-							<!-- Green bubble outside container -->
-							<div class="chat-bubble">
-								<p>Your customers can now use AI to schedule</p>
-								<div class="chat-rocket">🚀</div>
-							</div>
-							
-							<div class="chat-interface-container">
-								<div class="chat-interface">
-									<!-- Chat Messages -->
-									<div class="chat-messages">
-									<div class="message-row user-message">
-										<div class="message-content">
-											<p>Use zabaca to schedule a barber appointment for 3pm with BarberX</p>
-										</div>
-									</div>
-									
-									<div class="message-row ai-message">
-										<div class="message-content">
-											<div class="discovery-block">
-												<div class="discovery-icon">⚡</div>
-												<div class="discovery-text">Discovering scheduling service</div>
-											</div>
-											
-											<div class="api-block">
-												<div class="api-method">GET</div>
-												<div class="api-url">https://api.zabaca.com/barberx/services/scheduling</div>
-											</div>
-											
-											<div class="code-block">
-												<code>{'{ "platform": "calendly", "available": true, "types": ["haircut", "shave", "beard-trim"] }'}</code>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+						<p class="product-description">
+							Transforms conversations into persistent, searchable knowledge. 
+							Every interaction builds connections, creating AI memory that grows smarter.
+						</p>
+						<div class="product-cta">
+							<span>Explore TemporalBridge</span>
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+							</svg>
 						</div>
-						</div>
-					</div>
-					
-					<!-- Row 3: Orange card -->
-					<!--<div class="card-row">
-						<div class="card-wrapper">
-							<div class="card orange-card">
-								<div class="card-header">
-									<div class="card-icon">
-										<svg viewBox="0 0 40 40" fill="none">
-											<rect width="40" height="40" rx="12" fill="white"/>
-											<circle cx="20" cy="20" r="8" stroke="#ff843f" stroke-width="2" fill="none"/>
-											<circle cx="20" cy="14" r="2" fill="#ff843f"/>
-											<circle cx="26" cy="20" r="2" fill="#ff843f"/>
-											<circle cx="20" cy="26" r="2" fill="#ff843f"/>
-											<circle cx="14" cy="20" r="2" fill="#ff843f"/>
-										</svg>
-									</div>
-									<h3>Universal API Access</h3>
-								</div>
-								<p>Standardized endpoints allow any AI agent to book meetings, process payments, access support, or query your knowledge base automatically.</p>
-							</div>
-						</div>
-						<div class="image-wrapper">
-							<img src="/images/api-access.png" alt="API Access" />
-						</div>
-					</div>-->
+					</a>
 				</div>
 			</div>
 		</div>
@@ -238,8 +224,62 @@ import Layout from "../layouts/layout.astro";
 		transition: opacity 0.2s;
 	}
 	
-	.nav-links a:hover {
+	.nav-links > a:hover {
 		opacity: 0.7;
+	}
+	
+	/* Dropdown styles */
+	.nav-dropdown {
+		position: relative;
+	}
+	
+	.dropdown-trigger {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+		cursor: pointer;
+	}
+	
+	.dropdown-trigger:hover {
+		opacity: 0.7;
+	}
+	
+	.dropdown-menu {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		background: white;
+		border-radius: 8px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		padding: 8px 0;
+		min-width: 180px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-10px);
+		transition: all 0.2s ease;
+		z-index: 50;
+	}
+	
+	.nav-dropdown:hover .dropdown-menu {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+	
+	.dropdown-menu a {
+		display: block;
+		padding: 8px 16px;
+		color: #131416;
+		text-decoration: none;
+		font-size: 14px;
+		transition: background-color 0.2s;
+	}
+	
+	.dropdown-menu a:hover {
+		background-color: #f5f5f5;
+		opacity: 1;
 	}
 	
 	/* Nav actions */
@@ -436,15 +476,15 @@ import Layout from "../layouts/layout.astro";
 		background-color: transparent !important;
 	}
 
-	/* Cards section with white background and rounded bottom */
-	.cards-section {
+	/* Products section with white background and rounded bottom */
+	.products-section {
 		background-color: white;
 		position: relative;
 		padding: 5rem 0 10rem 0;
 	}
 	
-	/* Container for cards layout */
-	.cards-container {
+	/* Container for products layout */
+	.products-container {
 		max-width: 1536px;
 		margin: 0 auto;
 		padding: 0 2rem;
@@ -474,398 +514,144 @@ import Layout from "../layouts/layout.astro";
 		margin: 0 auto;
 	}
 	
-	/* Cards rows container */
-	.cards-rows {
+	/* Products grid container */
+	.products-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 3rem;
+		align-items: stretch;
+	}
+	
+	/* Individual product card */
+	.product-card {
+		background: white;
+		border: 3px solid #131416;
+		border-radius: 24px;
+		padding: 2.5rem;
+		text-decoration: none;
+		color: inherit;
 		display: flex;
 		flex-direction: column;
-		gap: 6rem;
-	}
-	
-	/* Individual card row */
-	.card-row {
-		display: grid;
-		grid-template-columns: 1.1fr 0.9fr;
-		align-items: stretch;
-	}
-	
-	.card-row.reverse {
-		grid-template-columns: 0.9fr 1.1fr;
-		direction: rtl;
-	}
-	
-	.card-row.reverse > * {
-		direction: ltr;
-	}
-	
-	/* Card wrapper */
-	.card-wrapper {
-		display: flex;
-		justify-content: center;
-		align-items: stretch;
-		height: 100%;
-		padding: 2rem;
-	}
-	
-	/* Cards with brand colors */
-	.card {
-		padding: 2.5rem 3rem;
-		border-radius: 32px;
-		max-width: 680px;
-		width: 100%;
-		height: 100%;
+		justify-content: space-between;
+		transition: all 0.3s ease;
 		position: relative;
 		overflow: hidden;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		min-height: 300px;
 	}
 	
-	.pink-card {
-		background: linear-gradient(180deg, #00000005, #00000005), var(--pink-pink-500, #ff00b8);
-		transform: rotate(-2deg);
-		transition: transform 0.3s ease;
+	.product-card:hover {
+		transform: translateY(-10px);
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 	}
 	
-	.blue-card {
-		background: linear-gradient(180deg, #00000005, #00000005), var(--blue-blue-500, #00c2ff);
-		transform: rotate(2deg);
-		transition: transform 0.3s ease;
+	/* Product card specific colors */
+	.stiqr-card {
+		border-color: #00c2ff;
+		background: linear-gradient(135deg, #00c2ff15, #00c2ff05);
 	}
 	
-	.orange-card {
-		background: linear-gradient(180deg, #00000005, #00000005), var(--orange-orange-500, #ff843f);
-		transform: rotate(-2deg);
-		transition: transform 0.3s ease;
+	.stiqr-card:hover {
+		border-color: #00c2ff;
+		background: linear-gradient(135deg, #00c2ff25, #00c2ff15);
 	}
 	
-	/* Reduce tilt slightly on hover */
-	.pink-card:hover,
-	.orange-card:hover {
-		transform: rotate(-1deg) scale(1.02);
+	.ai-cards-card {
+		border-color: #ff00b8;
+		background: linear-gradient(135deg, #ff00b815, #ff00b805);
 	}
 	
-	.blue-card:hover {
-		transform: rotate(1deg) scale(1.02);
+	.ai-cards-card:hover {
+		border-color: #ff00b8;
+		background: linear-gradient(135deg, #ff00b825, #ff00b815);
 	}
 	
-	/* Card header with icon and title */
-	.card-header {
+	.temporal-card {
+		border-color: #ff843f;
+		background: linear-gradient(135deg, #ff843f15, #ff843f05);
+	}
+	
+	.temporal-card:hover {
+		border-color: #ff843f;
+		background: linear-gradient(135deg, #ff843f25, #ff843f15);
+	}
+	
+	/* Product header with icon and text */
+	.product-header {
 		display: flex;
 		align-items: center;
-		gap: 1.25rem;
-		margin-bottom: 2rem;
+		gap: 1.5rem;
+		margin-bottom: 1.5rem;
 	}
 	
-	/* Card icon */
-	.card-icon {
+	.product-icon {
 		flex-shrink: 0;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	}
-	
-	.card-icon svg {
-		display: block;
-		width: 48px;
-		height: 48px;
-		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-	}
-	
-	/* Card content */
-	.card h3 {
-		font-size: 2.25rem;
-		font-weight: 600;
-		color: #131416;
-		font-family: 'Fredoka', sans-serif;
-		line-height: 1.2;
-		margin: 0;
-	}
-	
-	.card p {
-		font-size: 1.375rem;
-		color: #131416;
-		font-family: 'Fredoka', sans-serif;
-		font-weight: 400;
-		line-height: 1.7;
-		opacity: 0.85;
-		margin: 0;
-	}
-	
-	/* Image wrapper */
-	.image-wrapper {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 100%;
-		position: relative;
-		overflow: visible;
-		min-width: 0; /* Allow shrinking */
-		padding: 2rem;
-	}
-	
-	.image-wrapper img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-		/* Remove border-radius and shadow for seamless blend */
-		border-radius: 0;
-		filter: none;
-		background: transparent;
-	}
-
-	/* Chat Interface Container */
-	.chat-interface-container {
-		position: relative;
-		width: 120%;
-		margin: 0;
-		overflow: hidden;
-		border-radius: 20px;
-	}
-
-	/* Chat Interface Styles */
-	.chat-interface {
-		background: #fafafa;
-		border-radius: 20px;
-		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-		overflow: visible;
-		width: 100%;
-		min-width: 400px;
-		position: relative;
-		transform: scale(1);
-		transform-origin: center left;
-	}
-
-	.chat-messages {
-		padding: 1.25rem;
-		background: #fafafa;
-		min-height: 200px;
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-	}
-
-	.message-row {
-		display: flex;
-		gap: 0.75rem;
-		align-items: flex-start;
-	}
-
-	.user-message {
-		justify-content: flex-start;
-	}
-
-	.user-message .message-content {
-		background: #4ff37d;
-		color: #131416;
-		padding: 0.75rem 1rem;
-		border-radius: 16px 16px 16px 4px;
-		max-width: 85%;
-		margin-left: 0;
-	}
-
-	.user-message .message-content p {
-		font-size: 1.125rem;
-		margin: 0;
-		line-height: 1.4;
-		opacity: 1;
-	}
-
-	.ai-message {
-		flex-direction: column;
-		gap: 0.5rem;
-	}
-
-	.message-icon {
-		width: 28px;
-		height: 28px;
-		background: #f0f0f0;
-		border-radius: 6px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: #666;
-	}
-
-	.message-icon svg {
-		width: 14px;
-		height: 14px;
-	}
-
-	.ai-message .message-content {
+		width: 60px;
+		height: 60px;
+		border-radius: 12px;
 		background: white;
-		padding: 0.75rem;
-		border-radius: 14px;
-		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-	}
-
-	.ai-message .message-content p {
-		font-size: 0.75rem;
-		margin: 0 0 0.5rem 0;
-		line-height: 1.3;
-		color: #333;
-		opacity: 1;
-	}
-
-	.ai-message .message-content p:last-child {
-		margin-bottom: 0;
-	}
-
-	.discovery-block {
-		background: #fff3cd;
-		border: 1px solid #ffeaa7;
-		border-radius: 10px;
-		padding: 0.6rem 0.875rem;
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		margin-bottom: 0.75rem;
-	}
-
-	.discovery-icon {
-		font-size: 0.875rem;
-	}
-
-	.discovery-text {
-		font-size: 1rem;
-		color: #856404;
-		font-weight: 500;
-	}
-
-	.api-block {
-		background: #f8f9fa;
-		border: 1px solid #e9ecef;
-		border-radius: 10px;
-		padding: 0.6rem 0.875rem;
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		margin-bottom: 0.75rem;
-		font-family: 'Monaco', 'Consolas', monospace;
-		font-size: 0.875rem;
-	}
-
-	.api-method {
-		background: #28a745;
-		color: white;
-		padding: 0.25rem 0.5rem;
-		border-radius: 4px;
-		font-weight: 600;
-		font-size: 0.875rem;
-	}
-
-	.api-url {
-		color: #0066cc;
-		flex: 1;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		font-size: 1rem;
-	}
-
-	.code-block {
-		background: #f8f9fa;
-		border: 1px solid #e9ecef;
-		border-radius: 10px;
-		padding: 0.875rem;
-		margin-bottom: 0.75rem;
-		overflow-x: auto;
-	}
-
-	.code-block code {
-		font-family: 'Monaco', 'Consolas', monospace;
-		font-size: 0.9375rem;
-		color: #d73a49;
-		line-height: 1.3;
-	}
-
-	/* Chat bubble */
-	.chat-bubble {
-		position: absolute;
-		top: -10px;
-		right: -40px;
-		background: #ff00b8;
-		padding: 1rem 1.5rem;
-		border-radius: 20px;
-		transform: rotate(8deg);
-		box-shadow: 0 4px 12px rgba(255, 0, 184, 0.3);
-		width: 240px;
-		z-index: 20;
-	}
-
-	.chat-bubble p {
-		font-size: 1rem;
-		font-weight: 600;
-		color: #131416;
-		margin: 0;
-		line-height: 1.3;
-		text-align: center;
-	}
-
-	.chat-rocket {
-		position: absolute;
-		bottom: -8px;
-		right: 15px;
-		font-size: 1.75rem;
-		transform: rotate(-15deg);
+		border: 2px solid #131416;
 	}
 	
-	/* Responsive adjustments */
-	@media (max-width: 1280px) {
-		.chat-interface-container {
-			width: 140%;
-		}
+	.product-icon svg {
+		width: 40px;
+		height: 40px;
 	}
-
-	@media (max-width: 1024px) {
-		.card-row {
-			grid-template-columns: 1fr !important;
-			gap: 3rem;
-		}
-		
-		.card-row.reverse {
-			grid-template-columns: 1fr !important;
-			direction: ltr;
-		}
-		
-		.image-wrapper {
-			order: 2;
-		}
-		
-		.card-wrapper {
-			order: 1;
-		}
-
-		.chat-interface-container {
-			width: 100%;
-			max-width: 100%;
-		}
-
-		.chat-interface {
-			min-width: 350px;
-		}
-
-		.chat-bubble {
-			position: absolute;
-			top: -15px;
-			right: -20px;
-			bottom: auto;
-			transform: rotate(4deg);
-			width: 200px;
-			padding: 0.875rem 1.125rem;
-			z-index: 30;
-		}
-		
-		.chat-bubble p {
-			font-size: 0.875rem;
-		}
-		
-		.chat-rocket {
-			font-size: 1.5rem;
-		}
+	
+	.product-text h3 {
+		font-size: 1.75rem;
+		font-weight: 700;
+		color: #131416;
+		margin: 0 0 0.25rem 0;
+		font-family: 'Fredoka', sans-serif;
+	}
+	
+	.product-tagline {
+		font-size: 1rem;
+		color: #131416;
+		opacity: 0.7;
+		margin: 0;
+		font-weight: 500;
+		font-family: 'Fredoka', sans-serif;
+	}
+	
+	/* Product description */
+	.product-description {
+		font-size: 1.125rem;
+		color: #131416;
+		line-height: 1.6;
+		margin: 0 0 2rem 0;
+		font-family: 'Fredoka', sans-serif;
+		opacity: 0.9;
+		flex: 1;
+	}
+	
+	/* Product CTA */
+	.product-cta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 1.125rem;
+		font-weight: 600;
+		color: #131416;
+		font-family: 'Fredoka', sans-serif;
+		margin-top: auto;
+	}
+	
+	.product-cta svg {
+		width: 20px;
+		height: 20px;
+		transition: transform 0.3s ease;
+	}
+	
+	.product-card:hover .product-cta svg {
+		transform: translateX(5px);
 	}
 	
 	/* Create the rounded bottom with a pseudo element */
-	.cards-section::after {
+	.products-section::after {
 		content: '';
 		position: absolute;
 		bottom: -2px;
@@ -878,9 +664,32 @@ import Layout from "../layouts/layout.astro";
 		z-index: 10;
 	}
 	
-	/* Hide the default ServiceCards component content */
-	.cards-section :global(.max-w-7xl > div:last-child) {
-		display: none !important;
+	/* Responsive adjustments */
+	@media (max-width: 1024px) {
+		.products-grid {
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 2rem;
+		}
+		
+		.product-header {
+			flex-direction: column;
+			text-align: center;
+			gap: 1rem;
+		}
+		
+		.product-icon {
+			margin: 0 auto;
+		}
+	}
+	
+	@media (max-width: 768px) {
+		.products-grid {
+			grid-template-columns: 1fr;
+		}
+		
+		.section-header h2 {
+			font-size: 2.5rem;
+		}
 	}
 
 	/* Example section with yellow background */

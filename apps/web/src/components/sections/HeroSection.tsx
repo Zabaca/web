@@ -1,28 +1,7 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { NewsletterModal } from "@/components/NewsletterModal";
 import { PrimaryButton } from "@/components/ui/gradient-button";
 
 export default function HeroSection() {
-	const [username, setUsername] = useState("");
-	const [showNewsletterModal, setShowNewsletterModal] = useState(false);
-
-	const handleClaimUsername = (e: React.FormEvent) => {
-		e.preventDefault();
-		if (username && username.length >= 3) {
-			// Track PostHog event
-			if (typeof window !== "undefined" && (window as any).posthog) {
-				(window as any).posthog.capture("username_claim_attempted", {
-					vanity_url: `zabaca.com/${username}`,
-					username: username,
-					timestamp: new Date().toISOString(),
-					source: "hero_section",
-				});
-			}
-			setShowNewsletterModal(true);
-		}
-	};
-
 	return (
 		<section id="home" className="relative bg-white py-20">
 			<div className="container mx-auto px-4 max-w-6xl">
@@ -40,59 +19,47 @@ export default function HeroSection() {
 						transition={{ duration: 0.5, delay: 0.2 }}
 						style={{ letterSpacing: "-0.025em", fontWeight: 700 }}
 					>
-						The Universal Business
+						AI-Powered Tools
 						<br />
-						Card for the AI Age
+						for the Future of Work
 					</motion.h1>
 
 					<p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl leading-relaxed">
-						Zabaca seamlessly integrates your business services into one
-						platform so that AI agents can discover and interact with you in a
-						single click.
+						Zabaca builds cutting-edge AI tools that transform how teams
+						collaborate, businesses connect, and knowledge persists. From visual
+						meeting intelligence to universal business discovery and persistent
+						AI memory.
 					</p>
 
-					{/* Username claim CTA */}
-					<div className="max-w-md">
-						<form
-							className="flex flex-col sm:flex-row gap-3 items-stretch"
-							onSubmit={handleClaimUsername}
-						>
-							<div className="relative flex-1">
-								<span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">
-									zabaca.com/
-								</span>
-								<input
-									type="text"
-									value={username}
-									onChange={(e) =>
-										setUsername(
-											e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""),
-										)
-									}
-									placeholder="yourbusiness"
-									className="w-full pl-[6rem] pr-4 py-3 border-2 border-gray-300 rounded-full focus:border-primary focus:outline-none text-base font-medium"
-								/>
-							</div>
-							<PrimaryButton
-								type="submit"
-								className="text-base whitespace-nowrap px-6"
-								disabled={!username || username.length < 3}
-							>
-								Claim your username
+					{/* Explore Products CTA */}
+					<div className="flex flex-col sm:flex-row gap-4 items-start">
+						<a href="#products">
+							<PrimaryButton className="text-lg px-8 py-4">
+								Explore our Products
 							</PrimaryButton>
-						</form>
-						<p className="text-sm text-gray-500 mt-3">
-							Get your free AI business card • No credit card required
-						</p>
+						</a>
+						<a
+							href="/careers"
+							className="text-lg font-medium text-gray-600 hover:text-gray-900 transition-colors duration-200 flex items-center gap-2 py-4"
+						>
+							Join our team
+							<svg
+								className="w-4 h-4"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={2}
+									d="M9 5l7 7-7 7"
+								/>
+							</svg>
+						</a>
 					</div>
 				</motion.div>
 			</div>
-
-			{/* Newsletter Modal */}
-			<NewsletterModal
-				isOpen={showNewsletterModal}
-				onClose={() => setShowNewsletterModal(false)}
-			/>
 		</section>
 	);
 }
