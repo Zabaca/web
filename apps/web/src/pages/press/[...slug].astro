@@ -1,10 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import Press from '../../layouts/Press.astro';
 
 export async function getStaticPaths() {
   const pressEntries = await getCollection('press');
-  return pressEntries.map(entry => ({
+  return pressEntries.map((entry: CollectionEntry<'press'>) => ({
     params: { slug: entry.id.replace('.md', '') },
     props: { entry },
   }));

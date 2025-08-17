@@ -1,7 +1,7 @@
 ---
 import Layout from './layout.astro';
 import Navigation from '../components/Navigation.astro';
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
@@ -14,12 +14,12 @@ const { Content } = await entry.render();
 // Get all press articles except current one, sorted by date
 const allPressArticles = await getCollection('press');
 const relatedArticles = allPressArticles
-  .filter(article => article.id !== entry.id)
-  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+  .filter((article: CollectionEntry<'press'>) => article.id !== entry.id)
+  .sort((a: CollectionEntry<'press'>, b: CollectionEntry<'press'>) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
   .slice(0, 3);
 
 // Icon mapping for SVG paths
-const iconPaths = {
+const iconPaths: Record<string, string> = {
   dollar: "M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
   layers: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
   chart: "M9 11H3v10h6V11zM15 3H9v18h6V3zM21 7h-6v14h6V7z",
@@ -71,7 +71,7 @@ function formatDate(date: Date): string {
       <div class="related-container">
         <h2>More from Press</h2>
         <div class="related-grid">
-          {relatedArticles.map((article) => (
+          {relatedArticles.map((article: CollectionEntry<'press'>) => (
             <article class="related-card">
               <a href={`/press/${article.id.replace('.md', '')}`}>
                 <div class="related-image">
