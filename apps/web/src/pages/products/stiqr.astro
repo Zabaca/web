@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/layout.astro";
 import Navigation from "../../components/Navigation.astro";
+import { DotPattern } from "../../components/DotPattern.tsx";
 ---
 
 <Layout title="Stiqr - AI Meeting Visualizer | Zabaca">
@@ -9,10 +10,21 @@ import Navigation from "../../components/Navigation.astro";
 
 		<!-- Hero Section -->
 		<div class="hero-wrapper">
+			<!-- Dot pattern background -->
+			<DotPattern 
+				client:load
+				width={24}
+				height={24}
+				cx={12}
+				cy={12}
+				cr={2}
+				className="opacity-30"
+			/>
+			
 			<!-- Animated background shapes -->
 			<div class="absolute inset-0 overflow-hidden">
-				<div class="absolute top-20 right-20 w-72 h-72 bg-yellow-400 rounded-3xl rotate-12 animate-float"></div>
-				<div class="absolute bottom-20 right-40 w-96 h-96 bg-blue-400 rounded-full opacity-60 animate-float-delayed"></div>
+				<div class="absolute top-20 right-20 w-72 h-72 bg-yellow-400 rounded-3xl rotate-12 animate-float opacity-80"></div>
+				<div class="absolute bottom-20 right-40 w-96 h-96 bg-blue-400 rounded-full opacity-50 animate-float-delayed"></div>
 			</div>
 			
 			<div class="relative z-10">
@@ -321,7 +333,7 @@ import Navigation from "../../components/Navigation.astro";
 	/* Hero section */
 	.hero-wrapper {
 		position: relative;
-		background-color: #4ff37d;
+		background-color: white;
 		margin-top: 72px;
 		padding: 4rem 0 8rem 0;
 		border-bottom-left-radius: 50% 120px;
@@ -381,7 +393,7 @@ import Navigation from "../../components/Navigation.astro";
 
 	/* Features section */
 	.features-section {
-		background-color: white;
+		background-color: #ffdc00;
 		padding: 5rem 0;
 	}
 	
@@ -477,7 +489,7 @@ import Navigation from "../../components/Navigation.astro";
 
 	/* Demo section */
 	.demo-section {
-		background-color: #ffdc00;
+		background-color: white;
 		padding: 5rem 0;
 	}
 	
@@ -609,13 +621,17 @@ import Navigation from "../../components/Navigation.astro";
 	}
 	
 	.contact-cta {
-		margin-top: 2rem;
+		margin-top: 3rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2rem;
 	}
 	
 	.cta-button.primary {
 		font-size: 20px;
 		padding: 18px 36px;
-		margin-bottom: 1.5rem;
+		display: inline-block;
 	}
 	
 	.contact-details p {
