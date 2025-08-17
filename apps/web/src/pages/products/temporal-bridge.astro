@@ -280,7 +280,6 @@ import WormholeLogo from "../../components/WormholeLogo.tsx";
 				
 				<div class="contact-cta">
 					<a href="https://github.com/zabaca/temporal-bridge" class="cta-button primary" target="_blank">
-						<span class="cta-icon">🌉</span>
 						Get Started with TemporalBridge
 					</a>
 					<div class="contact-details">
@@ -934,9 +933,22 @@ import WormholeLogo from "../../components/WormholeLogo.tsx";
 	}
 	
 	.cta-button.primary {
+		background-color: #131416;
+		color: white;
 		font-size: 20px;
 		padding: 18px 36px;
 		margin-bottom: 1.5rem;
+		display: inline-block;
+		border-radius: 100px;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+	}
+	
+	.cta-button.primary:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		background-color: #000000;
 	}
 	
 	.contact-details p {
