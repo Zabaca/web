@@ -98,7 +98,9 @@ import IntegrationDemo from "../../components/IntegrationDemo.tsx";
 							</div>
 							<p>Connect your existing tools like Calendly, Stripe, Intercom, and more through secure OAuth. No coding required - just click and connect.</p>
 						</div>
-						<IntegrationDemo client:load />
+						<div class="feature-demo integration-feature-demo">
+							<IntegrationDemo client:load />
+						</div>
 					</div>
 
 
@@ -706,6 +708,72 @@ import IntegrationDemo from "../../components/IntegrationDemo.tsx";
 		transform: rotate(-5deg);
 	}
 
+	/* Integration Demo Responsive Styles */
+	.integration-demo-container {
+		max-width: 600px;
+	}
+
+	@media (max-width: 768px) {
+		.feature-demo {
+			max-width: 100%;
+			width: 100%;
+			padding: 1rem;
+			overflow: hidden;
+		}
+		
+		.integration-feature-demo {
+			max-width: 100%;
+			width: 100%;
+			padding: 0;
+		}
+		
+		.integration-demo-container {
+			max-width: 100%;
+			width: 100%;
+			padding: 1rem;
+			margin: 0;
+		}
+		
+		.chat-interface {
+			min-width: auto;
+			width: 100%;
+			max-width: 100%;
+		}
+		
+		.chat-bubble-demo {
+			position: relative !important;
+			right: auto !important;
+			top: auto !important;
+			width: auto !important;
+			margin-bottom: 1rem;
+			transform: none !important;
+		}
+		
+		.chat-rocket {
+			display: none;
+		}
+	}
+	
+	/* Mobile optimized for 360px minimum */
+	@media (max-width: 480px) {
+		.features-container {
+			padding: 0 0.75rem;
+		}
+		
+		.integration-demo-container {
+			padding: 0.75rem !important;
+		}
+		
+		.hero-title {
+			font-size: 2.25rem;
+		}
+		
+		.container.mx-auto.px-4.max-w-6xl {
+			padding-left: 0.75rem;
+			padding-right: 0.75rem;
+		}
+	}
+
 	/* Chat Interface Demo */
 	.feature-demo {
 		position: relative;
@@ -1047,5 +1115,15 @@ import IntegrationDemo from "../../components/IntegrationDemo.tsx";
 		.url-input-container {
 			justify-content: center;
 		}
+		
+		.features-container {
+			padding: 0 1rem;
+		}
+		
+		.container.mx-auto.px-4.max-w-6xl {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+		
 	}
 </style>
