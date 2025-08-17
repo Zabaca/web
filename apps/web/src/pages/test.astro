@@ -1,0 +1,1009 @@
+---
+import ClientContactSection from "../components/wrappers/ClientContactSection.tsx";
+import ClientExampleProfile from "../components/wrappers/ClientExampleProfile.tsx";
+import ClientHeroSection from "../components/wrappers/ClientHeroSection.tsx";
+import Layout from "../layouts/layout.astro";
+---
+
+<Layout title="Zabaca">
+	<main class="zabaca-inspired">
+		<!-- Custom Nav with Zabaca styling -->
+		<nav class="zabaca-nav">
+			<div class="nav-container">
+				<!-- Logo -->
+				<a href="/" class="logo">Zabaca</a>
+				
+				<!-- Center Links -->
+				<div class="nav-links">
+					<a href="/careers">Careers</a>
+					<a href="/press">Press</a>
+				</div>
+				
+				<!-- Right Actions -->
+				<div class="nav-actions">
+					<a href="/app" class="start-button">
+						<span>Start for free</span>
+					</a>
+					<a href="/login" class="login-link">Login</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Hero Section with gradient background -->
+		<div class="hero-wrapper">
+			<!-- Animated background shapes -->
+			<div class="absolute inset-0 overflow-hidden">
+				<div class="absolute top-20 right-20 w-72 h-72 bg-yellow-400 rounded-3xl rotate-12 animate-float"></div>
+				<div class="absolute bottom-20 right-40 w-96 h-96 bg-blue-400 rounded-full opacity-60 animate-float-delayed"></div>
+			</div>
+			
+			<!-- Use the existing Hero Section component -->
+			<div class="relative z-10">
+				<ClientHeroSection client:load />
+			</div>
+		</div>
+
+		<!-- Service Cards Section with modern layout -->
+		<div class="cards-section">
+			<div class="cards-container">
+				<!-- Section heading -->
+				<div class="section-header">
+					<h2>How It Works</h2>
+					<p>Get your business AI-ready in under 5 minutes. Just sign up, connect, and share your profile.</p>
+				</div>
+				
+				<!-- Card/Image pairs in rows -->
+				<div class="cards-rows">
+					<!-- Row 1: Pink card with chat interface -->
+					<div class="card-row">
+						<div class="card-wrapper">
+							<div class="card pink-card">
+								<div class="card-header">
+									<div class="card-icon">
+										<svg viewBox="0 0 40 40" fill="none">
+											<rect width="40" height="40" rx="12" fill="white"/>
+											<path d="M20 10 L25 15 L20 20 L15 15 Z M20 20 L25 25 L20 30 L15 25 Z" fill="#ff00b8"/>
+										</svg>
+									</div>
+									<h3>AI-Powered Discovery</h3>
+								</div>
+								<p>AI agents can instantly discover and interact with your business services through your unique vanity URL (zabaca.com/yourbusiness).</p>
+							</div>
+						</div>
+						<div class="image-wrapper">
+							<!-- Green bubble outside container -->
+							<div class="chat-bubble">
+								<p>Your customers can now use AI to schedule</p>
+								<div class="chat-rocket">🚀</div>
+							</div>
+							
+							<div class="chat-interface-container">
+								<div class="chat-interface">
+									<!-- Chat Messages -->
+									<div class="chat-messages">
+									<div class="message-row user-message">
+										<div class="message-content">
+											<p>Use zabaca to schedule a barber appointment for 3pm with BarberX</p>
+										</div>
+									</div>
+									
+									<div class="message-row ai-message">
+										<div class="message-content">
+											<div class="discovery-block">
+												<div class="discovery-icon">⚡</div>
+												<div class="discovery-text">Discovering scheduling service</div>
+											</div>
+											
+											<div class="api-block">
+												<div class="api-method">GET</div>
+												<div class="api-url">https://api.zabaca.com/barberx/services/scheduling</div>
+											</div>
+											
+											<div class="code-block">
+												<code>{'{ "platform": "calendly", "available": true, "types": ["haircut", "shave", "beard-trim"] }'}</code>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>
+					
+					<!-- Row 2: Blue card (image first) -->
+					<div class="card-row reverse">
+						<div class="image-wrapper">
+							<img src="/images/ai-discovery.png" alt="AI Discovery" />
+
+						</div>
+						<div class="card-wrapper">
+							<div class="card blue-card">
+								<div class="card-header">
+									<div class="card-icon">
+										<svg viewBox="0 0 40 40" fill="none">
+											<rect width="40" height="40" rx="12" fill="white"/>
+											<circle cx="15" cy="20" r="5" fill="#00c2ff"/>
+											<circle cx="25" cy="20" r="5" fill="#00c2ff"/>
+											<rect x="17" y="18" width="6" height="4" fill="#00c2ff"/>
+										</svg>
+									</div>
+									<h3>One-Click Integration</h3>
+								</div>
+								<p>Connect your existing tools like Calendly, Stripe, Intercom, and more through secure OAuth. No coding required - just click and connect.</p>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Row 3: Orange card -->
+					<div class="card-row">
+						<div class="card-wrapper">
+							<div class="card orange-card">
+								<div class="card-header">
+									<div class="card-icon">
+										<svg viewBox="0 0 40 40" fill="none">
+											<rect width="40" height="40" rx="12" fill="white"/>
+											<circle cx="20" cy="20" r="8" stroke="#ff843f" stroke-width="2" fill="none"/>
+											<circle cx="20" cy="14" r="2" fill="#ff843f"/>
+											<circle cx="26" cy="20" r="2" fill="#ff843f"/>
+											<circle cx="20" cy="26" r="2" fill="#ff843f"/>
+											<circle cx="14" cy="20" r="2" fill="#ff843f"/>
+										</svg>
+									</div>
+									<h3>Universal API Access</h3>
+								</div>
+								<p>Standardized endpoints allow any AI agent to book meetings, process payments, access support, or query your knowledge base automatically.</p>
+							</div>
+						</div>
+						<div class="image-wrapper">
+							<img src="/images/api-access.png" alt="API Access" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Example Profile Section -->
+		<div class="example-section">
+			<ClientExampleProfile client:visible />
+		</div>
+
+		<!-- Contact Section -->
+		<div class="contact-section">
+			<ClientContactSection client:visible />
+		</div>
+	</main>
+</Layout>
+
+<style>
+	/* Import web fonts - using rounded, bold fonts for modern design */
+	@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+	
+	/* Modern design base styles */
+	.zabaca-inspired {
+		font-family: 'Fredoka', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		color: #131416; /* Modern black */
+		font-weight: 500;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	/* Custom Navigation */
+	.zabaca-nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-color: #4ff37d; /* Zabaca green */
+		z-index: 50;
+		padding: 16px 8px;
+	}
+	
+	.nav-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 16px;
+	}
+	
+	/* Logo styling */
+	.logo {
+		font-size: 24px;
+		font-weight: 700;
+		color: #131416;
+		text-decoration: none;
+		letter-spacing: -0.03em;
+		font-family: 'Fredoka', sans-serif;
+	}
+	
+	/* Nav links */
+	.nav-links {
+		display: flex;
+		gap: 32px;
+		align-items: center;
+	}
+	
+	.nav-links a {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+	
+	.nav-links a:hover {
+		opacity: 0.7;
+	}
+	
+	/* Nav actions */
+	.nav-actions {
+		display: flex;
+		gap: 24px;
+		align-items: center;
+	}
+	
+	/* Start button with black background */
+	.start-button {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		padding: 12px 24px;
+		background-color: #131416;
+		color: white;
+		text-decoration: none;
+		border-radius: 100px;
+		font-weight: 600;
+		font-size: 16px;
+		transition: all 0.3s ease;
+		overflow: hidden;
+	}
+	
+	.start-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+	
+	.login-link {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+	
+	.login-link:hover {
+		opacity: 0.7;
+	}
+
+	/* Hero wrapper */
+	.hero-wrapper {
+		position: relative;
+		background-color: #4ff37d;
+		margin-top: 72px; /* Account for fixed nav */
+		padding: 4rem 0 8rem 0;
+		border-bottom-left-radius: 50% 120px;
+		border-bottom-right-radius: 50% 120px;
+	}
+	
+	/* Remove white background from hero section */
+	.hero-wrapper :global(#home) {
+		background: transparent !important;
+		min-height: auto !important;
+		padding: 4rem 0 !important;
+	}
+	
+	.hero-wrapper :global(section) {
+		background: transparent !important;
+	}
+
+	/* Override component text colors and fonts for hero */
+	.hero-wrapper :global(h1),
+	.hero-wrapper :global(h1.text-5xl),
+	.hero-wrapper :global(h1.text-6xl),
+	.hero-wrapper :global(h1.text-7xl),
+	.hero-wrapper :global(h1.text-gray-900) {
+		color: #131416 !important;
+		font-weight: 700 !important;
+		font-family: 'Fredoka', sans-serif !important;
+		letter-spacing: -0.04em !important;
+		line-height: 1.1 !important;
+		max-width: 800px !important;
+	}
+	
+	.hero-wrapper :global(h2) {
+		color: #131416 !important;
+		font-weight: 600 !important;
+		font-family: 'Fredoka', sans-serif !important;
+	}
+	
+	.hero-wrapper :global(.text-gray-900),
+	.hero-wrapper :global(.text-gray-700),
+	.hero-wrapper :global(.text-gray-500) {
+		color: #131416 !important;
+		font-family: 'Fredoka', sans-serif !important;
+		font-weight: 400 !important;
+	}
+	
+	/* Specific selector for the tagline paragraph */
+	.hero-wrapper :global(p),
+	.hero-wrapper :global(p.text-gray-600) {
+		color: #131416 !important;
+		font-family: 'Fredoka', sans-serif !important;
+		font-weight: 500 !important;
+	}
+	
+	/* Style the funding pill */
+	.hero-wrapper :global(.bg-gray-100) {
+		background-color: white !important;
+		color: #131416 !important;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	}
+	
+	/* Style input fields */
+	.hero-wrapper :global(input) {
+		background-color: white !important;
+		color: #131416 !important;
+		border: 2px solid #131416 !important;
+	}
+	
+	.hero-wrapper :global(input:focus) {
+		outline: none !important;
+		border-color: #131416 !important;
+		box-shadow: 0 0 0 3px rgba(19, 20, 22, 0.1) !important;
+	}
+	
+	/* Fix URL prefix text color */
+	.hero-wrapper :global(.text-green-600) {
+		color: #131416 !important;
+		font-weight: 500 !important;
+	}
+	
+	/* Style buttons */
+	.hero-wrapper :global(button) {
+		background-color: #131416 !important;
+		color: white !important;
+		font-weight: 600 !important;
+		transition: all 0.3s ease !important;
+	}
+	
+	.hero-wrapper :global(button:hover:not(:disabled)) {
+		transform: scale(1.05) !important;
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+	}
+	
+	/* Terminal window styling */
+	.hero-wrapper :global(.bg-\[#1e293b\]) {
+		background-color: #1a1b1e !important;
+		border: 2px solid #131416 !important;
+		border-radius: 16px !important;
+		overflow: hidden !important;
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+	}
+	
+	.hero-wrapper :global(.bg-\[#0f172a\]) {
+		background-color: #131416 !important;
+		border-bottom: 1px solid #2a2b2e !important;
+	}
+	
+	/* Terminal window dots */
+	.hero-wrapper :global(.bg-red-500) {
+		background-color: #ff5f56 !important;
+		width: 12px !important;
+		height: 12px !important;
+	}
+	
+	.hero-wrapper :global(.bg-yellow-500) {
+		background-color: #ffbd2e !important;
+		width: 12px !important;
+		height: 12px !important;
+	}
+	
+	.hero-wrapper :global(.bg-green-500) {
+		background-color: #27c93f !important;
+		width: 12px !important;
+		height: 12px !important;
+	}
+	
+	/* Terminal header text */
+	.hero-wrapper :global(.text-gray-400) {
+		color: #6b7280 !important;
+		opacity: 0.8 !important;
+	}
+	
+	/* Terminal code content */
+	.hero-wrapper :global(pre) {
+		color: #4ff37d !important;
+		font-weight: 400 !important;
+		font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace !important;
+		line-height: 1.6 !important;
+		text-shadow: 0 0 20px rgba(79, 243, 125, 0.3) !important;
+	}
+	
+	.hero-wrapper :global(code) {
+		color: #4ff37d !important;
+		background: transparent !important;
+	}
+	
+	/* Terminal content container */
+	.hero-wrapper :global(.overflow-x-auto) {
+		background-color: transparent !important;
+	}
+
+	/* Cards section with white background and rounded bottom */
+	.cards-section {
+		background-color: white;
+		position: relative;
+		padding: 5rem 0 10rem 0;
+	}
+	
+	/* Container for cards layout */
+	.cards-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+	
+	/* Section header */
+	.section-header {
+		text-align: center;
+		margin-bottom: 5rem;
+	}
+	
+	.section-header h2 {
+		font-size: 3.5rem;
+		font-weight: 700;
+		color: #131416;
+		font-family: 'Fredoka', sans-serif;
+		margin-bottom: 1rem;
+	}
+	
+	.section-header p {
+		font-size: 1.25rem;
+		color: #131416;
+		font-family: 'Fredoka', sans-serif;
+		font-weight: 400;
+		opacity: 0.8;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	
+	/* Cards rows container */
+	.cards-rows {
+		display: flex;
+		flex-direction: column;
+		gap: 6rem;
+	}
+	
+	/* Individual card row */
+	.card-row {
+		display: grid;
+		grid-template-columns: 1.1fr 0.9fr;
+		align-items: stretch;
+	}
+	
+	.card-row.reverse {
+		grid-template-columns: 0.9fr 1.1fr;
+		direction: rtl;
+	}
+	
+	.card-row.reverse > * {
+		direction: ltr;
+	}
+	
+	/* Card wrapper */
+	.card-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: stretch;
+		height: 100%;
+		padding: 2rem;
+	}
+	
+	/* Cards with brand colors */
+	.card {
+		padding: 2.5rem 3rem;
+		border-radius: 32px;
+		max-width: 680px;
+		width: 100%;
+		height: 100%;
+		position: relative;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	
+	.pink-card {
+		background: linear-gradient(180deg, #00000005, #00000005), var(--pink-pink-500, #ff00b8);
+		transform: rotate(-2deg);
+		transition: transform 0.3s ease;
+	}
+	
+	.blue-card {
+		background: linear-gradient(180deg, #00000005, #00000005), var(--blue-blue-500, #00c2ff);
+		transform: rotate(2deg);
+		transition: transform 0.3s ease;
+	}
+	
+	.orange-card {
+		background: linear-gradient(180deg, #00000005, #00000005), var(--orange-orange-500, #ff843f);
+		transform: rotate(-2deg);
+		transition: transform 0.3s ease;
+	}
+	
+	/* Reduce tilt slightly on hover */
+	.pink-card:hover,
+	.orange-card:hover {
+		transform: rotate(-1deg) scale(1.02);
+	}
+	
+	.blue-card:hover {
+		transform: rotate(1deg) scale(1.02);
+	}
+	
+	/* Card header with icon and title */
+	.card-header {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		margin-bottom: 2rem;
+	}
+	
+	/* Card icon */
+	.card-icon {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.card-icon svg {
+		display: block;
+		width: 48px;
+		height: 48px;
+		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+	}
+	
+	/* Card content */
+	.card h3 {
+		font-size: 2.25rem;
+		font-weight: 600;
+		color: #131416;
+		font-family: 'Fredoka', sans-serif;
+		line-height: 1.2;
+		margin: 0;
+	}
+	
+	.card p {
+		font-size: 1.375rem;
+		color: #131416;
+		font-family: 'Fredoka', sans-serif;
+		font-weight: 400;
+		line-height: 1.7;
+		opacity: 0.85;
+		margin: 0;
+	}
+	
+	/* Image wrapper */
+	.image-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		position: relative;
+		overflow: visible;
+		min-width: 0; /* Allow shrinking */
+		padding: 2rem;
+	}
+	
+	.image-wrapper img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		/* Remove border-radius and shadow for seamless blend */
+		border-radius: 0;
+		filter: none;
+		background: transparent;
+	}
+
+	/* Chat Interface Container */
+	.chat-interface-container {
+		position: relative;
+		width: 120%;
+		margin: 0;
+		overflow: hidden;
+		border-radius: 20px;
+	}
+
+	/* Chat Interface Styles */
+	.chat-interface {
+		background: #fafafa;
+		border-radius: 20px;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+		overflow: visible;
+		width: 100%;
+		min-width: 400px;
+		position: relative;
+		transform: scale(1);
+		transform-origin: center left;
+	}
+
+	.chat-messages {
+		padding: 1.25rem;
+		background: #fafafa;
+		min-height: 200px;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.message-row {
+		display: flex;
+		gap: 0.75rem;
+		align-items: flex-start;
+	}
+
+	.user-message {
+		justify-content: flex-start;
+	}
+
+	.user-message .message-content {
+		background: #4ff37d;
+		color: #131416;
+		padding: 0.75rem 1rem;
+		border-radius: 16px 16px 16px 4px;
+		max-width: 85%;
+		margin-left: 0;
+	}
+
+	.user-message .message-content p {
+		font-size: 1.125rem;
+		margin: 0;
+		line-height: 1.4;
+		opacity: 1;
+	}
+
+	.ai-message {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.message-icon {
+		width: 28px;
+		height: 28px;
+		background: #f0f0f0;
+		border-radius: 6px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #666;
+	}
+
+	.message-icon svg {
+		width: 14px;
+		height: 14px;
+	}
+
+	.ai-message .message-content {
+		background: white;
+		padding: 0.75rem;
+		border-radius: 14px;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+	}
+
+	.ai-message .message-content p {
+		font-size: 0.75rem;
+		margin: 0 0 0.5rem 0;
+		line-height: 1.3;
+		color: #333;
+		opacity: 1;
+	}
+
+	.ai-message .message-content p:last-child {
+		margin-bottom: 0;
+	}
+
+	.discovery-block {
+		background: #fff3cd;
+		border: 1px solid #ffeaa7;
+		border-radius: 10px;
+		padding: 0.6rem 0.875rem;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.discovery-icon {
+		font-size: 0.875rem;
+	}
+
+	.discovery-text {
+		font-size: 1rem;
+		color: #856404;
+		font-weight: 500;
+	}
+
+	.api-block {
+		background: #f8f9fa;
+		border: 1px solid #e9ecef;
+		border-radius: 10px;
+		padding: 0.6rem 0.875rem;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-bottom: 0.75rem;
+		font-family: 'Monaco', 'Consolas', monospace;
+		font-size: 0.875rem;
+	}
+
+	.api-method {
+		background: #28a745;
+		color: white;
+		padding: 0.25rem 0.5rem;
+		border-radius: 4px;
+		font-weight: 600;
+		font-size: 0.875rem;
+	}
+
+	.api-url {
+		color: #0066cc;
+		flex: 1;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-size: 1rem;
+	}
+
+	.code-block {
+		background: #f8f9fa;
+		border: 1px solid #e9ecef;
+		border-radius: 10px;
+		padding: 0.875rem;
+		margin-bottom: 0.75rem;
+		overflow-x: auto;
+	}
+
+	.code-block code {
+		font-family: 'Monaco', 'Consolas', monospace;
+		font-size: 0.9375rem;
+		color: #d73a49;
+		line-height: 1.3;
+	}
+
+	/* Chat bubble */
+	.chat-bubble {
+		position: absolute;
+		top: -10px;
+		right: -40px;
+		background: #ff00b8;
+		padding: 1rem 1.5rem;
+		border-radius: 20px;
+		transform: rotate(8deg);
+		box-shadow: 0 4px 12px rgba(255, 0, 184, 0.3);
+		width: 240px;
+		z-index: 20;
+	}
+
+	.chat-bubble p {
+		font-size: 1rem;
+		font-weight: 600;
+		color: #131416;
+		margin: 0;
+		line-height: 1.3;
+		text-align: center;
+	}
+
+	.chat-rocket {
+		position: absolute;
+		bottom: -8px;
+		right: 15px;
+		font-size: 1.75rem;
+		transform: rotate(-15deg);
+	}
+	
+	/* Responsive adjustments */
+	@media (max-width: 1280px) {
+		.chat-interface-container {
+			width: 140%;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		.card-row {
+			grid-template-columns: 1fr !important;
+			gap: 3rem;
+		}
+		
+		.card-row.reverse {
+			grid-template-columns: 1fr !important;
+			direction: ltr;
+		}
+		
+		.image-wrapper {
+			order: 2;
+		}
+		
+		.card-wrapper {
+			order: 1;
+		}
+
+		.chat-interface-container {
+			width: 100%;
+			max-width: 100%;
+		}
+
+		.chat-interface {
+			min-width: 350px;
+		}
+
+		.chat-bubble {
+			position: absolute;
+			top: -15px;
+			right: -20px;
+			bottom: auto;
+			transform: rotate(4deg);
+			width: 200px;
+			padding: 0.875rem 1.125rem;
+			z-index: 30;
+		}
+		
+		.chat-bubble p {
+			font-size: 0.875rem;
+		}
+		
+		.chat-rocket {
+			font-size: 1.5rem;
+		}
+	}
+	
+	/* Create the rounded bottom with a pseudo element */
+	.cards-section::after {
+		content: '';
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+		right: 0;
+		height: 150px;
+		background-color: white;
+		border-bottom-left-radius: 50% 60px;
+		border-bottom-right-radius: 50% 60px;
+		z-index: 10;
+	}
+	
+	/* Hide the default ServiceCards component content */
+	.cards-section :global(.max-w-7xl > div:last-child) {
+		display: none !important;
+	}
+
+	/* Example section with yellow background */
+	.example-section {
+		background-color: #ffdc00 !important; /* Bright yellow */
+		padding: 120px 0 80px 0;
+		position: relative;
+		margin-top: -100px; /* Pull up to overlap with cards section */
+		z-index: 0;
+	}
+	
+	/* Override the white background from the component */
+	.example-section :global(.bg-white) {
+		background-color: #ffdc00 !important;
+	}
+	
+	/* Ensure content is above the overlap */
+	.example-section > :global(*) {
+		position: relative;
+		z-index: 2;
+	}
+	
+	/* Example section heading */
+	.example-section :global(h2) {
+		color: #131416 !important;
+		font-family: 'Fredoka', sans-serif !important;
+		font-weight: 700 !important;
+	}
+	
+	.example-section :global(p) {
+		color: #131416 !important;
+		font-family: 'Fredoka', sans-serif !important;
+		font-weight: 500 !important;
+	}
+	
+	.example-section :global(.bg-gray-900) {
+		background-color: white !important;
+		border: 3px solid #131416 !important;
+		border-radius: 24px !important;
+	}
+	
+	.example-section :global(.bg-gray-800) {
+		background-color: #131416 !important;
+	}
+	
+	.example-section :global(.text-gray-300),
+	.example-section :global(.text-gray-400) {
+		color: #131416 !important;
+	}
+	
+	.example-section :global(pre) {
+		color: #131416 !important;
+		font-family: 'Monaco', 'Courier New', monospace !important;
+	}
+
+	/* Contact section with blue background and rounded top */
+	.contact-section {
+		background-color: #33cfff; /* Zabaca blue */
+		padding: 120px 0 80px 0;
+		position: relative;
+		margin-top: -100px;
+		border-top-left-radius: 50% 100px;
+		border-top-right-radius: 50% 100px;
+	}
+	
+	.contact-section :global(.bg-gray-50) {
+		background: transparent !important;
+	}
+	
+	.contact-section :global(h2),
+	.contact-section :global(p),
+	.contact-section :global(.text-gray-900),
+	.contact-section :global(.text-gray-600) {
+		color: #131416 !important;
+	}
+	
+	.contact-section :global(input),
+	.contact-section :global(textarea) {
+		background-color: white !important;
+		border: 2px solid #131416 !important;
+		color: #131416 !important;
+	}
+	
+	.contact-section :global(button) {
+		background-color: #131416 !important;
+		color: white !important;
+		font-weight: 600 !important;
+	}
+
+	/* Animations */
+	@keyframes float {
+		0%, 100% { 
+			transform: translateY(0) rotate(12deg); 
+		}
+		50% { 
+			transform: translateY(-30px) rotate(15deg); 
+		}
+	}
+	
+	@keyframes float-delayed {
+		0%, 100% { 
+			transform: translateY(0); 
+		}
+		50% { 
+			transform: translateY(30px); 
+		}
+	}
+	
+	.animate-float {
+		animation: float 6s ease-in-out infinite;
+	}
+	
+	.animate-float-delayed {
+		animation: float-delayed 8s ease-in-out infinite;
+	}
+	
+	/* Mobile responsiveness */
+	@media (max-width: 768px) {
+		.nav-links {
+			display: none;
+		}
+		
+		.nav-actions {
+			gap: 16px;
+		}
+		
+		.start-button {
+			padding: 8px 16px;
+			font-size: 14px;
+		}
+	}
+</style>

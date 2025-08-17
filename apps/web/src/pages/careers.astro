@@ -1,0 +1,587 @@
+---
+import Layout from "../layouts/layout.astro";
+---
+
+<Layout title="Careers - Zabaca">
+	<main class="zabaca-inspired">
+		<!-- Custom Nav with Zabaca styling -->
+		<nav class="zabaca-nav">
+			<div class="nav-container">
+				<!-- Logo -->
+				<a href="/" class="logo">Zabaca</a>
+				
+				<!-- Center Links -->
+				<div class="nav-links">
+					<a href="/careers" class="active">Careers</a>
+					<a href="/press">Press</a>
+				</div>
+				
+				<!-- Right Actions -->
+				<div class="nav-actions">
+					<a href="/app" class="start-button">
+						<span>Start for free</span>
+					</a>
+					<a href="/login" class="login-link">Login</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Hero Section with Yellow Background -->
+		<section class="hero-section">
+			<div class="hero-content">
+				<div class="hero-text">
+					<h1>Our Team</h1>
+					<p class="lead">Our team has been building AI-first business solutions for over a decade. We've created the infrastructure that connects millions of businesses with AI agents, and we're just getting started.</p>
+					<p>Now we're bringing people together who, like us, believe that AI accessibility should be simple, powerful, and delightful.</p>
+				</div>
+				<div class="hero-visual">
+					<div class="team-illustration">
+						<svg viewBox="0 0 400 300" fill="none">
+							<!-- Playful team illustration -->
+							<circle cx="100" cy="150" r="40" fill="#ff00b8" opacity="0.8"/>
+							<circle cx="200" cy="120" r="50" fill="#00c2ff" opacity="0.8"/>
+							<circle cx="300" cy="160" r="45" fill="#ff843f" opacity="0.8"/>
+							<path d="M100 150 L200 120 L300 160" stroke="#131416" stroke-width="3" stroke-dasharray="5,5"/>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Why Zabaca Section (moved to first) -->
+		<section class="values-section">
+			<div class="values-container">
+				<h2>Why Zabaca?</h2>
+				<p class="values-intro">Beyond our competitive compensation package, we offer:</p>
+				
+				<div class="values-grid">
+					<div class="value-card">
+						<h3>REMOTE-FIRST</h3>
+						<p>Work from anywhere in the world with complete flexibility.</p>
+					</div>
+					
+					<div class="value-card">
+						<h3>EQUITY FOR EVERYONE</h3>
+						<p>Meaningful ownership in our success for every team member.</p>
+					</div>
+					
+					<div class="value-card">
+						<h3>LIFESTYLE BUSINESS</h3>
+						<p>Not a VC company - we prioritize sustainable growth and work-life balance.</p>
+					</div>
+					
+					<div class="value-card">
+						<h3>20 HOUR WORK WEEKS</h3>
+						<p>Focus on quality output, not hours logged.</p>
+					</div>
+					
+					<div class="value-card">
+						<h3>4 DAYS A WEEK</h3>
+						<p>Three-day weekends, every week.</p>
+					</div>
+					
+					<div class="value-card">
+						<h3>3 MONTHS PTO</h3>
+						<p>Take the time you need to live your best life.</p>
+					</div>
+					
+					<div class="value-card">
+						<h3>AI BUDGET</h3>
+						<p>$200/month to explore and use AI tools.</p>
+					</div>
+					
+					<div class="value-card">
+						<h3>WORK-LIFE BALANCE</h3>
+						<p>Your life outside work matters just as much.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Join Us Section -->
+		<section class="join-section">
+			<div class="join-container">
+				<p class="join-intro">With us, a Zabaca role isn't just a job—it's a commitment to revolutionizing how businesses connect with AI, and a passion for making technology accessible to everyone.</p>
+				
+				<!-- Open Positions -->
+				<div class="positions-section">
+					<h2>Open Positions</h2>
+					
+					<div class="position-card">
+						<div class="position-header">
+							<div>
+								<h3>Co-Founder</h3>
+								<div class="position-meta">
+									<span class="location">REMOTE</span>
+									<span class="department">Leadership</span>
+								</div>
+							</div>
+							<a href="/careers/co-founder" class="apply-button">View Role →</a>
+						</div>
+						<p>I'm a technical founder looking for someone strong where I am weak. If you excel at sales, product design, or product management and want to build the future of AI-business connectivity, let's talk.</p>
+					</div>
+					
+					<div class="position-card">
+						<div class="position-header">
+							<div>
+								<h3>Vibe Coding AI Content Engineer</h3>
+								<div class="position-meta">
+									<span class="location">REMOTE</span>
+									<span class="department">Content</span>
+								</div>
+							</div>
+							<a href="/careers/vibe-coding-content-engineer" class="apply-button">View Role →</a>
+						</div>
+						<p>Are you fluent in vibe coding? Join us to produce cutting-edge content focused on AI research and guides. You'll shape how developers understand and implement AI-first solutions.</p>
+					</div>
+				</div>
+				
+				<!-- Don't see your role -->
+				<div class="other-roles">
+					<h3>Don't see your exact role?</h3>
+					<p>Reach out anyway, exceptional people are always welcome!</p>
+					<a href="mailto:careers@zabaca.com" class="email-button">careers@zabaca.com</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	/* Import web fonts */
+	@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+	
+	/* Modern design base styles */
+	.zabaca-inspired {
+		font-family: 'Fredoka', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		color: #131416;
+		font-weight: 400;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		background-color: white;
+	}
+
+	/* Navigation (same as other pages) */
+	.zabaca-nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-color: #4ff37d;
+		z-index: 50;
+		padding: 16px 8px;
+	}
+	
+	.nav-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 16px;
+	}
+	
+	.logo {
+		font-size: 24px;
+		font-weight: 700;
+		color: #131416;
+		text-decoration: none;
+		letter-spacing: -0.03em;
+		font-family: 'Fredoka', sans-serif;
+	}
+	
+	.nav-links {
+		display: flex;
+		gap: 32px;
+		align-items: center;
+	}
+	
+	.nav-links a {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+		position: relative;
+	}
+	
+	.nav-links a:hover {
+		opacity: 0.7;
+	}
+
+	.nav-links a.active {
+		font-weight: 600;
+	}
+
+	.nav-links a.active::after {
+		content: '';
+		position: absolute;
+		bottom: -4px;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background-color: #131416;
+		border-radius: 1px;
+	}
+	
+	.nav-actions {
+		display: flex;
+		gap: 24px;
+		align-items: center;
+	}
+	
+	.start-button {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		padding: 12px 24px;
+		background-color: #131416;
+		color: white;
+		text-decoration: none;
+		border-radius: 100px;
+		font-weight: 600;
+		font-size: 16px;
+		transition: all 0.3s ease;
+		overflow: hidden;
+	}
+	
+	.start-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+	
+	.login-link {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+	
+	.login-link:hover {
+		opacity: 0.7;
+	}
+
+	/* Hero Section */
+	.hero-section {
+		background-color: #ffdc00;
+		padding: 8rem 1.5rem 6rem 1.5rem;
+		margin-top: 72px;
+		border-bottom-left-radius: 50% 80px;
+		border-bottom-right-radius: 50% 80px;
+		position: relative;
+		margin-bottom: 6rem;
+	}
+
+	.hero-content {
+		max-width: 1536px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 4rem;
+		flex-wrap: wrap;
+		padding: 0 4rem;
+	}
+
+	.hero-text {
+		flex: 1;
+		max-width: 50%;
+		min-width: 300px;
+		padding-left: 3rem;
+	}
+
+	.hero-text h1 {
+		font-size: 5rem;
+		font-weight: 700;
+		margin-bottom: 2rem;
+		letter-spacing: -0.03em;
+		line-height: 1;
+	}
+
+	.hero-text .lead {
+		font-size: 1.5rem;
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
+		font-weight: 500;
+		opacity: 0.9;
+	}
+
+	.hero-text p {
+		font-size: 1.25rem;
+		line-height: 1.6;
+		opacity: 0.8;
+	}
+
+	.hero-visual {
+		flex: 1;
+		max-width: 400px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.team-illustration {
+		width: 100%;
+		max-width: 400px;
+		animation: float 6s ease-in-out infinite;
+	}
+
+	@keyframes float {
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(-20px); }
+	}
+
+	/* Values Section */
+	.values-section {
+		padding: 4rem 2rem;
+		background-color: white;
+	}
+
+	.values-container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.values-container h2 {
+		font-size: 3rem;
+		font-weight: 700;
+		text-align: center;
+		margin-bottom: 1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.values-intro {
+		text-align: center;
+		font-size: 1.5rem;
+		margin-bottom: 4rem;
+		color: #666;
+		font-weight: 500;
+	}
+
+	/* Principles Section */
+	.principles-section {
+		padding: 4rem 2rem;
+		background-color: #f8f8f8;
+	}
+
+	.values-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 2rem;
+	}
+
+	.value-card {
+		padding: 2rem;
+		border-radius: 20px;
+		background-color: #f8f8f8;
+		transition: transform 0.3s ease;
+	}
+
+	.value-card:hover {
+		transform: translateY(-4px);
+	}
+
+	.value-card h3 {
+		font-size: 1.25rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		color: #131416;
+		letter-spacing: 0.05em;
+	}
+
+	.value-card p {
+		font-size: 1.125rem;
+		line-height: 1.6;
+		color: #666;
+	}
+
+
+	/* Join Section */
+	.join-section {
+		padding: 6rem 2rem;
+		background-color: white;
+	}
+
+	.join-container {
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+
+	.join-intro {
+		font-size: 1.5rem;
+		line-height: 1.6;
+		text-align: center;
+		margin-bottom: 4rem;
+		color: #131416;
+		font-weight: 500;
+	}
+
+	/* Positions Section */
+	.positions-section {
+		margin-bottom: 4rem;
+	}
+
+	.positions-section h2 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-bottom: 2rem;
+		text-align: center;
+		letter-spacing: -0.02em;
+	}
+
+	.position-card {
+		background-color: #f8f8f8;
+		border-radius: 20px;
+		padding: 2rem;
+		margin-bottom: 1.5rem;
+		transition: all 0.3s ease;
+		border: 2px solid transparent;
+	}
+
+	.position-card:hover {
+		transform: translateY(-4px);
+		border-color: #131416;
+	}
+
+	.position-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 1rem;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	.position-header h3 {
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin-bottom: 0.5rem;
+		color: #131416;
+	}
+
+	.position-meta {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+	}
+
+	.location, .department {
+		font-size: 0.875rem;
+		font-weight: 600;
+		padding: 0.25rem 0.75rem;
+		border-radius: 100px;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.location {
+		background-color: #4ff37d;
+		color: #131416;
+	}
+
+	.department {
+		background-color: #131416;
+		color: white;
+	}
+
+	.apply-button {
+		background-color: #131416;
+		color: white;
+		padding: 0.75rem 1.5rem;
+		border-radius: 100px;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.apply-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+
+	.position-card p {
+		font-size: 1.125rem;
+		line-height: 1.6;
+		color: #666;
+	}
+
+	/* Other roles section */
+	.other-roles {
+		text-align: center;
+		padding: 3rem;
+		background-color: #ff00b8;
+		border-radius: 30px;
+		color: white;
+	}
+
+	.other-roles h3 {
+		font-size: 2rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+	}
+
+	.other-roles p {
+		font-size: 1.25rem;
+		margin-bottom: 2rem;
+		opacity: 0.9;
+		font-weight: 500;
+	}
+
+	.email-button {
+		background-color: white;
+		color: #131416;
+		padding: 1rem 2rem;
+		border-radius: 100px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 1.125rem;
+		display: inline-block;
+		transition: all 0.3s ease;
+	}
+
+	.email-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+
+	/* Mobile responsiveness */
+	@media (max-width: 768px) {
+		.nav-links {
+			display: none;
+		}
+		
+		.hero-text {
+			max-width: 100%;
+		}
+
+		.hero-text h1 {
+			font-size: 3rem;
+		}
+
+		.hero-text .lead {
+			font-size: 1.25rem;
+		}
+
+		.hero-content {
+			flex-direction: column;
+		}
+
+		.hero-visual {
+			max-width: 300px;
+		}
+
+		.values-grid,
+		.benefits-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.position-header {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+</style>

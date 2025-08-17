@@ -1,0 +1,424 @@
+---
+import Layout from "../../layouts/layout.astro";
+---
+
+<Layout title="Co-Founder - Zabaca">
+	<main class="zabaca-inspired">
+		<!-- Custom Nav with Zabaca styling -->
+		<nav class="zabaca-nav">
+			<div class="nav-container">
+				<!-- Logo -->
+				<a href="/" class="logo">Zabaca</a>
+				
+				<!-- Center Links -->
+				<div class="nav-links">
+					<a href="/careers">Careers</a>
+					<a href="/press">Press</a>
+				</div>
+				
+				<!-- Right Actions -->
+				<div class="nav-actions">
+					<a href="/app" class="start-button">
+						<span>Start for free</span>
+					</a>
+					<a href="/login" class="login-link">Login</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Job Header -->
+		<section class="job-header">
+			<div class="header-container">
+				<a href="/careers" class="back-link">← Back to Careers</a>
+				<h1>Co-Founder</h1>
+				<div class="job-meta">
+					<span class="location">REMOTE</span>
+					<span class="department">Leadership</span>
+					<span class="type">Full-time (20 hours/week)</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- Job Content -->
+		<section class="job-content">
+			<div class="content-container">
+				<div class="intro-section">
+					<h2>The Real Talk</h2>
+					<p>I'm James, the technical founder of Zabaca. I can code anything, architect systems that scale, and turn complex technical problems into elegant solutions. But I need someone who's brilliant where I'm not.</p>
+					
+					<p>This isn't a job posting—it's a partnership opportunity. You'll own half the company and half the responsibility of building something that matters.</p>
+				</div>
+
+				<div class="section">
+					<h2>What I'm Great At</h2>
+					<ul>
+						<li>Building scalable technical infrastructure</li>
+						<li>Writing clean, maintainable code</li>
+						<li>System architecture and technical strategy</li>
+						<li>Solving complex engineering problems</li>
+						<li>Leading technical teams</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<h2>Where You Come In</h2>
+					<p>You excel at one or more of these:</p>
+					<ul>
+						<li><strong>Sales & Business Development</strong> - You can sell ice to Eskimos, but more importantly, you understand how to build sustainable sales processes</li>
+						<li><strong>Product Design</strong> - You think in user experiences and can turn complex ideas into intuitive interfaces</li>
+						<li><strong>Product Management</strong> - You bridge the gap between what users need and what we build</li>
+						<li><strong>Marketing & Growth</strong> - You know how to get the right message to the right people</li>
+						<li><strong>Operations & Strategy</strong> - You can build the machine that runs the business</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<h2>What We're Building</h2>
+					<p>Zabaca is creating the universal business card for the AI age. We're making it dead simple for any business to become AI-accessible. Think of it as the missing link between millions of businesses and the AI agents that want to interact with them.</p>
+					
+					<p>We've already built the MVP and have early traction. Now we need to scale.</p>
+				</div>
+
+				<div class="section">
+					<h2>The Deal</h2>
+					<ul>
+						<li>50% equity (we'll figure out vesting that makes sense for both of us)</li>
+						<li>Equal say in major decisions</li>
+						<li>Work from anywhere (but we should meet regularly)</li>
+						<li>20-hour work weeks (quality > quantity)</li>
+						<li>Build a lifestyle business, not a VC treadmill</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<h2>What I'm Looking For</h2>
+					<ul>
+						<li>You've built and scaled something before (doesn't have to be huge)</li>
+						<li>You're in it for the long haul, not a quick flip</li>
+						<li>You value work-life balance as much as success</li>
+						<li>You're comfortable with async work and written communication</li>
+						<li>You bring complementary skills and networks</li>
+					</ul>
+				</div>
+
+				<div class="section">
+					<h2>What I'm NOT Looking For</h2>
+					<ul>
+						<li>Another technical co-founder (I've got that covered)</li>
+						<li>Someone who wants to raise VC money immediately</li>
+						<li>Hustle culture enthusiasts</li>
+						<li>People who think 80-hour weeks = success</li>
+					</ul>
+				</div>
+
+				<div class="apply-section">
+					<h2>Interested?</h2>
+					<p>Don't send a resume. Tell me your story. What have you built? What drives you? Why does Zabaca excite you?</p>
+					<a href="mailto:james@zabaca.com?subject=Co-Founder%20Opportunity" class="apply-button">
+						Let's Talk → james@zabaca.com
+					</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	/* Import web fonts */
+	@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+	
+	/* Modern design base styles */
+	.zabaca-inspired {
+		font-family: 'Fredoka', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		color: #131416;
+		font-weight: 400;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		background-color: white;
+		min-height: 100vh;
+	}
+
+	/* Navigation (same as careers page) */
+	.zabaca-nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-color: #4ff37d;
+		z-index: 50;
+		padding: 16px 8px;
+	}
+	
+	.nav-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 16px;
+	}
+	
+	.logo {
+		font-size: 24px;
+		font-weight: 700;
+		color: #131416;
+		text-decoration: none;
+		letter-spacing: -0.03em;
+		font-family: 'Fredoka', sans-serif;
+	}
+	
+	.nav-links {
+		display: flex;
+		gap: 32px;
+		align-items: center;
+	}
+	
+	.nav-links a {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+	
+	.nav-links a:hover {
+		opacity: 0.7;
+	}
+	
+	.nav-actions {
+		display: flex;
+		gap: 24px;
+		align-items: center;
+	}
+	
+	.start-button {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		padding: 12px 24px;
+		background-color: #131416;
+		color: white;
+		text-decoration: none;
+		border-radius: 100px;
+		font-weight: 600;
+		font-size: 16px;
+		transition: all 0.3s ease;
+		overflow: hidden;
+	}
+	
+	.start-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+	
+	.login-link {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+	
+	.login-link:hover {
+		opacity: 0.7;
+	}
+
+	/* Job Header */
+	.job-header {
+		background-color: #ff00b8;
+		padding: 8rem 2rem 4rem 2rem;
+		margin-top: 72px;
+		border-bottom-left-radius: 50% 60px;
+		border-bottom-right-radius: 50% 60px;
+	}
+
+	.header-container {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.back-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: white;
+		text-decoration: none;
+		font-weight: 500;
+		margin-bottom: 2rem;
+		transition: all 0.3s ease;
+		opacity: 0.9;
+	}
+
+	.back-link:hover {
+		opacity: 1;
+		transform: translateX(-4px);
+	}
+
+	.job-header h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		color: white;
+		margin-bottom: 1.5rem;
+		letter-spacing: -0.03em;
+	}
+
+	.job-meta {
+		display: flex;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+	}
+
+	.job-meta span {
+		background-color: rgba(255, 255, 255, 0.2);
+		color: white;
+		padding: 0.5rem 1rem;
+		border-radius: 100px;
+		font-weight: 600;
+		font-size: 0.875rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	/* Job Content */
+	.job-content {
+		padding: 4rem 2rem 6rem 2rem;
+	}
+
+	.content-container {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.intro-section {
+		margin-bottom: 3rem;
+		padding-bottom: 3rem;
+		border-bottom: 2px solid #f0f0f0;
+	}
+
+	.intro-section h2 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-bottom: 1.5rem;
+		color: #131416;
+		letter-spacing: -0.02em;
+	}
+
+	.intro-section p {
+		font-size: 1.25rem;
+		line-height: 1.6;
+		color: #131416;
+		margin-bottom: 1.5rem;
+		font-weight: 500;
+	}
+
+	.section {
+		margin-bottom: 3rem;
+	}
+
+	.section h2 {
+		font-size: 2rem;
+		font-weight: 700;
+		margin-bottom: 1.5rem;
+		color: #131416;
+		letter-spacing: -0.02em;
+	}
+
+	.section p {
+		font-size: 1.125rem;
+		line-height: 1.6;
+		color: #666;
+		margin-bottom: 1.5rem;
+	}
+
+	.section ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	.section li {
+		font-size: 1.125rem;
+		line-height: 1.6;
+		color: #666;
+		margin-bottom: 1rem;
+		padding-left: 2rem;
+		position: relative;
+	}
+
+	.section li:before {
+		content: "→";
+		position: absolute;
+		left: 0;
+		color: #ff00b8;
+		font-weight: 700;
+		font-size: 1.25rem;
+	}
+
+	.section li strong {
+		color: #131416;
+		font-weight: 600;
+	}
+
+	/* Apply Section */
+	.apply-section {
+		text-align: center;
+		padding: 3rem;
+		background-color: #f8f8f8;
+		border-radius: 30px;
+		margin-top: 4rem;
+	}
+
+	.apply-section h2 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-bottom: 1.5rem;
+		color: #131416;
+		letter-spacing: -0.02em;
+	}
+
+	.apply-section p {
+		font-size: 1.25rem;
+		line-height: 1.6;
+		color: #666;
+		margin-bottom: 2rem;
+		font-weight: 500;
+	}
+
+	.apply-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		background-color: #131416;
+		color: white;
+		padding: 1rem 2rem;
+		border-radius: 100px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 1.125rem;
+		transition: all 0.3s ease;
+	}
+
+	.apply-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		gap: 1rem;
+	}
+
+	/* Mobile responsiveness */
+	@media (max-width: 768px) {
+		.nav-links {
+			display: none;
+		}
+
+		.job-header h1 {
+			font-size: 3rem;
+		}
+
+		.intro-section h2 {
+			font-size: 2rem;
+		}
+
+		.section h2 {
+			font-size: 1.75rem;
+		}
+	}
+</style>

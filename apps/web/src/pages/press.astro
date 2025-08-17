@@ -1,0 +1,550 @@
+---
+import Layout from "../layouts/layout.astro";
+---
+
+<Layout title="Press - Zabaca">
+	<main class="zabaca-inspired">
+		<!-- Custom Nav with Zabaca styling -->
+		<nav class="zabaca-nav">
+			<div class="nav-container">
+				<!-- Logo -->
+				<a href="/" class="logo">Zabaca</a>
+				
+				<!-- Center Links -->
+				<div class="nav-links">
+					<a href="/careers">Careers</a>
+					<a href="/press" class="active">Press</a>
+				</div>
+				
+				<!-- Right Actions -->
+				<div class="nav-actions">
+					<a href="/app" class="start-button">
+						<span>Start for free</span>
+					</a>
+					<a href="/login" class="login-link">Login</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Hero wrapper with pink background -->
+		<div class="hero-wrapper">
+			<div class="press-hero">
+				<h1>Press</h1>
+				<p>Latest news and announcements from Zabaca</p>
+			</div>
+		</div>
+
+		<!-- Press list section -->
+		<div class="press-list-section">
+			<div class="container">
+				<!-- Featured press release -->
+				<article class="featured-release">
+					<a href="/press/universal-business-card-ai-age" class="release-link">
+						<div class="release-image">
+							<div class="placeholder-image" style="background: linear-gradient(135deg, #ff00b8, #ff66d4);">
+								<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+									<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+								</svg>
+							</div>
+						</div>
+						<div class="release-content">
+							<div class="release-meta">
+								<span class="release-date">TBD</span>
+								<span class="release-tag">Launch</span>
+							</div>
+							<h2>Zabaca: The Universal Business Card for the AI Age</h2>
+							<p>Zabaca launches the first universal discovery platform that makes any business instantly accessible to AI agents worldwide.</p>
+							<span class="read-more">Read more →</span>
+						</div>
+					</a>
+				</article>
+
+				<!-- Grid of other press releases -->
+				<div class="releases-grid">
+					<article class="release-card">
+						<a href="/press/compliance-api-launch" class="release-link">
+							<div class="release-image">
+								<div class="placeholder-image" style="background: linear-gradient(135deg, #00c2ff, #0099ff);">
+									<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+										<path d="M9 11H3v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9h-6m-1 4v6m-5-6v6m-3-10V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v7l-1 1" />
+									</svg>
+								</div>
+							</div>
+							<div class="release-content">
+								<div class="release-meta">
+									<span class="release-date">TBD</span>
+									<span class="release-tag">Product</span>
+								</div>
+								<h3>ComplianceAPI.ai Launches Universal Compliance Data Platform for AI Agents</h3>
+								<p>Revolutionary API makes business compliance data instantly accessible to AI assistants.</p>
+							</div>
+						</a>
+					</article>
+
+					<!--<article class="release-card">
+						<a href="/press/partnership-stripe" class="release-link">
+							<div class="release-image">
+								<div class="placeholder-image" style="background: linear-gradient(135deg, #4ff37d, #2de05a);">
+									<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+										<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+									</svg>
+								</div>
+							</div>
+							<div class="release-content">
+								<div class="release-meta">
+									<span class="release-date">November 8, 2024</span>
+									<span class="release-tag">Partnership</span>
+								</div>
+								<h3>Zabaca Partners with Stripe for Seamless Payment Integration</h3>
+								<p>New partnership enables one-click payment setup for millions of businesses.</p>
+							</div>
+						</a>
+					</article>-->
+
+					<article class="release-card">
+						<a href="/press/ai-agents-report" class="release-link">
+							<div class="release-image">
+								<div class="placeholder-image" style="background: linear-gradient(135deg, #ffdc00, #ffc700);">
+									<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+										<path d="M9 11H3v10h6V11zM15 3H9v18h6V3zM21 7h-6v14h6V7z" />
+									</svg>
+								</div>
+							</div>
+							<div class="release-content">
+								<div class="release-meta">
+									<span class="release-date">July 28, 2025</span>
+									<span class="release-tag">Research</span>
+								</div>
+								<h3>New Report: AI Agents Will Handle 10% of Business Interactions by 2026</h3>
+								<p>Zabaca research reveals explosive growth in AI-to-business interactions.</p>
+							</div>
+						</a>
+					</article>
+				</div>
+			</div>
+		</div>
+
+		<!-- Newsletter CTA section -->
+		<div class="newsletter-section">
+			<div class="newsletter-container">
+				<h2>Stay updated</h2>
+				<p>Get the latest Zabaca news delivered to your inbox</p>
+				<form class="newsletter-form">
+					<input type="email" placeholder="Enter your email" required />
+					<button type="submit">Subscribe</button>
+				</form>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	/* Import web fonts */
+	@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+	
+	/* Modern design base styles */
+	.zabaca-inspired {
+		font-family: 'Fredoka', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		color: #131416;
+		font-weight: 400;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		background-color: white;
+	}
+
+	/* Navigation (same as test page) */
+	.zabaca-nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-color: #4ff37d;
+		z-index: 50;
+		padding: 16px 8px;
+	}
+	
+	.nav-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 16px;
+	}
+	
+	.logo {
+		font-size: 24px;
+		font-weight: 700;
+		color: #131416;
+		text-decoration: none;
+		letter-spacing: -0.03em;
+		font-family: 'Fredoka', sans-serif;
+	}
+	
+	.nav-links {
+		display: flex;
+		gap: 32px;
+		align-items: center;
+	}
+	
+	.nav-links a {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+		position: relative;
+	}
+	
+	.nav-links a:hover {
+		opacity: 0.7;
+	}
+
+	.nav-links a.active {
+		font-weight: 600;
+	}
+
+	.nav-links a.active::after {
+		content: '';
+		position: absolute;
+		bottom: -4px;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background-color: #131416;
+		border-radius: 1px;
+	}
+	
+	.nav-actions {
+		display: flex;
+		gap: 24px;
+		align-items: center;
+	}
+	
+	.start-button {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		padding: 12px 24px;
+		background-color: #131416;
+		color: white;
+		text-decoration: none;
+		border-radius: 100px;
+		font-weight: 600;
+		font-size: 16px;
+		transition: all 0.3s ease;
+		overflow: hidden;
+	}
+	
+	.start-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+	
+	.login-link {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+	
+	.login-link:hover {
+		opacity: 0.7;
+	}
+
+	/* Hero wrapper - Pink background */
+	.hero-wrapper {
+		position: relative;
+		background-color: #ff00b8;
+		margin-top: 72px;
+		padding: 6rem 0 4rem 0;
+		border-bottom-left-radius: 50% 60px;
+		border-bottom-right-radius: 50% 60px;
+	}
+
+	.press-hero {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 2rem;
+		text-align: center;
+	}
+
+	.press-hero h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		color: white;
+		margin-bottom: 1rem;
+		letter-spacing: -0.03em;
+	}
+
+	.press-hero p {
+		font-size: 1.5rem;
+		color: white;
+		opacity: 0.9;
+		font-weight: 500;
+	}
+
+	/* Press list section */
+	.press-list-section {
+		padding: 5rem 0;
+		background-color: white;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	/* Featured release */
+	.featured-release {
+		margin-bottom: 4rem;
+	}
+
+	.release-link {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		text-decoration: none;
+		color: inherit;
+		align-items: center;
+		transition: transform 0.3s ease;
+	}
+
+	.release-link:hover {
+		transform: translateY(-4px);
+	}
+
+	.release-image {
+		position: relative;
+		aspect-ratio: 16/9;
+		overflow: hidden;
+		border-radius: 24px;
+		background-color: #f5f5f5;
+	}
+
+	.placeholder-image {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.placeholder-image svg {
+		width: 80px;
+		height: 80px;
+		opacity: 0.8;
+	}
+
+	.release-content {
+		padding: 1rem 0;
+	}
+
+	.release-meta {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+		margin-bottom: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.release-date {
+		color: #666;
+		font-size: 0.875rem;
+		font-weight: 500;
+	}
+
+	.release-tag {
+		background-color: #ff00b8;
+		color: white;
+		padding: 0.25rem 0.75rem;
+		border-radius: 100px;
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.featured-release h2 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		line-height: 1.2;
+		margin-bottom: 1rem;
+		color: #131416;
+		letter-spacing: -0.02em;
+	}
+
+	.release-content p {
+		font-size: 1.25rem;
+		line-height: 1.6;
+		color: #666;
+		margin-bottom: 1rem;
+		font-weight: 400;
+	}
+
+	.read-more {
+		color: #131416;
+		font-weight: 600;
+		font-size: 1.125rem;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		transition: gap 0.3s ease;
+	}
+
+	.release-link:hover .read-more {
+		gap: 1rem;
+	}
+
+	/* Releases grid */
+	.releases-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+		gap: 2rem;
+	}
+
+	.release-card .release-link {
+		display: block;
+		grid-template-columns: 1fr;
+		height: 100%;
+	}
+
+	.release-card {
+		transition: transform 0.3s ease;
+	}
+
+	.release-card:hover {
+		transform: translateY(-8px);
+	}
+
+	.release-card .release-image {
+		margin-bottom: 1.5rem;
+	}
+
+	.release-card h3 {
+		font-size: 1.5rem;
+		font-weight: 600;
+		line-height: 1.3;
+		margin-bottom: 0.75rem;
+		color: #131416;
+		letter-spacing: -0.01em;
+	}
+
+	.release-card p {
+		font-size: 1rem;
+		line-height: 1.6;
+		color: #666;
+		font-weight: 400;
+	}
+
+	/* Newsletter section */
+	.newsletter-section {
+		background-color: #ffdc00;
+		padding: 5rem 0;
+		margin-top: 4rem;
+		border-top-left-radius: 50% 60px;
+		border-top-right-radius: 50% 60px;
+	}
+
+	.newsletter-container {
+		max-width: 600px;
+		margin: 0 auto;
+		padding: 0 2rem;
+		text-align: center;
+	}
+
+	.newsletter-container h2 {
+		font-size: 3rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		color: #131416;
+		letter-spacing: -0.02em;
+	}
+
+	.newsletter-container p {
+		font-size: 1.25rem;
+		margin-bottom: 2rem;
+		color: #131416;
+		font-weight: 500;
+		opacity: 0.8;
+	}
+
+	.newsletter-form {
+		display: flex;
+		gap: 1rem;
+		max-width: 500px;
+		margin: 0 auto;
+	}
+
+	.newsletter-form input {
+		flex: 1;
+		padding: 1rem 1.5rem;
+		border: 2px solid #131416;
+		border-radius: 100px;
+		font-size: 1rem;
+		font-weight: 500;
+		background-color: white;
+		font-family: inherit;
+	}
+
+	.newsletter-form input::placeholder {
+		color: #999;
+	}
+
+	.newsletter-form button {
+		padding: 1rem 2rem;
+		background-color: #131416;
+		color: white;
+		border: none;
+		border-radius: 100px;
+		font-size: 1rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		font-family: inherit;
+		white-space: nowrap;
+	}
+
+	.newsletter-form button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+
+	/* Mobile responsiveness */
+	@media (max-width: 768px) {
+		.nav-links {
+			display: none;
+		}
+		
+		.press-hero h1 {
+			font-size: 2.5rem;
+		}
+
+		.press-hero p {
+			font-size: 1.125rem;
+		}
+
+		.featured-release .release-link {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.featured-release h2 {
+			font-size: 2rem;
+		}
+
+		.releases-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.newsletter-form {
+			flex-direction: column;
+		}
+
+		.newsletter-form button {
+			width: 100%;
+		}
+	}
+</style>
