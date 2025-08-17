@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/layout.astro";
+import IntegrationDemo from "../../components/IntegrationDemo.tsx";
 ---
 
 <Layout title="AI Business Cards - Universal Business Discovery | Zabaca">
@@ -97,7 +98,9 @@ import Layout from "../../layouts/layout.astro";
 							</div>
 							<p>Connect your existing tools like Calendly, Stripe, Intercom, and more through secure OAuth. No coding required - just click and connect.</p>
 						</div>
+						<IntegrationDemo client:load />
 					</div>
+
 
 					<!-- Feature 2: AI-Powered Discovery -->
 					<div class="feature-row reverse">
@@ -576,10 +579,141 @@ import Layout from "../../layouts/layout.astro";
 		margin: 0;
 	}
 
+	/* Integration Demo */
+	.integration-demo {
+		position: relative;
+		justify-self: center;
+		padding: 2rem;
+		max-width: 500px;
+	}
+	
+	.services-hub {
+		position: relative;
+		width: 300px;
+		height: 300px;
+		margin: 0 auto;
+	}
+	
+	.service-grid {
+		position: absolute;
+		inset: 0;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		gap: 0;
+	}
+	
+	.service-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+		justify-self: center;
+		align-self: center;
+	}
+	
+	.service-item:nth-child(1) { /* Calendly - top left */
+		justify-self: start;
+		align-self: start;
+	}
+	
+	.service-item:nth-child(2) { /* Stripe - top right */
+		justify-self: end;
+		align-self: start;
+	}
+	
+	.service-item:nth-child(3) { /* Your API - bottom left */
+		justify-self: start;
+		align-self: end;
+	}
+	
+	.service-item:nth-child(4) { /* Shopify - bottom right */
+		justify-self: end;
+		align-self: end;
+	}
+	
+	.zabaca-hub {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background: #131416;
+		border-radius: 50%;
+		width: 80px;
+		height: 80px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+		z-index: 10;
+	}
+	
+	.hub-logo {
+		color: white;
+		font-size: 1.5rem;
+		font-weight: bold;
+		font-family: 'Fredoka', sans-serif;
+	}
+	
+	.hub-label {
+		color: white;
+		font-size: 0.7rem;
+		font-weight: 500;
+		margin-top: 2px;
+	}
+	
+	.service-icon {
+		background: white;
+		border: 2px solid #131416;
+		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.5rem;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		transition: transform 0.3s ease;
+	}
+	
+	.service-icon:hover {
+		transform: scale(1.1);
+	}
+	
+	.service-name {
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: #131416;
+		text-align: center;
+	}
+	
+	
+	.oauth-badge {
+		position: absolute;
+		bottom: -20px;
+		right: 20px;
+		background: #4ff37d;
+		padding: 0.5rem 1rem;
+		border-radius: 20px;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #131416;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		transform: rotate(-5deg);
+	}
+
 	/* Chat Interface Demo */
 	.feature-demo {
 		position: relative;
 		justify-self: center;
+		min-height: 300px;
+		width: 100%;
+		max-width: 500px;
+		padding: 2rem;
 	}
 	
 	.chat-bubble-demo {
