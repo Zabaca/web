@@ -14,7 +14,7 @@ const { activePage } = Astro.props;
     <!-- Center Links -->
     <div class="nav-links">
       <div class="nav-dropdown">
-        <a href="#" class="dropdown-trigger">Products</a>
+        <a href="#" class={`dropdown-trigger ${activePage === 'products' ? 'active' : ''}`}>Products</a>
         <div class="dropdown-menu">
           <a href="/products/stiqr">Stiqr</a>
           <a href="/products/ai-business-cards">AI Business Cards</a>

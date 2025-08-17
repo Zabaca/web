@@ -1,0 +1,408 @@
+---
+import Layout from './layout.astro';
+import Navigation from '../components/Navigation.astro';
+import { getCollection, getEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+  entry: CollectionEntry<'press'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Get all press articles except current one, sorted by date
+const allPressArticles = await getCollection('press');
+const relatedArticles = allPressArticles
+  .filter(article => article.id !== entry.id)
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+  .slice(0, 3);
+
+// Icon mapping for SVG paths
+const iconPaths = {
+  dollar: "M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
+  layers: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
+  chart: "M9 11H3v10h6V11zM15 3H9v18h6V3zM21 7h-6v14h6V7z",
+  rocket: "M9 11l3-3 3 3m-3-3v8m0-8h.01M12 2L8 8l4 4 4-4-4-6z",
+  brain: "M12 2a9 9 0 0 0-9 9c0 1.5.4 3 1 4.3l2 3.7 6-4 6 4 2-3.7c.6-1.3 1-2.8 1-4.3a9 9 0 0 0-9-9z",
+  meeting: "M3 18 L8 13 L13 18 L18 13 M3 13 L8 8 L13 13 L18 8 M3 8 L8 3 L13 8 L18 3"
+};
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+}
+---
+
+<Layout title={entry.data.title + " | Zabaca Press"}>
+  <main class="zabaca-inspired">
+    <Navigation activePage="press" />
+    
+    <!-- Article -->
+    <article class="press-article">
+      <div class="article-container">
+        <a href="/press" class="back-link">
+          <span>←</span> Back to Press
+        </a>
+        
+        <!-- Article header -->
+        <header class="article-header">
+          <div class="article-meta">
+            <time>{formatDate(entry.data.publishedAt)}</time>
+            <span class="meta-separator">•</span>
+            <span class="article-tag">{entry.data.category}</span>
+          </div>
+          <h1>{entry.data.title}</h1>
+          <p class="article-intro">{entry.data.description}</p>
+        </header>
+        
+        <!-- Article content -->
+        <div class="article-content">
+          <Content />
+        </div>
+      </div>
+    </article>
+    
+    <!-- Related articles -->
+    <section class="related-section">
+      <div class="related-container">
+        <h2>More from Press</h2>
+        <div class="related-grid">
+          {relatedArticles.map((article) => (
+            <article class="related-card">
+              <a href={`/press/${article.id.replace('.md', '')}`}>
+                <div class="related-image">
+                  <div class="placeholder-image" style={`background: ${article.data.icon?.gradient || 'linear-gradient(135deg, #4ff37d, #2de05a)'};`}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                      <path d={iconPaths[article.data.icon?.type || 'rocket']} />
+                    </svg>
+                  </div>
+                </div>
+                <div class="related-content">
+                  <time>{formatDate(article.data.publishedAt)}</time>
+                  <h3>{article.data.title}</h3>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Import web fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+  
+  /* Modern design base styles */
+  .zabaca-inspired {
+    font-family: 'Fredoka', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #131416;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: white;
+    min-height: 100vh;
+  }
+
+
+  /* Article styles */
+  .press-article {
+    margin-top: 120px;
+    padding-bottom: 4rem;
+  }
+
+  .article-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .back-link:hover {
+    color: #131416;
+    transform: translateX(-4px);
+  }
+
+  /* Article header */
+  .article-header {
+    margin-bottom: 3rem;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    color: #666;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .meta-separator {
+    opacity: 0.5;
+  }
+
+  .article-tag {
+    background-color: #ff00b8;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .article-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #131416;
+  }
+
+  .article-intro {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #666;
+    font-weight: 400;
+  }
+
+  /* Article content */
+  .article-content {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #333;
+  }
+
+  .article-content :global(p) {
+    margin-bottom: 1.5rem;
+  }
+
+  .article-content :global(h2) {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: #131416;
+  }
+
+  .article-content :global(h3) {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: #131416;
+  }
+
+  .article-content :global(blockquote) {
+    border-left: 4px solid #4ff37d;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #555;
+  }
+
+  .article-content :global(ul),
+  .article-content :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+
+  .article-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .article-content :global(strong) {
+    font-weight: 600;
+    color: #131416;
+  }
+
+  /* Custom content blocks */
+  .article-content :global(.press-release-header) {
+    background: #f5f5f5;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .article-content :global(.release-badge) {
+    background: #131416;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+
+  .article-content :global(.testimonial-box) {
+    background: linear-gradient(135deg, #fff3cd, #ffe8a1);
+    border: 2px solid #ffc107;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .article-content :global(.testimonial-box p:last-child) {
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    color: #131416;
+  }
+
+  .article-content :global(.press-contact) {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .article-content :global(.press-contact h3) {
+    margin-top: 0;
+  }
+
+  .article-content :global(.download-button) {
+    display: inline-block;
+    background: #131416;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .article-content :global(.download-button:hover) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Related articles section */
+  .related-section {
+    background: #f8f9fa;
+    padding: 6rem 0 4rem 0;
+    margin-top: 6rem;
+    position: relative;
+  }
+
+  .related-section::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: #f8f9fa;
+    border-top-left-radius: 50% 80px;
+    border-top-right-radius: 50% 80px;
+  }
+
+  .related-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .related-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #131416;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .related-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .related-card a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .related-image {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+  }
+
+  .placeholder-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .placeholder-image svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.9;
+  }
+
+  .related-content {
+    padding: 1.5rem;
+  }
+
+  .related-content time {
+    font-size: 0.875rem;
+    color: #666;
+    font-weight: 500;
+  }
+
+  .related-content h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-top: 0.5rem;
+    color: #131416;
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .article-header h1 {
+      font-size: 2rem;
+    }
+    
+    .article-content {
+      font-size: 1rem;
+    }
+    
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

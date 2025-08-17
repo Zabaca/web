@@ -1,6 +1,35 @@
 ---
 import Layout from "../layouts/layout.astro";
 import Navigation from "../components/Navigation.astro";
+import { getCollection } from 'astro:content';
+
+// Get all press articles and sort by date
+const pressArticles = await getCollection('press');
+const sortedArticles = pressArticles.sort((a, b) => 
+  b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
+);
+
+// Get featured article (marked as featured or most recent)
+const featuredArticle = sortedArticles.find(article => article.data.featured) || sortedArticles[0];
+const otherArticles = sortedArticles.filter(article => article.id !== featuredArticle.id);
+
+// Icon mapping for SVG paths
+const iconPaths = {
+  dollar: "M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
+  layers: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
+  chart: "M9 11H3v10h6V11zM15 3H9v18h6V3zM21 7h-6v14h6V7z",
+  rocket: "M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z",
+  brain: "M12 2a9 9 0 0 0-9 9c0 1.5.4 3 1 4.3l2 3.7 6-4 6 4 2-3.7c.6-1.3 1-2.8 1-4.3a9 9 0 0 0-9-9z",
+  meeting: "M3 18 L8 13 L13 16 L18 8 L21 13"
+};
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+}
 ---
 
 <Layout title="Press - Zabaca">
@@ -18,126 +47,75 @@ import Navigation from "../components/Navigation.astro";
 		<!-- Press list section -->
 		<div class="press-list-section">
 			<div class="container">
-				<!-- Featured press release -->
-				<article class="featured-release">
-					<a href="/press/stiqr-ai-meeting-visualizer" class="release-link">
-						<div class="release-image">
-							<div class="placeholder-image" style="background: linear-gradient(135deg, #00c2ff, #33cfff);">
-								<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-									<path d="M3 18 L8 13 L13 16 L18 8 L21 13" />
-									<circle cx="8" cy="13" r="1.5" fill="white"/>
-									<circle cx="13" cy="16" r="1.5" fill="white"/>
-									<circle cx="18" cy="8" r="1.5" fill="white"/>
-								</svg>
+				{featuredArticle && (
+					<!-- Featured press release -->
+					<article class="featured-release">
+						<a href={`/press/${featuredArticle.id.replace('.md', '')}`} class="release-link">
+							<div class="release-image">
+								<div class="placeholder-image" style={`background: ${featuredArticle.data.icon?.gradient || 'linear-gradient(135deg, #4ff37d, #2de05a)'};`}>
+									<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+										{featuredArticle.data.icon?.type === 'meeting' && (
+											<>
+												<path d="M3 18 L8 13 L13 16 L18 8 L21 13" />
+												<circle cx="8" cy="13" r="1.5" fill="white"/>
+												<circle cx="13" cy="16" r="1.5" fill="white"/>
+												<circle cx="18" cy="8" r="1.5" fill="white"/>
+											</>
+										)}
+										{featuredArticle.data.icon?.type !== 'meeting' && (
+											<path d={iconPaths[featuredArticle.data.icon?.type || 'rocket']} />
+										)}
+									</svg>
+								</div>
 							</div>
-						</div>
-						<div class="release-content">
-							<div class="release-meta">
-								<span class="release-date">TBD</span>
-								<span class="release-tag">Launch</span>
+							<div class="release-content">
+								<div class="release-meta">
+									<span class="release-date">{formatDate(featuredArticle.data.publishedAt)}</span>
+									<span class="release-tag">{featuredArticle.data.category}</span>
+								</div>
+								<h2>{featuredArticle.data.title}</h2>
+								<p>{featuredArticle.data.description}</p>
+								<span class="read-more">Read more →</span>
 							</div>
-							<h2>Stiqr: Your AI Meeting Visualizer That Draws Ideas in Real-Time</h2>
-							<p>Stiqr launches an AI-powered meeting assistant that automatically joins virtual meetings and transforms conversations into live visual diagrams, charts, and workflows.</p>
-							<span class="read-more">Read more →</span>
-						</div>
-					</a>
-				</article>
+						</a>
+					</article>
+				)}
 
 				<!-- Grid of other press releases -->
 				<div class="releases-grid">
-					<article class="release-card">
-						<a href="/press/universal-business-card-ai-age" class="release-link">
-							<div class="release-image">
-								<div class="placeholder-image" style="background: linear-gradient(135deg, #ff00b8, #ff66d4);">
-									<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-										<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-									</svg>
+					{otherArticles.map((article) => (
+						<article class="release-card">
+							<a href={`/press/${article.id.replace('.md', '')}`} class="release-link">
+								<div class="release-image">
+									<div class="placeholder-image" style={`background: ${article.data.icon?.gradient || 'linear-gradient(135deg, #4ff37d, #2de05a)'};`}>
+										<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+											<path d={iconPaths[article.data.icon?.type || 'rocket']} />
+										</svg>
+									</div>
 								</div>
-							</div>
-							<div class="release-content">
-								<div class="release-meta">
-									<span class="release-date">TBD</span>
-									<span class="release-tag">Launch</span>
+								<div class="release-content">
+									<div class="release-meta">
+										<span class="release-date">{formatDate(article.data.publishedAt)}</span>
+										<span class="release-tag">{article.data.category}</span>
+									</div>
+									<h3>{article.data.title}</h3>
+									<p>{article.data.description}</p>
 								</div>
-								<h3>Zabaca: The Universal Business Card for the AI Age</h3>
-								<p>First universal discovery platform that makes any business instantly accessible to AI agents worldwide.</p>
-							</div>
-						</a>
-					</article>
-
-					<article class="release-card">
-						<a href="/press/temporal-bridge-ai-memory" class="release-link">
-							<div class="release-image">
-								<div class="placeholder-image" style="background: linear-gradient(135deg, #ff843f, #ff6b2b);">
-									<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-										<circle cx="12" cy="12" r="10" />
-										<path d="M12 6v6l4 2" />
-									</svg>
-								</div>
-							</div>
-							<div class="release-content">
-								<div class="release-meta">
-									<span class="release-date">TBD</span>
-									<span class="release-tag">Launch</span>
-								</div>
-								<h3>TemporalBridge: Universal AI Memory System for Software Development</h3>
-								<p>First system to transform developer conversations with any AI coding agent into persistent, searchable knowledge graphs.</p>
-							</div>
-						</a>
-					</article>
-
-
-					<!--<article class="release-card">
-						<a href="/press/partnership-stripe" class="release-link">
-							<div class="release-image">
-								<div class="placeholder-image" style="background: linear-gradient(135deg, #4ff37d, #2de05a);">
-									<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-										<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-									</svg>
-								</div>
-							</div>
-							<div class="release-content">
-								<div class="release-meta">
-									<span class="release-date">November 8, 2024</span>
-									<span class="release-tag">Partnership</span>
-								</div>
-								<h3>Zabaca Partners with Stripe for Seamless Payment Integration</h3>
-								<p>New partnership enables one-click payment setup for millions of businesses.</p>
-							</div>
-						</a>
-					</article>-->
-
-					<article class="release-card">
-						<a href="/press/ai-agents-report" class="release-link">
-							<div class="release-image">
-								<div class="placeholder-image" style="background: linear-gradient(135deg, #ffdc00, #ffc700);">
-									<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-										<path d="M9 11H3v10h6V11zM15 3H9v18h6V3zM21 7h-6v14h6V7z" />
-									</svg>
-								</div>
-							</div>
-							<div class="release-content">
-								<div class="release-meta">
-									<span class="release-date">July 28, 2025</span>
-									<span class="release-tag">Research</span>
-								</div>
-								<h3>New Report: AI Agents Will Handle 10% of Business Interactions by 2026</h3>
-								<p>Zabaca research reveals explosive growth in AI-to-business interactions.</p>
-							</div>
-						</a>
-					</article>
+							</a>
+						</article>
+					))}
 				</div>
 			</div>
 		</div>
 
-		<!-- Newsletter CTA section -->
+		<!-- Newsletter section -->
 		<div class="newsletter-section">
 			<div class="newsletter-container">
 				<h2>Stay updated</h2>
 				<p>Get the latest Zabaca news delivered to your inbox</p>
 				<form class="newsletter-form">
-					<input type="email" placeholder="Enter your email" required />
-					<button type="submit">Subscribe</button>
+					<input type="email" placeholder="Enter your email" class="email-input" required />
+					<button type="submit" class="subscribe-button">Subscribe</button>
 				</form>
 			</div>
 		</div>
@@ -155,25 +133,25 @@ import Navigation from "../components/Navigation.astro";
 		font-weight: 400;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		background-color: white;
 	}
 
-
-	/* Hero wrapper - Pink background */
+	/* Hero wrapper with pink background */
 	.hero-wrapper {
-		position: relative;
 		background-color: #ff00b8;
-		margin-top: 72px;
-		padding: 6rem 0 4rem 0;
-		border-bottom-left-radius: 50% 60px;
-		border-bottom-right-radius: 50% 60px;
+		padding-top: 120px;
+		padding-bottom: 80px;
+		position: relative;
+		border-bottom-left-radius: 50% 120px;
+		border-bottom-right-radius: 50% 120px;
 	}
 
 	.press-hero {
-		max-width: 1536px;
+		text-align: center;
+		max-width: 800px;
 		margin: 0 auto;
 		padding: 0 2rem;
-		text-align: center;
+		position: relative;
+		z-index: 1;
 	}
 
 	.press-hero h1 {
@@ -181,20 +159,19 @@ import Navigation from "../components/Navigation.astro";
 		font-weight: 700;
 		color: white;
 		margin-bottom: 1rem;
-		letter-spacing: -0.03em;
+		letter-spacing: -0.02em;
 	}
 
 	.press-hero p {
-		font-size: 1.5rem;
-		color: white;
-		opacity: 0.9;
-		font-weight: 500;
+		font-size: 1.25rem;
+		color: rgba(255, 255, 255, 0.9);
 	}
 
 	/* Press list section */
 	.press-list-section {
-		padding: 5rem 0;
-		background-color: white;
+		padding: 4rem 0;
+		background: white;
+		position: relative;
 	}
 
 	.container {
@@ -205,66 +182,70 @@ import Navigation from "../components/Navigation.astro";
 
 	/* Featured release */
 	.featured-release {
-		margin-bottom: 4rem;
-	}
-
-	.release-link {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 3rem;
-		text-decoration: none;
-		color: inherit;
-		align-items: center;
+		margin-bottom: 3rem;
+		transform: rotate(-0.5deg);
 		transition: transform 0.3s ease;
 	}
 
-	.release-link:hover {
-		transform: translateY(-4px);
+	.featured-release:hover {
+		transform: rotate(0deg) scale(1.02);
 	}
 
-	.release-image {
-		position: relative;
-		aspect-ratio: 16/9;
-		overflow: hidden;
+	.featured-release .release-link {
+		display: flex;
+		gap: 2rem;
+		background: white;
 		border-radius: 24px;
-		background-color: #f5f5f5;
+		overflow: hidden;
+		text-decoration: none;
+		color: inherit;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 	}
 
-	.placeholder-image {
-		width: 100%;
-		height: 100%;
+	.featured-release .release-image {
+		flex: 0 0 40%;
+		position: relative;
+		min-height: 300px;
+	}
+
+	.featured-release .placeholder-image {
+		position: absolute;
+		inset: 0;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 
-	.placeholder-image svg {
+	.featured-release .placeholder-image svg {
 		width: 80px;
 		height: 80px;
-		opacity: 0.8;
+		opacity: 0.9;
 	}
 
-	.release-content {
-		padding: 1rem 0;
+	.featured-release .release-content {
+		flex: 1;
+		padding: 2.5rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 
 	.release-meta {
 		display: flex;
-		gap: 1rem;
 		align-items: center;
+		gap: 1rem;
 		margin-bottom: 1rem;
-		flex-wrap: wrap;
 	}
 
 	.release-date {
-		color: #666;
 		font-size: 0.875rem;
+		color: #666;
 		font-weight: 500;
 	}
 
 	.release-tag {
-		background-color: #ff00b8;
-		color: white;
+		background: #4ff37d;
+		color: #131416;
 		padding: 0.25rem 0.75rem;
 		border-radius: 100px;
 		font-size: 0.75rem;
@@ -274,84 +255,112 @@ import Navigation from "../components/Navigation.astro";
 	}
 
 	.featured-release h2 {
-		font-size: 2.5rem;
+		font-size: 2rem;
 		font-weight: 700;
 		line-height: 1.2;
 		margin-bottom: 1rem;
 		color: #131416;
-		letter-spacing: -0.02em;
 	}
 
-	.release-content p {
-		font-size: 1.25rem;
+	.featured-release p {
+		font-size: 1.125rem;
 		line-height: 1.6;
 		color: #666;
-		margin-bottom: 1rem;
-		font-weight: 400;
+		margin-bottom: 1.5rem;
 	}
 
 	.read-more {
-		color: #131416;
 		font-weight: 600;
-		font-size: 1.125rem;
+		color: #131416;
 		display: inline-flex;
 		align-items: center;
-		gap: 0.5rem;
-		transition: gap 0.3s ease;
+		transition: transform 0.2s ease;
 	}
 
-	.release-link:hover .read-more {
-		gap: 1rem;
+	.featured-release:hover .read-more {
+		transform: translateX(4px);
 	}
 
-	/* Releases grid */
+	/* Grid of releases */
 	.releases-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 		gap: 2rem;
 	}
 
-	.release-card .release-link {
-		display: block;
-		grid-template-columns: 1fr;
-		height: 100%;
-	}
-
 	.release-card {
+		transform: rotate(-0.5deg);
 		transition: transform 0.3s ease;
 	}
 
+	.release-card:nth-child(even) {
+		transform: rotate(0.5deg);
+	}
+
 	.release-card:hover {
-		transform: translateY(-8px);
+		transform: rotate(0deg) scale(1.02);
+	}
+
+	.release-card .release-link {
+		display: block;
+		background: white;
+		border-radius: 16px;
+		overflow: hidden;
+		text-decoration: none;
+		color: inherit;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+		transition: all 0.3s ease;
+	}
+
+	.release-card:hover .release-link {
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 	}
 
 	.release-card .release-image {
-		margin-bottom: 1.5rem;
+		position: relative;
+		height: 200px;
+		overflow: hidden;
+	}
+
+	.release-card .placeholder-image {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.release-card .placeholder-image svg {
+		width: 48px;
+		height: 48px;
+		opacity: 0.9;
+	}
+
+	.release-card .release-content {
+		padding: 1.5rem;
 	}
 
 	.release-card h3 {
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 		font-weight: 600;
 		line-height: 1.3;
 		margin-bottom: 0.75rem;
 		color: #131416;
-		letter-spacing: -0.01em;
 	}
 
 	.release-card p {
 		font-size: 1rem;
-		line-height: 1.6;
+		line-height: 1.5;
 		color: #666;
-		font-weight: 400;
 	}
 
 	/* Newsletter section */
 	.newsletter-section {
 		background-color: #ffdc00;
-		padding: 5rem 0;
+		padding: 4rem 0;
 		margin-top: 4rem;
-		border-top-left-radius: 50% 60px;
-		border-top-right-radius: 50% 60px;
+		border-top-left-radius: 50% 80px;
+		border-top-right-radius: 50% 80px;
 	}
 
 	.newsletter-container {
@@ -361,80 +370,88 @@ import Navigation from "../components/Navigation.astro";
 		text-align: center;
 	}
 
-	.newsletter-container h2 {
-		font-size: 3rem;
+	.newsletter-section h2 {
+		font-size: 2.5rem;
 		font-weight: 700;
-		margin-bottom: 1rem;
 		color: #131416;
-		letter-spacing: -0.02em;
+		margin-bottom: 1rem;
+		font-family: 'Fredoka', sans-serif;
 	}
 
-	.newsletter-container p {
-		font-size: 1.25rem;
-		margin-bottom: 2rem;
+	.newsletter-section p {
+		font-size: 1.125rem;
 		color: #131416;
-		font-weight: 500;
-		opacity: 0.8;
+		margin-bottom: 2rem;
+		font-family: 'Fredoka', sans-serif;
 	}
 
 	.newsletter-form {
 		display: flex;
 		gap: 1rem;
-		max-width: 500px;
-		margin: 0 auto;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
 	}
 
-	.newsletter-form input {
-		flex: 1;
-		padding: 1rem 1.5rem;
+	.email-input {
+		background: white;
 		border: 2px solid #131416;
 		border-radius: 100px;
-		font-size: 1rem;
-		font-weight: 500;
-		background-color: white;
-		font-family: inherit;
+		padding: 14px 24px;
+		font-size: 16px;
+		font-family: 'Fredoka', sans-serif;
+		min-width: 300px;
+		outline: none;
+		transition: all 0.3s ease;
 	}
 
-	.newsletter-form input::placeholder {
+	.email-input:focus {
+		box-shadow: 0 0 0 3px rgba(19, 20, 22, 0.1);
+	}
+
+	.email-input::placeholder {
 		color: #999;
 	}
 
-	.newsletter-form button {
-		padding: 1rem 2rem;
+	.subscribe-button {
 		background-color: #131416;
 		color: white;
 		border: none;
+		padding: 14px 32px;
 		border-radius: 100px;
-		font-size: 1rem;
 		font-weight: 600;
+		font-size: 16px;
 		cursor: pointer;
 		transition: all 0.3s ease;
-		font-family: inherit;
-		white-space: nowrap;
+		font-family: 'Fredoka', sans-serif;
 	}
 
-	.newsletter-form button:hover {
+	.subscribe-button:hover {
 		transform: scale(1.05);
 		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 	}
 
-	/* Mobile responsiveness */
+	/* Responsive design */
 	@media (max-width: 768px) {
 		.press-hero h1 {
-			font-size: 2.5rem;
-		}
-
-		.press-hero p {
-			font-size: 1.125rem;
+			font-size: 3rem;
 		}
 
 		.featured-release .release-link {
-			grid-template-columns: 1fr;
-			gap: 2rem;
+			flex-direction: column;
+		}
+
+		.featured-release .release-image {
+			flex: none;
+			height: 200px;
+		}
+
+		.featured-release .release-content {
+			padding: 1.5rem;
 		}
 
 		.featured-release h2 {
-			font-size: 2rem;
+			font-size: 1.5rem;
 		}
 
 		.releases-grid {
@@ -443,9 +460,15 @@ import Navigation from "../components/Navigation.astro";
 
 		.newsletter-form {
 			flex-direction: column;
+			align-items: stretch;
 		}
 
-		.newsletter-form button {
+		.email-input {
+			min-width: 100%;
+			width: 100%;
+		}
+
+		.subscribe-button {
 			width: 100%;
 		}
 	}

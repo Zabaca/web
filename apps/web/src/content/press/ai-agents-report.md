@@ -1,9 +1,11 @@
 ---
-layout: ../../layouts/PressLayout.astro
 title: "New Report: AI Agents Will Handle 10% of Business Interactions by 2026—Is Your Business Ready?"
-date: "2025-07-28"
-tag: "Research"
-intro: "The AI agent revolution is accelerating faster than predicted, but a critical infrastructure gap threatens to limit its potential"
+publishedAt: "2025-07-07"
+description: "The AI agent revolution is accelerating faster than predicted, but a critical infrastructure gap threatens to limit its potential"
+category: "Industry Report"
+icon:
+  type: "chart"
+  gradient: "linear-gradient(135deg, #ff843f, #ffb380)"
 ---
 
 *The AI agent revolution is accelerating faster than predicted, but a critical infrastructure gap threatens to limit its potential*

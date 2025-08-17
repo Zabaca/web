@@ -1,40 +1,13 @@
 ---
 import Layout from "../../layouts/layout.astro";
+import Navigation from "../../components/Navigation.astro";
 import IntegrationDemo from "../../components/IntegrationDemo.tsx";
 import ClientApiProfileTerminal from "../../components/wrappers/ClientApiProfileTerminal.tsx";
 ---
 
 <Layout title="AI Business Cards - Universal Business Discovery | Zabaca">
 	<main class="zabaca-inspired">
-		<!-- Custom Nav with Zabaca styling -->
-		<nav class="zabaca-nav">
-			<div class="nav-container">
-				<!-- Logo -->
-				<a href="/" class="logo">Zabaca</a>
-				
-				<!-- Center Links -->
-				<div class="nav-links">
-					<div class="nav-dropdown">
-						<a href="#" class="dropdown-trigger">Products</a>
-						<div class="dropdown-menu">
-							<a href="/products/stiqr">Stiqr</a>
-							<a href="/products/ai-business-cards">AI Business Cards</a>
-							<a href="/products/temporal-bridge">TemporalBridge</a>
-						</div>
-					</div>
-					<a href="/careers">Careers</a>
-					<a href="/press">Press</a>
-				</div>
-				
-				<!-- Right Actions -->
-				<div class="nav-actions">
-					<a href="/app" class="start-button">
-						<span>Start for free</span>
-					</a>
-					<a href="/login" class="login-link">Login</a>
-				</div>
-			</div>
-		</nav>
+		<Navigation activePage="products" />
 
 		<!-- Hero Section -->
 		<div class="hero-wrapper">

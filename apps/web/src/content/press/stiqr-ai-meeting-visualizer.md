@@ -1,9 +1,12 @@
 ---
-layout: ../../layouts/PressLayout.astro
 title: "Stiqr: Your AI Meeting Visualizer That Draws Ideas in Real-Time"
-date: "TBD"
-tag: "Launch"
-intro: "Stiqr launches an AI-powered meeting assistant that automatically joins virtual meetings and transforms conversations into live visual diagrams, charts, and workflows."
+publishedAt: "2025-08-17"
+description: "Stiqr launches an AI-powered meeting assistant that automatically joins virtual meetings and transforms conversations into live visual diagrams, charts, and workflows."
+category: "Product Launch"
+featured: true
+icon:
+  type: "meeting"
+  gradient: "linear-gradient(135deg, #00c2ff, #0099ff)"
 ---
 
 <div class="press-release-header">

@@ -1,9 +1,11 @@
 ---
-layout: ../../layouts/PressLayout.astro
 title: "TemporalBridge: The Universal AI Memory System That Solves Software Development's $650 Billion Knowledge Crisis"
-date: "TBD"
-tag: "Launch"
-intro: "TemporalBridge launches the first universal AI memory system that transforms developer conversations with any coding agent into persistent, searchable knowledge graphs."
+publishedAt: "2025-08-15"
+description: "TemporalBridge launches the first universal AI memory system that transforms developer conversations with any coding agent into persistent, searchable knowledge graphs."
+category: "Product Launch"
+icon:
+  type: "brain"
+  gradient: "linear-gradient(135deg, #ff00b8, #ff0080)"
 ---
 
 <div class="press-release-header">

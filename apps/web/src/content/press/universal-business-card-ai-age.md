@@ -1,9 +1,11 @@
 ---
-layout: ../../layouts/PressLayout.astro
 title: "Zabaca: The Universal Business Card for the AI Age"
-date: "TBD"
-tag: "Launch"
-intro: "Zabaca launches the first universal discovery platform that makes any business instantly accessible to AI agents worldwide."
+publishedAt: "2025-07-15"
+description: "Zabaca launches the first universal discovery platform that makes any business instantly accessible to AI agents worldwide."
+category: "Product Launch"
+icon:
+  type: "rocket"
+  gradient: "linear-gradient(135deg, #4ff37d, #2de05a)"
 ---
 
 <div class="press-release-header">

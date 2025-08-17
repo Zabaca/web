@@ -1,38 +1,11 @@
 ---
 import Layout from "../../layouts/layout.astro";
+import Navigation from "../../components/Navigation.astro";
 ---
 
 <Layout title="Stiqr - AI Meeting Visualizer | Zabaca">
 	<main class="zabaca-inspired">
-		<!-- Custom Nav with Zabaca styling -->
-		<nav class="zabaca-nav">
-			<div class="nav-container">
-				<!-- Logo -->
-				<a href="/" class="logo">Zabaca</a>
-				
-				<!-- Center Links -->
-				<div class="nav-links">
-					<div class="nav-dropdown">
-						<a href="#" class="dropdown-trigger">Products</a>
-						<div class="dropdown-menu">
-							<a href="/products/stiqr">Stiqr</a>
-							<a href="/products/ai-business-cards">AI Business Cards</a>
-							<a href="/products/temporal-bridge">TemporalBridge</a>
-						</div>
-					</div>
-					<a href="/careers">Careers</a>
-					<a href="/press">Press</a>
-				</div>
-				
-				<!-- Right Actions -->
-				<div class="nav-actions">
-					<a href="https://stiqr.zabaca.com" class="start-button" target="_blank">
-						<span>Try Stiqr</span>
-					</a>
-					<a href="/login" class="login-link">Login</a>
-				</div>
-			</div>
-		</nav>
+		<Navigation activePage="products" />
 
 		<!-- Hero Section -->
 		<div class="hero-wrapper">
