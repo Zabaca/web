@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/layout.astro";
 import IntegrationDemo from "../../components/IntegrationDemo.tsx";
+import ClientApiProfileTerminal from "../../components/wrappers/ClientApiProfileTerminal.tsx";
 ---
 
 <Layout title="AI Business Cards - Universal Business Discovery | Zabaca">
@@ -159,55 +160,14 @@ import IntegrationDemo from "../../components/IntegrationDemo.tsx";
 		</div>
 
 		<!-- API Profile Demo Section -->
-		<div class="demo-section">
+		<div class="demo-section" style="background-color: #ffdc00;">
 			<div class="demo-container">
 				<div class="section-header">
 					<h2>Your AI Profile</h2>
 					<p>See how AI agents will discover and interact with your business</p>
 				</div>
 				
-				<div class="api-demo">
-					<div class="api-url-bar">
-						<span class="api-url">zabaca.com/yourbusiness</span>
-					</div>
-					<div class="api-response">
-						<pre><code>{`{
-  "profile": {
-    "name": "Your Business Name",
-    "business": "Product Strategy Consultant",
-    "verified": true,
-    "last_updated": "2025-01-26T10:30:00Z"
-  },
-  "services": {
-    "scheduling": {
-      "platform": "cal.com",
-      "endpoint": "https://api.zabaca.com/yourbusiness/schedule",
-      "public_access": true,
-      "types": ["consultation", "workshop", "coffee-chat"]
-    },
-    "payments": {
-      "platform": "stripe",
-      "endpoint": "https://api.zabaca.com/yourbusiness/payments",
-      "public_access": true,
-      "methods": ["credit_card", "ach"]
-    },
-    "support": {
-      "platform": "intercom",
-      "endpoint": "https://api.zabaca.com/yourbusiness/support",
-      "public_access": true,
-      "channels": ["chat", "email"]
-    }
-  }
-}`}</code></pre>
-					</div>
-				</div>
-				
-				<div class="testimonial">
-					<blockquote>
-						"Within 24 hours of setting up my Zabaca profile, I had AI assistants booking consultations directly into my calendar."
-					</blockquote>
-					<cite>- Michael Torres, Marketing Consultant</cite>
-				</div>
+				<ClientApiProfileTerminal client:load showTestimonial={true} animated={false} />
 			</div>
 		</div>
 
@@ -924,9 +884,9 @@ import IntegrationDemo from "../../components/IntegrationDemo.tsx";
 		line-height: 1.3;
 	}
 
-	/* Demo section */
+
+	/* API Profile Demo Section */
 	.demo-section {
-		background-color: #ffdc00;
 		padding: 5rem 0;
 	}
 	
@@ -936,61 +896,32 @@ import IntegrationDemo from "../../components/IntegrationDemo.tsx";
 		padding: 0 2rem;
 	}
 	
-	.api-demo {
-		background: white;
-		border: 3px solid #131416;
-		border-radius: 16px;
-		overflow: hidden;
-		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-		margin-bottom: 3rem;
-	}
-	
-	.api-url-bar {
-		background: #131416;
-		color: #4ff37d;
-		padding: 1rem 1.5rem;
-		font-family: 'Monaco', 'Consolas', monospace;
-		font-weight: 500;
-	}
-	
-	.api-response {
-		padding: 2rem;
-		background: white;
-	}
-	
-	.api-response pre {
-		margin: 0;
-		overflow-x: auto;
-	}
-	
-	.api-response code {
-		font-family: 'Monaco', 'Consolas', monospace;
-		font-size: 0.875rem;
-		line-height: 1.6;
-		color: #131416;
-	}
-	
-	.testimonial {
+	.demo-section .section-header {
 		text-align: center;
-		max-width: 700px;
-		margin: 0 auto;
+		margin-bottom: 4rem;
 	}
 	
-	.testimonial blockquote {
-		font-size: 1.25rem;
-		font-style: italic;
+	.demo-section .section-header h2 {
+		font-size: 3.5rem;
+		font-weight: 700;
 		color: #131416;
-		line-height: 1.6;
 		margin-bottom: 1rem;
-		border: none;
-		padding: 0;
+		font-family: 'Fredoka', sans-serif;
 	}
 	
-	.testimonial cite {
-		font-size: 1rem;
+	.demo-section .section-header p {
+		font-size: 1.25rem;
 		color: #131416;
-		font-weight: 600;
-		font-style: normal;
+		opacity: 0.8;
+		max-width: 600px;
+		margin: 0 auto;
+		font-family: 'Fredoka', sans-serif;
+	}
+
+	@media (max-width: 768px) {
+		.demo-section .section-header h2 {
+			font-size: 2.5rem;
+		}
 	}
 
 	/* Contact section */

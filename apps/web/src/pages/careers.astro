@@ -1,38 +1,19 @@
 ---
 import Layout from "../layouts/layout.astro";
+import Navigation from "../components/Navigation.astro";
 ---
 
 <Layout title="Careers - Zabaca">
 	<main class="zabaca-inspired">
-		<!-- Custom Nav with Zabaca styling -->
-		<nav class="zabaca-nav">
-			<div class="nav-container">
-				<!-- Logo -->
-				<a href="/" class="logo">Zabaca</a>
-				
-				<!-- Center Links -->
-				<div class="nav-links">
-					<a href="/careers" class="active">Careers</a>
-					<a href="/press">Press</a>
-				</div>
-				
-				<!-- Right Actions -->
-				<div class="nav-actions">
-					<a href="/app" class="start-button">
-						<span>Start for free</span>
-					</a>
-					<a href="/login" class="login-link">Login</a>
-				</div>
-			</div>
-		</nav>
+		<Navigation activePage="careers" />
 
 		<!-- Hero Section with Yellow Background -->
 		<section class="hero-section">
 			<div class="hero-content">
 				<div class="hero-text">
 					<h1>Our Team</h1>
-					<p class="lead">Our team has been building AI-first business solutions for over a decade. We've created the infrastructure that connects millions of businesses with AI agents, and we're just getting started.</p>
-					<p>Now we're bringing people together who, like us, believe that AI accessibility should be simple, powerful, and delightful.</p>
+					<p class="lead">With over a decade of software engineering experience, we're building at the forefront of the AI transformation. From visual meeting intelligence with Stiqr to universal business discovery and persistent AI memory systems, we're creating the tools that define how humans and AI work together.</p>
+					<p>We're assembling a team of builders who share our excitement about what AI unlocks—not just the technology itself, but the human potential it liberates when the mundane becomes automated and the impossible becomes achievable.</p>
 				</div>
 				<div class="hero-visual">
 					<div class="team-illustration">
@@ -159,107 +140,6 @@ import Layout from "../layouts/layout.astro";
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		background-color: white;
-	}
-
-	/* Navigation (same as other pages) */
-	.zabaca-nav {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		background-color: #4ff37d;
-		z-index: 50;
-		padding: 16px 8px;
-	}
-	
-	.nav-container {
-		max-width: 1536px;
-		margin: 0 auto;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 0 16px;
-	}
-	
-	.logo {
-		font-size: 24px;
-		font-weight: 700;
-		color: #131416;
-		text-decoration: none;
-		letter-spacing: -0.03em;
-		font-family: 'Fredoka', sans-serif;
-	}
-	
-	.nav-links {
-		display: flex;
-		gap: 32px;
-		align-items: center;
-	}
-	
-	.nav-links a {
-		color: #131416;
-		text-decoration: none;
-		font-size: 16px;
-		font-weight: 500;
-		transition: opacity 0.2s;
-		position: relative;
-	}
-	
-	.nav-links a:hover {
-		opacity: 0.7;
-	}
-
-	.nav-links a.active {
-		font-weight: 600;
-	}
-
-	.nav-links a.active::after {
-		content: '';
-		position: absolute;
-		bottom: -4px;
-		left: 0;
-		right: 0;
-		height: 2px;
-		background-color: #131416;
-		border-radius: 1px;
-	}
-	
-	.nav-actions {
-		display: flex;
-		gap: 24px;
-		align-items: center;
-	}
-	
-	.start-button {
-		position: relative;
-		display: inline-flex;
-		align-items: center;
-		padding: 12px 24px;
-		background-color: #131416;
-		color: white;
-		text-decoration: none;
-		border-radius: 100px;
-		font-weight: 600;
-		font-size: 16px;
-		transition: all 0.3s ease;
-		overflow: hidden;
-	}
-	
-	.start-button:hover {
-		transform: scale(1.05);
-		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-	}
-	
-	.login-link {
-		color: #131416;
-		text-decoration: none;
-		font-size: 16px;
-		font-weight: 500;
-		transition: opacity 0.2s;
-	}
-	
-	.login-link:hover {
-		opacity: 0.7;
 	}
 
 	/* Hero Section */
@@ -550,10 +430,6 @@ import Layout from "../layouts/layout.astro";
 
 	/* Mobile responsiveness */
 	@media (max-width: 768px) {
-		.nav-links {
-			display: none;
-		}
-		
 		.hero-text {
 			max-width: 100%;
 		}

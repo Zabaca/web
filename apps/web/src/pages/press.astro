@@ -1,30 +1,11 @@
 ---
 import Layout from "../layouts/layout.astro";
+import Navigation from "../components/Navigation.astro";
 ---
 
 <Layout title="Press - Zabaca">
 	<main class="zabaca-inspired">
-		<!-- Custom Nav with Zabaca styling -->
-		<nav class="zabaca-nav">
-			<div class="nav-container">
-				<!-- Logo -->
-				<a href="/" class="logo">Zabaca</a>
-				
-				<!-- Center Links -->
-				<div class="nav-links">
-					<a href="/careers">Careers</a>
-					<a href="/press" class="active">Press</a>
-				</div>
-				
-				<!-- Right Actions -->
-				<div class="nav-actions">
-					<a href="/app" class="start-button">
-						<span>Start for free</span>
-					</a>
-					<a href="/login" class="login-link">Login</a>
-				</div>
-			</div>
-		</nav>
+		<Navigation activePage="press" />
 
 		<!-- Hero wrapper with pink background -->
 		<div class="hero-wrapper">
@@ -105,25 +86,6 @@ import Layout from "../layouts/layout.astro";
 						</a>
 					</article>
 
-					<article class="release-card">
-						<a href="/press/compliance-api-launch" class="release-link">
-							<div class="release-image">
-								<div class="placeholder-image" style="background: linear-gradient(135deg, #00c2ff, #0099ff);">
-									<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-										<path d="M9 11H3v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9h-6m-1 4v6m-5-6v6m-3-10V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v7l-1 1" />
-									</svg>
-								</div>
-							</div>
-							<div class="release-content">
-								<div class="release-meta">
-									<span class="release-date">TBD</span>
-									<span class="release-tag">Product</span>
-								</div>
-								<h3>ComplianceAPI.ai Launches Universal Compliance Data Platform for AI Agents</h3>
-								<p>Revolutionary API makes business compliance data instantly accessible to AI assistants.</p>
-							</div>
-						</a>
-					</article>
 
 					<!--<article class="release-card">
 						<a href="/press/partnership-stripe" class="release-link">
@@ -196,106 +158,6 @@ import Layout from "../layouts/layout.astro";
 		background-color: white;
 	}
 
-	/* Navigation (same as test page) */
-	.zabaca-nav {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		background-color: #4ff37d;
-		z-index: 50;
-		padding: 16px 8px;
-	}
-	
-	.nav-container {
-		max-width: 1536px;
-		margin: 0 auto;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 0 16px;
-	}
-	
-	.logo {
-		font-size: 24px;
-		font-weight: 700;
-		color: #131416;
-		text-decoration: none;
-		letter-spacing: -0.03em;
-		font-family: 'Fredoka', sans-serif;
-	}
-	
-	.nav-links {
-		display: flex;
-		gap: 32px;
-		align-items: center;
-	}
-	
-	.nav-links a {
-		color: #131416;
-		text-decoration: none;
-		font-size: 16px;
-		font-weight: 500;
-		transition: opacity 0.2s;
-		position: relative;
-	}
-	
-	.nav-links a:hover {
-		opacity: 0.7;
-	}
-
-	.nav-links a.active {
-		font-weight: 600;
-	}
-
-	.nav-links a.active::after {
-		content: '';
-		position: absolute;
-		bottom: -4px;
-		left: 0;
-		right: 0;
-		height: 2px;
-		background-color: #131416;
-		border-radius: 1px;
-	}
-	
-	.nav-actions {
-		display: flex;
-		gap: 24px;
-		align-items: center;
-	}
-	
-	.start-button {
-		position: relative;
-		display: inline-flex;
-		align-items: center;
-		padding: 12px 24px;
-		background-color: #131416;
-		color: white;
-		text-decoration: none;
-		border-radius: 100px;
-		font-weight: 600;
-		font-size: 16px;
-		transition: all 0.3s ease;
-		overflow: hidden;
-	}
-	
-	.start-button:hover {
-		transform: scale(1.05);
-		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-	}
-	
-	.login-link {
-		color: #131416;
-		text-decoration: none;
-		font-size: 16px;
-		font-weight: 500;
-		transition: opacity 0.2s;
-	}
-	
-	.login-link:hover {
-		opacity: 0.7;
-	}
 
 	/* Hero wrapper - Pink background */
 	.hero-wrapper {
@@ -558,10 +420,6 @@ import Layout from "../layouts/layout.astro";
 
 	/* Mobile responsiveness */
 	@media (max-width: 768px) {
-		.nav-links {
-			display: none;
-		}
-		
 		.press-hero h1 {
 			font-size: 2.5rem;
 		}

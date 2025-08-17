@@ -1,0 +1,210 @@
+---
+export interface Props {
+  activePage?: 'careers' | 'press' | 'products';
+}
+
+const { activePage } = Astro.props;
+---
+
+<nav class="zabaca-nav">
+  <div class="nav-container">
+    <!-- Logo -->
+    <a href="/" class="logo">Zabaca</a>
+    
+    <!-- Center Links -->
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <a href="#" class="dropdown-trigger">Products</a>
+        <div class="dropdown-menu">
+          <a href="/products/stiqr">Stiqr</a>
+          <a href="/products/ai-business-cards">AI Business Cards</a>
+          <a href="/products/temporal-bridge">TemporalBridge</a>
+        </div>
+      </div>
+      <a href="/careers" class={activePage === 'careers' ? 'active' : ''}>Careers</a>
+      <a href="/press" class={activePage === 'press' ? 'active' : ''}>Press</a>
+    </div>
+    
+    <!-- Right Actions -->
+    <div class="nav-actions">
+      <a href="/app" class="start-button">
+        <span>Start for free</span>
+      </a>
+      <a href="/login" class="login-link">Login</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* Import web fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+
+  /* Navigation styles */
+  .zabaca-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #4ff37d;
+    z-index: 40;
+    padding: 16px 8px;
+  }
+  
+  .nav-container {
+    max-width: 1536px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #131416;
+    text-decoration: none;
+    letter-spacing: -0.03em;
+    font-family: 'Fredoka', sans-serif;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+  
+  .nav-dropdown {
+    position: relative;
+  }
+  
+  .dropdown-trigger {
+    color: #131416;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    cursor: pointer;
+  }
+  
+  .dropdown-trigger:hover {
+    opacity: 0.7;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 50;
+  }
+  
+  .nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .dropdown-menu a {
+    display: block;
+    padding: 8px 16px;
+    color: #131416;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .nav-links > a {
+    color: #131416;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    position: relative;
+  }
+  
+  .nav-links > a:hover {
+    opacity: 0.7;
+  }
+  
+  .nav-links a.active {
+    font-weight: 600;
+  }
+  
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #131416;
+    border-radius: 1px;
+  }
+  
+  .nav-actions {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+  
+  .start-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: #131416;
+    color: white;
+    text-decoration: none;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .start-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .login-link {
+    color: #131416;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+  
+  .login-link:hover {
+    opacity: 0.7;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+    
+    .nav-actions {
+      gap: 16px;
+    }
+    
+    .start-button {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  }
+</style>
