@@ -18,7 +18,7 @@ Stiqr solves this by joining your Zoom or Google Meet calls as an intelligent pa
 
 > "Stiqr represents a fundamental shift in how teams collaborate visually. We're not just recording meetings or transcribing them - we're amplifying human intelligence by turning abstract discussions into concrete visual understanding, all at the speed of conversation."
 >
-> Jae and James, Co-founders of Stiqr
+> James, founder of Stiqr
 
 Getting started with Stiqr is simple. Install our meeting bot, invite it to your next call, and watch as your ideas take shape automatically. No manual prompting or screen sharing required.
 
