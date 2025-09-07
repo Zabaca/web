@@ -1,0 +1,39 @@
+sessionId: 933bb12d-726c-4892-905c-fa3d5b76500b
+lastUpdated: 2025-09-07T19:49:25.847Z
+projectEntityCache:
+  lastProcessed: 2025-09-07T07:25:55.559Z
+  success: true
+  technologiesDetected: 2
+  projectEntity:
+    projectId: zabaca-web
+    projectName: web
+    displayName: web
+    organization: zabaca
+    projectPath: /home/uptown/Projects/zabaca/web
+    projectType: git
+    repository: git@github.com:zabaca/web
+  relationships:
+    - subject: developer
+      predicate: WORKS_ON
+      object: zabaca-web
+      confidence: 1
+      context: Project developer relationship
+    - subject: zabaca-web
+      predicate: USES
+      object: TypeScript
+      confidence: 0.95
+      context: "Dependency: typescript; 1 .ts files (3.8%); Configuration:
+        tsconfig.json"
+    - subject: zabaca-web
+      predicate: USES
+      object: Node.js
+      confidence: 0.95
+      context: Engine requirement
+    - subject: zabaca-web
+      predicate: BELONGS_TO
+      object: zabaca
+      confidence: 0.95
+      context: Organization ownership
+metadata:
+  source: claude-code-hook
+  projectId: zabaca-web
