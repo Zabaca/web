@@ -4,17 +4,31 @@ import PostHog from "../components/posthog.astro";
 
 export interface Props {
 	title: string;
+	description?: string;
+	canonicalUrl?: string;
+	ogImage?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = "Zabaca builds AI-powered tools for the future of work.",
+	canonicalUrl,
+	ogImage
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Zabaca automates workflows for small businesses and contractors. Transform repetitive tasks into efficient automated processes for $1,000/month.">
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="canonical" href={canonicalUrl || Astro.url.href} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl || Astro.url.href} />
+		<meta property="og:type" content="website" />
+		<meta name="twitter:card" content="summary_large_image" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
