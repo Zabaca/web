@@ -22,6 +22,7 @@ import Layout from "../layouts/layout.astro";
 							<a href="/products/stiqr">Stiqr</a>
 							<a href="/products/ai-business-cards">AI Business Cards</a>
 							<a href="/products/temporal-bridge">TemporalBridge</a>
+							<a href="/products/lattice">Lattice</a>
 						</div>
 					</div>
 					<a href="/careers">Careers</a>
@@ -143,6 +144,34 @@ import Layout from "../layouts/layout.astro";
 						</p>
 						<div class="product-cta">
 							<span>Explore TemporalBridge</span>
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+							</svg>
+						</div>
+					</a>
+
+					<!-- Lattice Product Card -->
+					<a href="/products/lattice" class="product-card lattice-card">
+						<div class="product-header">
+							<div class="product-icon">
+								<svg viewBox="0 0 40 40" fill="none">
+									<rect width="40" height="40" rx="12" fill="white"/>
+									<circle cx="20" cy="14" r="4" fill="#4ff37d"/>
+									<circle cx="12" cy="26" r="3" fill="#4ff37d"/>
+									<circle cx="28" cy="26" r="3" fill="#4ff37d"/>
+									<path d="M20 18 L12 23 M20 18 L28 23 M12 26 L28 26" stroke="#4ff37d" stroke-width="1.5"/>
+								</svg>
+							</div>
+							<div class="product-text">
+								<h3>Lattice</h3>
+								<p class="product-tagline">AI-Powered Knowledge Graphs</p>
+							</div>
+						</div>
+						<p class="product-description">
+							Transform markdown documentation into searchable knowledge graphs. Semantic search, entity extraction, and relationship mapping.
+						</p>
+						<div class="product-cta">
+							<span>Explore Lattice</span>
 							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
 							</svg>
@@ -569,12 +598,22 @@ import Layout from "../layouts/layout.astro";
 		border-color: #ff843f;
 		background: linear-gradient(135deg, #ff843f15, #ff843f05);
 	}
-	
+
 	.temporal-card:hover {
 		border-color: #ff843f;
 		background: linear-gradient(135deg, #ff843f25, #ff843f15);
 	}
-	
+
+	.lattice-card {
+		border-color: #4ff37d;
+		background: linear-gradient(135deg, #4ff37d15, #4ff37d05);
+	}
+
+	.lattice-card:hover {
+		border-color: #4ff37d;
+		background: linear-gradient(135deg, #4ff37d25, #4ff37d15);
+	}
+
 	/* Product header with icon and text */
 	.product-header {
 		display: flex;

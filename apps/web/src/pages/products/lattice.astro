@@ -1,0 +1,1047 @@
+---
+import Layout from "../../layouts/layout.astro";
+import Navigation from "../../components/Navigation.astro";
+import LatticeGraph from "../../components/LatticeGraph.tsx";
+---
+
+<Layout title="Lattice - AI-Powered Knowledge Graphs | Zabaca" description="Transform markdown documentation into searchable knowledge graphs. Semantic search, entity extraction, and relationship mapping with FalkorDB.">
+	<main class="zabaca-inspired">
+		<Navigation activePage="products" />
+
+		<!-- Hero Section -->
+		<div class="hero-wrapper">
+			<!-- Lattice animation background -->
+			<div class="wormhole-container">
+				<LatticeGraph client:load />
+			</div>
+
+			<div class="hero-content">
+				<section class="hero-section">
+					<div class="container mx-auto px-4 max-w-6xl">
+						<div class="text-left max-w-3xl">
+							<h1 class="hero-title">
+								AI-Powered
+								<br />
+								Knowledge Graphs
+							</h1>
+
+							<p class="hero-subtitle">
+								Lattice transforms markdown documentation into searchable knowledge graphs. Define entities in your docs, map relationships, and query with semantic search powered by Voyage AI.
+							</p>
+
+							<div class="hero-cta">
+								<a href="https://github.com/zabaca/lattice" class="cta-button" target="_blank">
+									Explore Lattice
+								</a>
+								<p class="cta-subtext">Open source • Built with FalkorDB and Voyage AI</p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<!-- Features Section -->
+		<div class="features-section">
+			<div class="features-container">
+				<div class="section-header">
+					<h2>Knowledge Graph Features</h2>
+					<p>Transform your documentation into an intelligent, queryable knowledge base.</p>
+				</div>
+
+				<div class="features-grid">
+					<!-- Feature 1: Knowledge Graph Sync -->
+					<div class="feature-card blue-card">
+						<div class="feature-header">
+							<div class="feature-icon">
+								<svg viewBox="0 0 40 40" fill="none">
+									<rect width="40" height="40" rx="12" fill="white"/>
+									<circle cx="20" cy="20" r="8" stroke="#00c2ff" stroke-width="2" fill="none"/>
+									<circle cx="20" cy="20" r="3" fill="#00c2ff"/>
+									<path d="M12 12 L28 28 M28 12 L12 28" stroke="#00c2ff" stroke-width="1" opacity="0.5"/>
+								</svg>
+							</div>
+							<h3>🔄 Knowledge Graph Sync</h3>
+						</div>
+						<p>Automatically sync entities and relationships from markdown frontmatter to a graph database.</p>
+					</div>
+
+					<!-- Feature 2: Semantic Search -->
+					<div class="feature-card pink-card">
+						<div class="feature-header">
+							<div class="feature-icon">
+								<svg viewBox="0 0 40 40" fill="none">
+									<rect width="40" height="40" rx="12" fill="white"/>
+									<circle cx="18" cy="18" r="8" stroke="#ff00b8" stroke-width="2" fill="none"/>
+									<path d="M26 26 L30 30" stroke="#ff00b8" stroke-width="2"/>
+									<circle cx="18" cy="18" r="3" fill="#ff00b8"/>
+								</svg>
+							</div>
+							<h3>🔍 Semantic Search</h3>
+						</div>
+						<p>AI-powered search using Voyage AI embeddings for intelligent document discovery.</p>
+					</div>
+
+					<!-- Feature 3: Entity Extraction -->
+					<div class="feature-card orange-card">
+						<div class="feature-header">
+							<div class="feature-icon">
+								<svg viewBox="0 0 40 40" fill="none">
+									<rect width="40" height="40" rx="12" fill="white"/>
+									<circle cx="20" cy="20" r="8" stroke="#ff843f" stroke-width="2" fill="none"/>
+									<path d="M20 14 L20 20 L24 24" stroke="#ff843f" stroke-width="2" fill="none"/>
+									<circle cx="20" cy="12" r="1" fill="#ff843f"/>
+								</svg>
+							</div>
+							<h3>🏷️ Entity Extraction</h3>
+						</div>
+						<p>Define entities, concepts, and patterns directly in your documentation with typed relationships.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Demo Section -->
+		<div class="demo-section">
+			<div class="demo-container">
+				<div class="section-header">
+					<h2>See Knowledge Graphs in Action</h2>
+					<p>Watch how Lattice searches and connects your documentation</p>
+				</div>
+
+				<div class="demo-showcase">
+					<div class="demo-terminal">
+						<div class="terminal-header">
+							<div class="terminal-dots">
+								<span class="dot red"></span>
+								<span class="dot yellow"></span>
+								<span class="dot green"></span>
+							</div>
+							<span class="terminal-title">lattice</span>
+						</div>
+						<div class="terminal-content">
+							<div class="command-line">
+								<span class="prompt">$</span>
+								<span class="command">lattice search "knowledge graph patterns"</span>
+							</div>
+							<div class="search-results">
+								<div class="result-item">
+									<span class="result-type">ENTITY</span>
+									<span class="result-text">docs/architecture/graph-design.md</span>
+									<span class="result-score">0.95</span>
+								</div>
+								<div class="result-item">
+									<span class="result-type">ENTITY</span>
+									<span class="result-text">docs/patterns/entity-extraction.md</span>
+									<span class="result-score">0.89</span>
+								</div>
+								<div class="result-item">
+									<span class="result-type">ENTITY</span>
+									<span class="result-text">docs/guides/semantic-search.md</span>
+									<span class="result-score">0.83</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="demo-features">
+						<div class="feature-highlight">
+							<h4>🕸️ FalkorDB Backend</h4>
+							<p>High-performance graph database built on Redis for lightning-fast queries.</p>
+						</div>
+						<div class="feature-highlight">
+							<h4>🔗 Relationship Mapping</h4>
+							<p>Model connections between entities using typed relationships like USES, IMPLEMENTS, DEPENDS_ON.</p>
+						</div>
+						<div class="feature-highlight">
+							<h4>📄 Frontmatter Schema</h4>
+							<p>Define entities and relationships directly in YAML frontmatter.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Use Cases Section -->
+		<div class="use-cases-section">
+			<div class="use-cases-container">
+				<div class="section-header">
+					<h2>Unlock Knowledge at Scale</h2>
+					<p>See how Lattice enhances documentation and knowledge management</p>
+				</div>
+
+				<div class="use-cases-grid">
+					<div class="use-case-card">
+						<div class="use-case-icon">📚</div>
+						<h3>Documentation Discovery</h3>
+						<p>Find related documentation across your codebase with semantic search that understands context and meaning.</p>
+					</div>
+
+					<div class="use-case-card">
+						<div class="use-case-icon">🔍</div>
+						<h3>Codebase Understanding</h3>
+						<p>Map relationships between components, patterns, and technologies. Understand how your system connects.</p>
+					</div>
+
+					<div class="use-case-card">
+						<div class="use-case-icon">📊</div>
+						<h3>Research Organization</h3>
+						<p>Organize research notes and link concepts together. Build a personal knowledge base that grows smarter.</p>
+					</div>
+
+					<div class="use-case-card">
+						<div class="use-case-icon">👥</div>
+						<h3>Team Knowledge Sharing</h3>
+						<p>Share architectural decisions, patterns, and learnings across your team through the knowledge graph.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Architecture Section -->
+		<div class="architecture-section">
+			<div class="architecture-container">
+				<div class="section-header">
+					<h2>How Lattice Works</h2>
+					<p>Built on proven technologies for intelligent knowledge management</p>
+				</div>
+
+				<div class="architecture-flow">
+					<div class="flow-step">
+						<div class="step-number">1</div>
+						<div class="step-content">
+							<h4>Document Created</h4>
+							<p>Add entities and relationships to frontmatter</p>
+						</div>
+					</div>
+
+					<div class="flow-arrow">→</div>
+
+					<div class="flow-step">
+						<div class="step-number">2</div>
+						<div class="step-content">
+							<h4>Entity Extraction</h4>
+							<p>Lattice parses and validates YAML schema</p>
+						</div>
+					</div>
+
+					<div class="flow-arrow">→</div>
+
+					<div class="flow-step">
+						<div class="step-number">3</div>
+						<div class="step-content">
+							<h4>Graph Sync</h4>
+							<p>Entities stored in FalkorDB with embeddings</p>
+						</div>
+					</div>
+
+					<div class="flow-arrow">→</div>
+
+					<div class="flow-step">
+						<div class="step-number">4</div>
+						<div class="step-content">
+							<h4>Semantic Search</h4>
+							<p>Query with natural language via CLI</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="tech-stack">
+					<h3>Built With</h3>
+					<div class="tech-items">
+						<div class="tech-item">
+							<span class="tech-icon">📊</span>
+							<span class="tech-name">FalkorDB</span>
+						</div>
+						<div class="tech-item">
+							<span class="tech-icon">🧠</span>
+							<span class="tech-name">Voyage AI</span>
+						</div>
+						<div class="tech-item">
+							<span class="tech-icon">🛠️</span>
+							<span class="tech-name">NestJS</span>
+						</div>
+						<div class="tech-item">
+							<span class="tech-icon">⌨️</span>
+							<span class="tech-name">CLI Interface</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Contact Section -->
+		<div class="contact-section">
+			<div class="contact-container">
+				<div class="section-header">
+					<h2>Start Building Your Knowledge Graph</h2>
+					<p>Transform your documentation into an intelligent, searchable knowledge base.</p>
+				</div>
+
+				<div class="contact-cta">
+					<a href="https://github.com/zabaca/lattice" class="cta-button primary" target="_blank">
+						Get Started with Lattice
+					</a>
+					<div class="contact-details">
+						<p>Open source • MIT License • Built for developers</p>
+						<p>Questions? Email us at <a href="mailto:hello@zabaca.com">hello@zabaca.com</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	/* Import web fonts */
+	@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+
+	/* Base styles */
+	.zabaca-inspired {
+		font-family: 'Fredoka', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		color: #131416;
+		font-weight: 500;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	/* Navigation styles (consistent with other pages) */
+	.zabaca-nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-color: #4ff37d;
+		z-index: 40;
+		padding: 16px 8px;
+	}
+
+	.nav-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 16px;
+	}
+
+	.logo {
+		font-size: 24px;
+		font-weight: 700;
+		color: #131416;
+		text-decoration: none;
+		letter-spacing: -0.03em;
+	}
+
+	.nav-links {
+		display: flex;
+		gap: 32px;
+		align-items: center;
+	}
+
+	.nav-dropdown {
+		position: relative;
+	}
+
+	.dropdown-trigger {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+
+	.dropdown-trigger:hover {
+		opacity: 0.7;
+	}
+
+	.dropdown-menu {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		background: white;
+		border-radius: 8px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		padding: 8px 0;
+		min-width: 180px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-10px);
+		transition: all 0.2s ease;
+	}
+
+	.nav-dropdown:hover .dropdown-menu {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+
+	.dropdown-menu a {
+		display: block;
+		padding: 8px 16px;
+		color: #131416;
+		text-decoration: none;
+		font-size: 14px;
+		transition: background-color 0.2s;
+	}
+
+	.dropdown-menu a:hover {
+		background-color: #f5f5f5;
+	}
+
+	.nav-links > a {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+
+	.nav-links > a:hover {
+		opacity: 0.7;
+	}
+
+	.nav-actions {
+		display: flex;
+		gap: 24px;
+		align-items: center;
+	}
+
+	.start-button {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		padding: 12px 24px;
+		background-color: #131416;
+		color: white;
+		text-decoration: none;
+		border-radius: 100px;
+		font-weight: 600;
+		font-size: 16px;
+		transition: all 0.3s ease;
+		overflow: hidden;
+	}
+
+	.start-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+
+	.login-link {
+		color: #131416;
+		text-decoration: none;
+		font-size: 16px;
+		font-weight: 500;
+		transition: opacity 0.2s;
+	}
+
+	.login-link:hover {
+		opacity: 0.7;
+	}
+
+	/* Hero section */
+	.hero-wrapper {
+		position: relative;
+		background-color: #131416;
+		margin-top: 72px;
+		padding: 0;
+		min-height: 600px;
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+		border-bottom-left-radius: 50% 120px;
+		border-bottom-right-radius: 50% 120px;
+	}
+
+	.wormhole-container {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 50%;
+		height: 100%;
+		opacity: 0.8;
+		z-index: 1;
+	}
+
+	.hero-content {
+		position: relative;
+		z-index: 10;
+		padding: 4rem 0 8rem 0;
+		width: 100%;
+	}
+
+	.hero-section {
+		padding: 4rem 0;
+	}
+
+	.hero-title {
+		font-size: 4rem;
+		font-weight: 700;
+		color: white;
+		line-height: 1.1;
+		letter-spacing: -0.04em;
+		margin-bottom: 1.5rem;
+	}
+
+	.hero-subtitle {
+		font-size: 1.25rem;
+		color: rgba(255, 255, 255, 0.9);
+		font-weight: 400;
+		line-height: 1.6;
+		margin-bottom: 2rem;
+		max-width: 600px;
+	}
+
+	.hero-cta {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: flex-start;
+	}
+
+	.cta-button {
+		background-color: #4ff37d;
+		color: #131416;
+		padding: 16px 32px;
+		border-radius: 100px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 18px;
+		transition: all 0.3s ease;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.cta-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(79, 243, 125, 0.3);
+		background-color: #5ff58d;
+	}
+
+	.cta-icon {
+		font-size: 20px;
+	}
+
+	.cta-subtext {
+		color: rgba(255, 255, 255, 0.7);
+		font-size: 14px;
+	}
+
+	/* Features section */
+	.features-section {
+		background-color: white;
+		padding: 5rem 0;
+	}
+
+	.features-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.section-header {
+		text-align: center;
+		margin-bottom: 4rem;
+	}
+
+	.section-header h2 {
+		font-size: 3.5rem;
+		font-weight: 700;
+		color: #131416;
+		margin-bottom: 1rem;
+	}
+
+	.section-header p {
+		font-size: 1.25rem;
+		color: #131416;
+		opacity: 0.8;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	.features-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 3rem;
+	}
+
+	.feature-card {
+		padding: 2.5rem;
+		border-radius: 32px;
+		transform: rotate(-1deg);
+		transition: transform 0.3s ease;
+	}
+
+	.feature-card:hover {
+		transform: rotate(0deg) scale(1.02);
+	}
+
+	.feature-card:nth-child(2) {
+		transform: rotate(1deg);
+	}
+
+	.feature-card:nth-child(2):hover {
+		transform: rotate(0deg) scale(1.02);
+	}
+
+	.blue-card {
+		background: #00c2ff;
+	}
+
+	.pink-card {
+		background: #ff00b8;
+	}
+
+	.orange-card {
+		background: #ff843f;
+	}
+
+	.feature-header {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.feature-icon svg {
+		width: 48px;
+		height: 48px;
+	}
+
+	.feature-card h3 {
+		font-size: 1.75rem;
+		font-weight: 600;
+		color: #131416;
+		margin: 0;
+	}
+
+	.feature-card p {
+		font-size: 1.125rem;
+		color: #131416;
+		line-height: 1.6;
+		opacity: 0.9;
+		margin: 0;
+	}
+
+	/* Demo section */
+	.demo-section {
+		background-color: #ffdc00;
+		padding: 5rem 0;
+	}
+
+	.demo-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.demo-showcase {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		align-items: center;
+	}
+
+	.demo-terminal {
+		background: #1a1b1e;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+		border: 2px solid #131416;
+	}
+
+	.terminal-header {
+		background: #131416;
+		padding: 1rem 1.5rem;
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.terminal-dots {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.dot {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+	}
+
+	.dot.red { background: #ff5f56; }
+	.dot.yellow { background: #ffbd2e; }
+	.dot.green { background: #27c93f; }
+
+	.terminal-title {
+		color: #6b7280;
+		font-size: 14px;
+		font-family: 'Monaco', 'Consolas', monospace;
+	}
+
+	.terminal-content {
+		padding: 1.5rem;
+		background: #1a1b1e;
+		color: #4ff37d;
+		font-family: 'Monaco', 'Consolas', monospace;
+		font-size: 14px;
+		line-height: 1.6;
+	}
+
+	.command-line {
+		margin-bottom: 1rem;
+	}
+
+	.prompt {
+		color: #4ff37d;
+		margin-right: 0.5rem;
+	}
+
+	.command {
+		color: #ffffff;
+	}
+
+	.search-results {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.result-item {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 0.5rem 0;
+	}
+
+	.result-type {
+		background: #ff00b8;
+		color: white;
+		padding: 0.25rem 0.5rem;
+		border-radius: 4px;
+		font-size: 10px;
+		font-weight: 600;
+		min-width: 40px;
+		text-align: center;
+	}
+
+	.result-text {
+		flex: 1;
+		color: #ffffff;
+	}
+
+	.result-score {
+		color: #4ff37d;
+		font-weight: 600;
+	}
+
+	.demo-features {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.feature-highlight {
+		background: white;
+		padding: 1.5rem;
+		border-radius: 16px;
+		border: 2px solid #131416;
+	}
+
+	.feature-highlight h4 {
+		font-size: 1.25rem;
+		color: #131416;
+		margin: 0 0 0.5rem 0;
+		font-weight: 600;
+	}
+
+	.feature-highlight p {
+		color: #131416;
+		margin: 0;
+		opacity: 0.8;
+		line-height: 1.5;
+	}
+
+	/* Use Cases section */
+	.use-cases-section {
+		background-color: white;
+		padding: 5rem 0;
+	}
+
+	.use-cases-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.use-cases-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 2rem;
+	}
+
+	.use-case-card {
+		background: white;
+		border: 2px solid #131416;
+		border-radius: 16px;
+		padding: 2rem;
+		text-align: center;
+		transition: transform 0.3s ease;
+	}
+
+	.use-case-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	}
+
+	.use-case-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	.use-case-card h3 {
+		font-size: 1.5rem;
+		color: #131416;
+		margin: 0 0 1rem 0;
+		font-weight: 600;
+	}
+
+	.use-case-card p {
+		color: #131416;
+		opacity: 0.8;
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	/* Architecture section */
+	.architecture-section {
+		background-color: #33cfff;
+		padding: 5rem 0;
+	}
+
+	.architecture-container {
+		max-width: 1536px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.architecture-flow {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 2rem;
+		margin-bottom: 4rem;
+		flex-wrap: wrap;
+	}
+
+	.flow-step {
+		background: white;
+		border: 2px solid #131416;
+		border-radius: 16px;
+		padding: 1.5rem;
+		text-align: center;
+		min-width: 200px;
+		position: relative;
+	}
+
+	.step-number {
+		background: #131416;
+		color: white;
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 600;
+		position: absolute;
+		top: -16px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.step-content h4 {
+		color: #131416;
+		margin: 1rem 0 0.5rem 0;
+		font-weight: 600;
+	}
+
+	.step-content p {
+		color: #131416;
+		opacity: 0.8;
+		margin: 0;
+		font-size: 0.875rem;
+		line-height: 1.4;
+	}
+
+	.flow-arrow {
+		font-size: 2rem;
+		color: #131416;
+		font-weight: bold;
+	}
+
+	.tech-stack {
+		text-align: center;
+	}
+
+	.tech-stack h3 {
+		color: #131416;
+		font-size: 2rem;
+		margin: 0 0 2rem 0;
+		font-weight: 600;
+	}
+
+	.tech-items {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+		flex-wrap: wrap;
+	}
+
+	.tech-item {
+		background: white;
+		border: 2px solid #131416;
+		border-radius: 12px;
+		padding: 1rem 1.5rem;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-weight: 600;
+		color: #131416;
+	}
+
+	.tech-icon {
+		font-size: 1.5rem;
+	}
+
+	/* Contact section */
+	.contact-section {
+		background-color: white;
+		padding: 5rem 0;
+	}
+
+	.contact-container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 0 2rem;
+		text-align: center;
+	}
+
+	.contact-cta {
+		margin-top: 2rem;
+	}
+
+	.cta-button.primary {
+		background-color: #131416;
+		color: white;
+		font-size: 20px;
+		padding: 18px 36px;
+		margin-bottom: 1.5rem;
+		display: inline-block;
+		border-radius: 100px;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+	}
+
+	.cta-button.primary:hover {
+		transform: scale(1.05);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		background-color: #000000;
+	}
+
+	.contact-details p {
+		color: #131416;
+		margin: 0.5rem 0;
+	}
+
+	.contact-details a {
+		color: #131416;
+		text-decoration: underline;
+	}
+
+	/* Animations */
+	@keyframes float {
+		0%, 100% {
+			transform: translateY(0) rotate(12deg);
+		}
+		50% {
+			transform: translateY(-30px) rotate(15deg);
+		}
+	}
+
+	@keyframes float-delayed {
+		0%, 100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(30px);
+		}
+	}
+
+	.animate-float {
+		animation: float 6s ease-in-out infinite;
+	}
+
+	.animate-float-delayed {
+		animation: float-delayed 8s ease-in-out infinite;
+	}
+
+	/* Responsive design */
+	@media (max-width: 1024px) {
+		.hero-title {
+			font-size: 3rem;
+		}
+
+		.section-header h2 {
+			font-size: 2.5rem;
+		}
+
+		.demo-showcase {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.features-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.architecture-flow {
+			flex-direction: column;
+		}
+
+		.flow-arrow {
+			transform: rotate(90deg);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.nav-links {
+			display: none;
+		}
+
+		.hero-title {
+			font-size: 2.5rem;
+		}
+
+		.section-header h2 {
+			font-size: 2rem;
+		}
+
+		.tech-items {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.wormhole-container {
+			right: -30%;
+			width: 80%;
+			opacity: 0.5;
+		}
+
+		.hero-wrapper {
+			min-height: 500px;
+		}
+	}
+</style>
