@@ -20,20 +20,20 @@ import LatticeGraph from "../../components/LatticeGraph.tsx";
 					<div class="container mx-auto px-4 max-w-6xl">
 						<div class="text-left max-w-3xl">
 							<h1 class="hero-title">
-								AI-Powered
+								Knowledge Graph
 								<br />
-								Knowledge Graphs
+								for Claude Code
 							</h1>
 
 							<p class="hero-subtitle">
-								Lattice transforms markdown documentation into searchable knowledge graphs. Define entities in your docs, map relationships, and query with semantic search powered by Voyage AI.
+								Build a searchable knowledge base from your documentation. <strong>Uses your Claude Code subscription</strong> for entity extraction — no extra LLM API costs.
 							</p>
 
 							<div class="hero-cta">
 								<a href="https://github.com/zabaca/lattice" class="cta-button" target="_blank">
-									Explore Lattice
+									Get Started
 								</a>
-								<p class="cta-subtext">Open source • Built with FalkorDB and Voyage AI</p>
+								<p class="cta-subtext">5 minute setup • One container • Open source</p>
 							</div>
 						</div>
 					</div>
@@ -45,12 +45,12 @@ import LatticeGraph from "../../components/LatticeGraph.tsx";
 		<div class="features-section">
 			<div class="features-container">
 				<div class="section-header">
-					<h2>Knowledge Graph Features</h2>
-					<p>Transform your documentation into an intelligent, queryable knowledge base.</p>
+					<h2>Why Lattice?</h2>
+					<p>The simplest way to build a knowledge graph with Claude Code.</p>
 				</div>
 
 				<div class="features-grid">
-					<!-- Feature 1: Knowledge Graph Sync -->
+					<!-- Feature 1: Claude Code Integration -->
 					<div class="feature-card blue-card">
 						<div class="feature-header">
 							<div class="feature-icon">
@@ -61,28 +61,27 @@ import LatticeGraph from "../../components/LatticeGraph.tsx";
 									<path d="M12 12 L28 28 M28 12 L12 28" stroke="#00c2ff" stroke-width="1" opacity="0.5"/>
 								</svg>
 							</div>
-							<h3>🔄 Knowledge Graph Sync</h3>
+							<h3>🤖 Claude Code Integration</h3>
 						</div>
-						<p>Automatically sync entities and relationships from markdown frontmatter to a graph database.</p>
+						<p>Two commands: <code>/research</code> to create docs, <code>/graph-sync</code> to build your knowledge graph. That's it.</p>
 					</div>
 
-					<!-- Feature 2: Semantic Search -->
+					<!-- Feature 2: No Extra LLM Costs -->
 					<div class="feature-card pink-card">
 						<div class="feature-header">
 							<div class="feature-icon">
 								<svg viewBox="0 0 40 40" fill="none">
 									<rect width="40" height="40" rx="12" fill="white"/>
-									<circle cx="18" cy="18" r="8" stroke="#ff00b8" stroke-width="2" fill="none"/>
-									<path d="M26 26 L30 30" stroke="#ff00b8" stroke-width="2"/>
-									<circle cx="18" cy="18" r="3" fill="#ff00b8"/>
+									<circle cx="20" cy="20" r="10" stroke="#ff00b8" stroke-width="2" fill="none"/>
+									<text x="20" y="25" text-anchor="middle" fill="#ff00b8" font-size="14" font-weight="bold">$</text>
 								</svg>
 							</div>
-							<h3>🔍 Semantic Search</h3>
+							<h3>💰 No Extra LLM Costs</h3>
 						</div>
-						<p>AI-powered search using Voyage AI embeddings for intelligent document discovery.</p>
+						<p>Entity extraction uses your Claude Code subscription. No OpenAI key, no Anthropic API — you're already paying for it.</p>
 					</div>
 
-					<!-- Feature 3: Entity Extraction -->
+					<!-- Feature 3: Simple Setup -->
 					<div class="feature-card orange-card">
 						<div class="feature-header">
 							<div class="feature-icon">
@@ -93,9 +92,9 @@ import LatticeGraph from "../../components/LatticeGraph.tsx";
 									<circle cx="20" cy="12" r="1" fill="#ff843f"/>
 								</svg>
 							</div>
-							<h3>🏷️ Entity Extraction</h3>
+							<h3>⚡ 5 Minute Setup</h3>
 						</div>
-						<p>Define entities, concepts, and patterns directly in your documentation with typed relationships.</p>
+						<p>One container (FalkorDB), one API key (Voyage AI for embeddings). Install and start researching in minutes.</p>
 					</div>
 				</div>
 			</div>
@@ -105,8 +104,8 @@ import LatticeGraph from "../../components/LatticeGraph.tsx";
 		<div class="demo-section">
 			<div class="demo-container">
 				<div class="section-header">
-					<h2>See Knowledge Graphs in Action</h2>
-					<p>Watch how Lattice searches and connects your documentation</p>
+					<h2>The Claude Code Workflow</h2>
+					<p>Two commands. That's all you need.</p>
 				</div>
 
 				<div class="demo-showcase">
@@ -117,28 +116,31 @@ import LatticeGraph from "../../components/LatticeGraph.tsx";
 								<span class="dot yellow"></span>
 								<span class="dot green"></span>
 							</div>
-							<span class="terminal-title">lattice</span>
+							<span class="terminal-title">Claude Code</span>
 						</div>
 						<div class="terminal-content">
 							<div class="command-line">
-								<span class="prompt">$</span>
-								<span class="command">lattice search "knowledge graph patterns"</span>
+								<span class="prompt">></span>
+								<span class="command">/research "knowledge graph patterns"</span>
 							</div>
 							<div class="search-results">
-								<div class="result-item">
-									<span class="result-type">ENTITY</span>
-									<span class="result-text">docs/architecture/graph-design.md</span>
-									<span class="result-score">0.95</span>
+								<div class="result-item" style="border-left-color: #4ff37d;">
+									<span class="result-type" style="background: #4ff37d;">FOUND</span>
+									<span class="result-text">Found 3 related documents...</span>
 								</div>
-								<div class="result-item">
-									<span class="result-type">ENTITY</span>
-									<span class="result-text">docs/patterns/entity-extraction.md</span>
-									<span class="result-score">0.89</span>
+								<div class="result-item" style="border-left-color: #00f0ff;">
+									<span class="result-type" style="background: #00f0ff;">CREATE</span>
+									<span class="result-text">Created docs/patterns/graph-design.md</span>
 								</div>
-								<div class="result-item">
-									<span class="result-type">ENTITY</span>
-									<span class="result-text">docs/guides/semantic-search.md</span>
-									<span class="result-score">0.83</span>
+							</div>
+							<div class="command-line" style="margin-top: 1rem;">
+								<span class="prompt">></span>
+								<span class="command">/graph-sync</span>
+							</div>
+							<div class="search-results">
+								<div class="result-item" style="border-left-color: #9013fe;">
+									<span class="result-type" style="background: #9013fe;">SYNC</span>
+									<span class="result-text">Extracted 12 entities, synced to graph</span>
 								</div>
 							</div>
 						</div>
@@ -146,16 +148,16 @@ import LatticeGraph from "../../components/LatticeGraph.tsx";
 
 					<div class="demo-features">
 						<div class="feature-highlight">
-							<h4>🕸️ FalkorDB Backend</h4>
-							<p>High-performance graph database built on Redis for lightning-fast queries.</p>
+							<h4>📝 /research</h4>
+							<p>Search existing docs or create new research. Claude does the heavy lifting.</p>
 						</div>
 						<div class="feature-highlight">
-							<h4>🔗 Relationship Mapping</h4>
-							<p>Model connections between entities using typed relationships like USES, IMPLEMENTS, DEPENDS_ON.</p>
+							<h4>🔄 /graph-sync</h4>
+							<p>Extracts entities and builds your knowledge graph. Automatic and incremental.</p>
 						</div>
 						<div class="feature-highlight">
-							<h4>📄 Frontmatter Schema</h4>
-							<p>Define entities and relationships directly in YAML frontmatter.</p>
+							<h4>🔍 Semantic Search</h4>
+							<p>Query your knowledge base with natural language. Powered by Voyage AI embeddings.</p>
 						</div>
 					</div>
 				</div>
