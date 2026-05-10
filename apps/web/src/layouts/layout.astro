@@ -61,6 +61,29 @@ const {
 	</head>
 	<body>
 		<slot />
+		<footer class="zabaca-footer">
+			<div class="footer-container">
+				<div class="footer-brand">
+					<a href="/" class="footer-logo">Zabaca</a>
+					<p class="footer-company">A product of Zabaca LLC</p>
+				</div>
+				<div class="footer-contact">
+					<p class="footer-heading">Contact &amp; Support</p>
+					<p>
+						Questions or support requests:
+						<a href="mailto:hello@zabaca.com">hello@zabaca.com</a>
+					</p>
+					<p>
+						<a href="/press">Press</a>
+						<span class="footer-sep">·</span>
+						<a href="/careers">Careers</a>
+					</p>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>&copy; {new Date().getFullYear()} Zabaca LLC. All rights reserved.</p>
+			</div>
+		</footer>
 	</body>
 </html>
 
@@ -76,5 +99,65 @@ const {
 	code {
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 			Bitstream Vera Sans Mono, Courier New, monospace;
+	}
+
+	/* Global footer */
+	.zabaca-footer {
+		background-color: #131416;
+		color: #e5e7eb;
+		font-family: 'Fredoka', 'Inter', system-ui, sans-serif;
+		padding: 3rem 1.5rem 1.5rem;
+	}
+	.zabaca-footer a {
+		color: #4ff37d;
+		text-decoration: none;
+	}
+	.zabaca-footer a:hover {
+		text-decoration: underline;
+	}
+	.footer-container {
+		max-width: 1280px;
+		margin: 0 auto;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+	.footer-logo {
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: #ffffff !important;
+		letter-spacing: -0.03em;
+	}
+	.footer-company {
+		margin: 0.5rem 0 0;
+		font-size: 0.95rem;
+		color: #9ca3af;
+	}
+	.footer-heading {
+		font-weight: 600;
+		color: #ffffff;
+		margin: 0 0 0.5rem;
+	}
+	.footer-contact p {
+		margin: 0.25rem 0;
+		font-size: 0.95rem;
+	}
+	.footer-sep {
+		margin: 0 0.5rem;
+		color: #6b7280;
+	}
+	.footer-bottom {
+		max-width: 1280px;
+		margin: 2rem auto 0;
+		padding-top: 1.5rem;
+		border-top: 1px solid #2a2b2e;
+		font-size: 0.85rem;
+		color: #9ca3af;
+		text-align: center;
+	}
+	.footer-bottom p {
+		margin: 0;
 	}
 </style>
