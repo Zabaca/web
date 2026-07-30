@@ -11,6 +11,11 @@ decision_topic: project_structure
 # ADR-003: pnpm Workspace Monorepo Architecture
 
 ## Status
+**Superseded in part** - 2026-07-30. The monorepo shape (apps/ and packages/,
+one workspace, shared tooling) stands and is unchanged. The package manager is
+now **bun**, not pnpm: see ADR-005. Everything below is the original 2025-01-07
+record, kept as written.
+
 **Accepted** - 2025-01-07
 
 ## Context

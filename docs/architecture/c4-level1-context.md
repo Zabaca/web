@@ -2,7 +2,7 @@
 entity_type: Architecture
 component_type: infrastructure
 c4_layer: context
-technology_stack: ["Astro", "React", "TypeScript", "Tailwind CSS", "pnpm workspace"]
+technology_stack: ["Astro", "React", "TypeScript", "Tailwind CSS", "bun workspace"]
 status: active
 document_purpose: System context and external dependencies
 external_systems: ["CDNs", "Web browsers", "Analytics services", "PostHog", "GitHub", "Deployment platforms"]
