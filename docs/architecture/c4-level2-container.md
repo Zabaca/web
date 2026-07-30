@@ -2,7 +2,7 @@
 entity_type: Architecture
 component_type: system
 c4_layer: container
-technology_stack: ["Astro", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion", "Biome", "pnpm"]
+technology_stack: ["Astro", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion", "Biome", "bun"]
 status: active
 document_purpose: Container architecture and internal components
 containers: ["Astro Web Application", "Static Assets", "Content Management", "Analytics Integration"]
@@ -36,7 +36,7 @@ Monorepo architecture built around Astro static site generator with React compon
 - **Key Functions**: Event tracking, session recording, performance metrics
 
 ### **Development Toolchain**
-- **Technology**: pnpm workspace, TypeScript, Biome
+- **Technology**: bun workspace, TypeScript, Biome
 - **Purpose**: Build system, code quality, and development workflow
 - **Key Functions**: Dependency management, linting, formatting, type checking
 
@@ -53,7 +53,7 @@ C4Container
         Container(content_cms, "Content System", "Astro Collections + Markdown", "Manages structured content and press releases")
         Container(assets, "Static Assets", "File System + CDN", "Serves optimized images, fonts, and resources")
         Container(analytics, "Analytics Client", "PostHog JS", "Tracks user behavior and performance")
-        Container(toolchain, "Dev Toolchain", "pnpm + TypeScript + Biome", "Build system and code quality tools")
+        Container(toolchain, "Dev Toolchain", "bun + TypeScript + Biome", "Build system and code quality tools")
     }
     
     System_Ext(browsers, "Web Browsers", "Client rendering engines")

@@ -10,7 +10,7 @@
 		"astro": "astro",
 		"typecheck": "astro check",
 		"lint:tsc": "astro check",
-		"lint": "pnpm run lint:tsc && pnpm run check:fix",
+		"lint": "bun run lint:tsc && bun run check:fix",
 		"check": "biome check .",
 		"check:fix": "biome check --write .",
 		"format": "biome format --write .",

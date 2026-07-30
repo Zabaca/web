@@ -1,292 +1,102 @@
 # Workspace Documentation
 
-This document provides detailed information about the pnpm workspace setup and development workflows for the Zabaca Web monorepo.
+The bun workspace layout for the Zabaca Web monorepo, and the two things about
+it that are not obvious.
 
-## 📋 Table of Contents
+Most of what used to live here was a restatement of the pnpm manual. That is not
+worth maintaining: `bun --help` is more current than any copy of it. What follows
+is only what is specific to this repo.
 
-- [Workspace Overview](#workspace-overview)
-- [Project Structure](#project-structure)
-- [Package Management](#package-management)
-- [Development Workflows](#development-workflows)
-- [Adding New Packages](#adding-new-packages)
-- [Troubleshooting](#troubleshooting)
-
-## 🏗️ Workspace Overview
-
-This monorepo uses [pnpm workspaces](https://pnpm.io/workspaces) to manage multiple packages efficiently. The workspace configuration allows for:
-
-- **Shared Dependencies**: Common packages are hoisted to the root
-- **Cross-Package Dependencies**: Packages can depend on each other
-- **Unified Tooling**: Consistent linting, formatting, and build processes
-- **Efficient Storage**: pnpm's content-addressable storage reduces disk usage
-
-## 📁 Project Structure
+## Layout
 
 ```
 zabaca-web/
-├── package.json              # Root workspace configuration
-├── pnpm-workspace.yaml      # Workspace packages definition
-├── tsconfig.json            # Root TypeScript configuration
-├── .gitignore               # Monorepo gitignore rules
-├── README.md                # Main project documentation
-├── WORKSPACE.md             # This file
-├── apps/                    # Applications
-│   └── web/                 # Main Astro website
-│       ├── package.json     # App-specific dependencies
-│       ├── tsconfig.json    # Extends root config
-│       ├── astro.config.mjs # Astro configuration
-│       ├── tailwind.config.mjs
-│       ├── biome.json       # Code quality configuration
-│       ├── src/             # Source code
-│       ├── public/          # Static assets
-│       └── dist/            # Build output (ignored)
-└── packages/                # Shared packages (future)
+├── package.json              # workspaces: ["apps/*", "packages/*"]
+├── bun.lock                  # committed
+├── tsconfig.json             # root config, plus the paths mapping below
+├── zbc.config.ts             # zbc project + environments
+├── .sops.yaml                # age recipients for secrets.yaml
+├── apps/
+│   └── web/                  # the Astro site
+│       ├── astro.config.mjs
+│       ├── wrangler.jsonc    # Cloudflare Worker topology
+│       ├── biome.json
+│       ├── src/
+│       ├── public/
+│       └── dist/             # build output, gitignored
+└── packages/
+    └── infra/                # zbc modules + environment instances
 ```
 
-## 📦 Package Management
-
-### Workspace Configuration
-
-The workspace is defined in `pnpm-workspace.yaml`:
-
-```yaml
-packages:
-  - 'apps/*'
-  - 'packages/*'
-```
-
-### Dependencies
-
-- **Root Dependencies**: Shared development tools (TypeScript, etc.)
-- **App Dependencies**: App-specific packages in `apps/web/package.json`
-- **Package Dependencies**: Future shared packages in `packages/*/package.json`
-
-### Installing Dependencies
+## Everyday commands
 
 ```bash
-# Install all workspace dependencies
-pnpm install
-
-# Add dependency to specific package
-pnpm --filter web add react
-pnpm --filter web add -D @types/react
-
-# Add dependency to workspace root
-pnpm add -w typescript
-
-# Add dependency to all packages
-pnpm add lodash --filter="./packages/*"
+bun install                       # all workspace dependencies
+bun run dev                       # dev server on :4321
+bun run build                     # astro check && astro build
+bun run typecheck
+bun run lint                      # biome
+bun run --cwd apps/web <script>   # target one package directly
+bun add --cwd apps/web react      # add a dependency to one package
 ```
 
-### Dependency Management Best Practices
+## Gotcha: bun does not symlink these workspace packages
 
-1. **Shared Tools**: Install build tools, linters, and formatters at the root
-2. **App-Specific**: Keep app dependencies in their respective package.json
-3. **Version Consistency**: Use the same version of shared dependencies
-4. **Peer Dependencies**: Be mindful of peer dependency requirements
+`node_modules/@zabaca-web/` does not exist. Nothing in the tree declares a
+dependency on `@zabaca-web/infra`, so bun records it in `bun.lock` as a workspace
+but never links it, and `import { defineConfig } from '@zabaca-web/infra'` in
+`zbc.config.ts` fails to resolve on its own.
 
-## 🔧 Development Workflows
-
-### Starting Development
-
-```bash
-# Start development server for web app
-pnpm dev
-
-# Or target specific app
-pnpm --filter web dev
-```
-
-### Building
-
-```bash
-# Build all packages
-pnpm build
-
-# Build specific package
-pnpm --filter web build
-```
-
-### Code Quality
-
-```bash
-# Run TypeScript checks across workspace
-pnpm typecheck
-
-# Lint and format code
-pnpm lint
-pnpm format
-
-# Target specific package
-pnpm --filter web lint
-```
-
-### Cleaning
-
-```bash
-# Clean all build artifacts and node_modules
-pnpm clean
-
-# Clean specific package
-pnpm --filter web clean
-```
-
-### Running Scripts
-
-All scripts defined in the root `package.json` are workspace-aware:
+What makes it work is the mapping in the root `tsconfig.json`, which bun honours
+at runtime:
 
 ```json
-{
-  "scripts": {
-    "dev": "pnpm --filter web dev",
-    "build": "pnpm --filter web build",
-    "typecheck": "pnpm --filter web typecheck",
-    "lint": "pnpm --filter web lint"
-  }
+"paths": {
+  "@zabaca-web/*": ["./packages/*/src"]
 }
 ```
 
-## ➕ Adding New Packages
+Note it only covers the bare specifier. A subpath import
+(`@zabaca-web/infra/thing`) would mis-resolve to `./packages/infra/thing/src`.
+Nothing imports that way today; if something needs to, add an explicit entry
+rather than widening the glob.
 
-### Creating a New App
+## Gotcha: `bun run lint` cannot pass, and mutates source when it fails
 
-1. **Create directory structure**:
-   ```bash
-   mkdir apps/new-app
-   cd apps/new-app
-   ```
+**There is no clean state to get it into.** On a fresh clone that has never been
+built, `bun run lint` exits 1 with 40 errors, and because `lint` is wired to
+`biome check --write` it also rewrites 19 files under `apps/web/src` on its way
+out. Building first makes it worse rather than better: biome then also walks
+`apps/web/dist`, and the count goes to roughly 3,950.
 
-2. **Initialize package.json**:
-   ```json
-   {
-     "name": "@zabaca/new-app",
-     "version": "1.0.0",
-     "private": true,
-     "scripts": {
-       "dev": "...",
-       "build": "..."
-     }
-   }
-   ```
+So deleting `dist/` is not a workaround. It only takes you back to the 40.
 
-3. **Update root scripts** (if needed):
-   ```json
-   {
-     "scripts": {
-       "dev:new-app": "pnpm --filter new-app dev"
-     }
-   }
-   ```
+None of this is new. `apps/web/src` and `apps/web/biome.json` are byte-identical
+to `main`, so the same thing happens under pnpm; it is easy to miss only because
+nobody runs it. Use `bun run typecheck` as the pre-commit check instead, which is
+genuinely clean.
 
-### Creating a Shared Package
+Fixing it is two changes that belong together, and neither belongs in a deploy
+commit:
 
-1. **Create directory structure**:
-   ```bash
-   mkdir packages/shared-utils
-   cd packages/shared-utils
-   ```
+1. **Separate checking from changing.** `lint` should not be `--write`. A command
+   that edits your tree when it fails is not a check.
+2. **Make the ignores take effect.** `apps/web/biome.json` sets `"root": false`
+   while no biome config exists at the repo root. In biome 2.x a nested
+   `root: false` config expects a parent to inherit from, and without one,
+   `files.includes` and `vcs.useIgnoreFile` in that file do nothing. Both were
+   tried here and neither worked; the fix is at the root config, not in that file.
 
-2. **Initialize package.json**:
-   ```json
-   {
-     "name": "@zabaca/shared-utils",
-     "version": "1.0.0",
-     "main": "dist/index.js",
-     "types": "dist/index.d.ts",
-     "scripts": {
-       "build": "tsc",
-       "dev": "tsc --watch"
-     }
-   }
-   ```
+## Adding a package
 
-3. **Add TypeScript configuration**:
-   ```json
-   {
-     "extends": "../../tsconfig.json",
-     "compilerOptions": {
-       "outDir": "dist",
-       "declaration": true
-     },
-     "include": ["src/**/*"]
-   }
-   ```
+Create `packages/<name>/` with a `package.json` named `@zabaca-web/<name>` and a
+`src/index.ts`, then `bun install`. The tsconfig mapping above already covers it,
+so no config change is needed. A package that other packages actually depend on
+should be listed in their `dependencies` as `"@zabaca-web/<name>": "workspace:*"`,
+which is also what gets it symlinked.
 
-4. **Use in other packages**:
-   ```bash
-   pnpm --filter web add @zabaca/shared-utils
-   ```
+## Deployment
 
-## 🔍 Troubleshooting
-
-### Common Issues
-
-1. **Dependency Resolution Issues**
-   ```bash
-   # Clear node_modules and reinstall
-   pnpm clean
-   pnpm install
-   ```
-
-2. **TypeScript Errors**
-   ```bash
-   # Check TypeScript configuration
-   pnpm typecheck
-   
-   # Rebuild TypeScript references
-   pnpm --filter "*" run build
-   ```
-
-3. **Workspace Detection Issues**
-   ```bash
-   # Verify workspace configuration
-   pnpm list --depth=0
-   
-   # Check workspace packages
-   pnpm -r list
-   ```
-
-4. **Build Issues**
-   ```bash
-   # Clean and rebuild everything
-   pnpm clean
-   pnpm install
-   pnpm build
-   ```
-
-### Debugging Commands
-
-```bash
-# List all workspace packages
-pnpm list --depth=0
-
-# Show dependency tree
-pnpm list --depth=2
-
-# Check outdated dependencies
-pnpm outdated
-
-# Verify workspace setup
-pnpm why <package-name>
-
-# Run command in all packages
-pnpm -r exec <command>
-```
-
-### Performance Tips
-
-1. **Use Filters**: Target specific packages to speed up operations
-2. **Parallel Execution**: pnpm runs compatible scripts in parallel
-3. **Caching**: pnpm caches dependencies and build outputs
-4. **Selective Install**: Use `--filter` to install dependencies for specific packages
-
-## 📚 References
-
-- [pnpm Workspaces Documentation](https://pnpm.io/workspaces)
-- [pnpm CLI Reference](https://pnpm.io/cli/add)
-- [TypeScript Project References](https://www.typescriptlang.org/docs/handbook/project-references.html)
-- [Monorepo Best Practices](https://monorepo.tools/)
-
----
-
-**Need Help?** Check the main [README.md](./README.md) or create an issue in the repository.
+See the Deployment section of [README.md](./README.md). Short version:
+`bunx @zabaca/zbc apply production` builds `apps/web/dist` and ships it as a
+Cloudflare Worker; www.zabaca.com is still on Netlify until the DNS cutover.

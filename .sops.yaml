@@ -1,0 +1,10 @@
+# age recipients able to decrypt this repo's secrets.
+#
+# Only James's operator machine for now. Deploys run from his laptop
+# (`bunx @zabaca/zbc apply production`), so there is no CI key to add yet.
+# When CI deploys land, generate a key for the runner, add its public key here,
+# store the private half as the SOPS_AGE_KEY Actions secret, and run
+# `sops updatekeys packages/infra/environments/<env>/secrets.yaml`.
+creation_rules:
+  - age: >-
+      age1cq0k9s88fmx7kkaqqvuf290lelyt8gkeglwvsd2r3ezuqyla7aps7x4q2j
