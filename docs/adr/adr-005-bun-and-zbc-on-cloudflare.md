@@ -34,26 +34,30 @@ bun. That is what couples the two decisions: adopting zbc means adopting bun.
 1. Convert the workspace from pnpm to **bun**. `bun.lock` is committed.
 2. Deploy via **zbc** to a Cloudflare Worker: `apps/web/wrangler.jsonc` holds the
    Worker topology, `packages/infra/environments/production/web.ts` the instance.
-   The site is static, so it ships as an assets-only Worker with no script.
+   The site is static, so it is a Worker serving static assets, plus a small
+   script whose only job is redirecting the apex to www.
 3. Secrets live in `packages/infra/environments/<env>/secrets.yaml`, sops-encrypted
    to age recipients in `.sops.yaml`.
-4. **DNS is a separate decision.** This ADR moves the build and the host, not the
-   records. `www.zabaca.com` stays on Netlify until the CNAME is deliberately
-   flipped.
+4. **DNS was a separate step**, deliberately. This ADR was merged with the records
+   untouched so the Worker could be compared against the live Netlify site first.
+   The cutover followed on 2026-07-30: see
+   [the runbook](../runbooks/dns-cutover-zabaca.md).
 
 ## Rationale
 - The deploy becomes a file in the repo instead of a setting in a dashboard, so it
   is reviewable and reproducible.
 - One account holds the zone, the Worker, and the rest of Zabaca's infrastructure,
   and one CLI applies all of it.
-- Splitting the DNS flip out makes the cutover a one-record change with an instant
-  rollback. The zone carries James's primary business email, so a reversible step
-  is worth more than a fast one.
+- Splitting the DNS flip out made the cutover two records with an instant rollback
+  to a Netlify site that still exists. The zone carries James's primary business
+  email, so a reversible step is worth more than a fast one.
 
 ## Consequences
 ### Positive
 - Deploys are declarative, versioned, and reviewable.
-- Netlify leaves the picture entirely once DNS flips.
+- Netlify no longer serves the site. It is not gone from the account, though:
+  `stiqr.zabaca.com` is still a Netlify site, so closing that account is separate
+  work.
 - bun aligns this repo with every other Zabaca repo.
 
 ### Trade-offs

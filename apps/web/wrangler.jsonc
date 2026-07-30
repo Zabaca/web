@@ -1,29 +1,45 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	// Astro static site (no SSR): a Workers static-assets deployment with no
-	// worker script, so the edge serves ./dist directly. `bun run build`
+	// Astro static site (no SSR). The edge serves ./dist; the Worker in
+	// worker/index.ts exists only to redirect the apex to www. `bun run build`
 	// (astro check && astro build) emits dist/.
 	//
-	// Lands on zabaca-web.<subdomain>.workers.dev. No custom domain yet on
-	// purpose: www.zabaca.com is still served by Netlify, and the DNS flip is a
-	// separate, deliberate step once this URL has been compared against the live
-	// site. Adding "routes"/"custom_domain" here is what makes the cutover, and
-	// it belongs in its own change.
+	// This is the live site: www.zabaca.com and zabaca.com both resolve here as
+	// Worker custom domains, which is what replaced Netlify. It also stays
+	// reachable at zabaca-web.<subdomain>.workers.dev.
 	"name": "zabaca-web",
+	"main": "worker/index.ts",
 	"compatibility_date": "2025-11-01",
+	// Keep the workers.dev URL alive alongside the custom domains. Declaring any
+	// route turns it off by default, and it is the staging URL used to compare a
+	// build against production before pointing a domain at it.
+	"workers_dev": true,
+	// custom_domain makes wrangler own the DNS record for each hostname, so the
+	// binding between site and domain is this file rather than a dashboard
+	// setting. Rollback is documented in docs/runbooks/dns-cutover-zabaca.md.
+	"routes": [
+		{ "pattern": "www.zabaca.com", "custom_domain": true },
+		{ "pattern": "zabaca.com", "custom_domain": true }
+	],
 	"assets": {
 		"directory": "./dist",
+		"binding": "ASSETS",
+		// Every request runs the Worker first. Required for the apex redirect: by
+		// default a matching asset is served before the Worker runs, so the apex
+		// would serve the site rather than redirect. See worker/index.ts.
+		"run_worker_first": true,
 		// Netlify serves /about for /about/index.html and redirects /about to
 		// /about/. auto-trailing-slash canonicalizes the same direction, so no URL
-		// that is currently indexed changes shape when the site moves.
+		// that is currently indexed changes shape.
 		//
-		// Not identical, though: Cloudflare issues a 307 where Netlify issues a 301.
-		// The destination is the same and the canonical tags agree, but a 307 is
-		// non-cacheable and carries no permanence signal. Worth watching in Search
-		// Console after the DNS cutover; not worth a Worker script to fix before it.
-		// The site has no 404.astro, so there is no page to serve; Netlify's
-		// current 404 is its own generic one. Leave the edge default (a plain 404)
-		// rather than pointing at a file that does not exist.
+		// Not identical, though: Cloudflare issues a 307 where Netlify issued a 301.
+		// Same destination and the canonical tags agree, but a 307 is non-cacheable
+		// and carries no permanence signal. Watch Search Console; the fix, if it
+		// ever needs one, is a redirect in the Worker.
+		//
+		// The site has no 404.astro, so there is no page to serve on a miss. Leave
+		// the edge default (a plain 404) rather than pointing at a file that does
+		// not exist.
 		"html_handling": "auto-trailing-slash"
 	}
 }
