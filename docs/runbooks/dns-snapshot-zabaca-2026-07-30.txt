@@ -1,0 +1,27 @@
+# zabaca.com DNS, snapshot taken immediately before the Cloudflare cutover
+#
+# 15 records. The cutover changes exactly two of them: the apex A and the www
+# CNAME. Everything else, in particular MX, SPF, DKIM and DMARC, is untouched.
+# To roll back, restore the two records marked CUTOVER below to these values
+# with proxied=false.
+#
+# TTLs are deliberately not captured here. Both records were on Cloudflare's
+# default, and the rollback example in dns-cutover-zabaca.md picks 300 rather
+# than restoring an original: a short TTL is what you want while rolling back
+# anyway. Nothing else in this file depends on it.
+
+A      zabaca.com                       proxied=false 75.2.60.5  # CUTOVER
+CNAME  health.zabaca.com                proxied=false 092cefca4a6ad05d.vercel-dns-017.com
+CNAME  m.zabaca.com                     proxied=false fa7ae13af6ba6d5cd35f.cf-prod-us-proxy.proxyhog.com
+CNAME  stiqr.zabaca.com                 proxied=true  stiqr.netlify.app
+CNAME  www.zabaca.com                   proxied=false zabaca.netlify.app  # CUTOVER
+MX     send.zabaca.com                  proxied=false feedback-smtp.us-east-1.amazonses.com
+MX     zabaca.com                       proxied=false smtp.google.com
+NS     ddns.zabaca.com                  proxied=false ns2.dynip.dev
+NS     ddns.zabaca.com                  proxied=false ns1.dynip.dev
+TXT    _dmarc.zabaca.com                proxied=false "v=DMARC1; p=none; rua=mailto:info@zabaca.com"
+TXT    google._domainkey.zabaca.com     proxied=false "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA563ElnFcjhQVGaA4TVNrSD0gLDWv7aE2+EA1nJlE5z1bDhVYc2YSMZpAntFoZ5Y7ISUmC30wdmTT3sH16PCpnPGJOhL5alOoNWO1TcmVHP9EBIYM3gijrECwu+dbngD1D7iHQ3oSPY0aJ4QP6VOGi0SPDZ2iDeiasLHa4DsAQtgm81tEde6xJft6znFMYKcpg" "AkC1bDgQAMcEl4gMM7JnVYHMsFWFwSQZZx/8X5C9f5TzcKHkdDMxIZFZaLPrHlwWMstiVh31LgG2oU+I9E0c93LrwkiEKk85gb4hGBQ0xpACzphkf3gS1SimmXJUCiND9x9SkbOnwipSHzvWb5o3wIDAQAB"
+TXT    resend._domainkey.zabaca.com     proxied=false "p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCzPuYCK1QaGWP79mGPEeEMHjFUgwkwXJued0U266+YDulVDjSuves6w1GBCo6iYWL89ySNdZ3f77X8ygkpUGhjTcKirasdU7/w9Qn9M8uRTkO5xlV1NA6loULRepdZXJGiUoCC6fhpC5Uvf+Bukh8C49m99RvprGvHPOCPfaqclwIDAQAB"
+TXT    send.zabaca.com                  proxied=false "v=spf1 include:amazonses.com ~all"
+TXT    zabaca.com                       proxied=false "v=spf1 include:_spf.google.com ~all"
+TXT    zabaca.com                       proxied=false "google-site-verification=tgCds1AZvjcumSPHM1c_uzYa6weRGbtLvUVNO-Ldut0"

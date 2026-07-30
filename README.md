@@ -138,7 +138,7 @@ This project uses bun workspaces for monorepo management:
 ## 🚀 Deployment
 
 Deploys go through [zbc](https://www.npmjs.com/package/@zabaca/zbc), which builds
-`apps/web/dist` locally and ships it as an assets-only Cloudflare Worker. The
+`apps/web/dist` locally and ships it as a Cloudflare Worker (static assets, plus a small script that redirects the apex to www). The
 topology lives in `apps/web/wrangler.jsonc`, the instance in
 `packages/infra/environments/production/web.ts`.
 
@@ -146,13 +146,8 @@ topology lives in `apps/web/wrangler.jsonc`, the instance in
 bunx @zabaca/zbc apply production
 ```
 
-It lands on `zabaca-web.james-99a.workers.dev`.
-
-**www.zabaca.com is still served by Netlify** (a dashboard git integration that
-predates this setup and is described nowhere in this repo). The DNS cutover is a
-deliberate separate step: point the `www` CNAME and the apex at the Worker, and
-roll back by putting the Netlify records back. Until then the Worker is a
-staging copy to compare against the live site.
+It serves www.zabaca.com and zabaca.com, and stays reachable at
+`zabaca-web.james-99a.workers.dev` for comparing a build before it goes live.
 
 There is no CI deploy. Applies run from the operator's machine, which is why
 `.sops.yaml` has one recipient and no CI key.

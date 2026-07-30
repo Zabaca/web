@@ -5,10 +5,10 @@
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro check && astro build",
+		"build": "astro check && tsc -p worker/tsconfig.json && astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"typecheck": "astro check",
+		"typecheck": "astro check && tsc -p worker/tsconfig.json",
 		"lint:tsc": "astro check",
 		"lint": "bun run lint:tsc && bun run check:fix",
 		"check": "biome check .",
@@ -44,6 +44,7 @@
 	"devDependencies": {
 		"@astrojs/check": "^0.9.4",
 		"@biomejs/biome": "^2.2.0",
+		"@cloudflare/workers-types": "^5.20260730.1",
 		"@types/node": "^22.10.7",
 		"tw-animate-css": "^1.3.6"
 	}
