@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Astro static site (no SSR): a Workers static-assets deployment with no
+  // worker script, so the edge serves ./dist directly. `bun run build`
+  // (astro check && astro build) emits dist/.
+  //
+  // Lands on zabaca-web.<subdomain>.workers.dev. No custom domain yet on
+  // purpose: www.zabaca.com is still served by Netlify, and the DNS flip is a
+  // separate, deliberate step once this URL has been compared against the live
+  // site. Adding "routes"/"custom_domain" here is what makes the cutover, and
+  // it belongs in its own change.
+  "name": "zabaca-web",
+  "compatibility_date": "2025-11-01",
+  "assets": {
+    "directory": "./dist",
+    // Netlify serves /about for /about/index.html and 301s the trailing slash.
+    // auto-trailing-slash keeps that behaviour, so no URL that is currently
+    // indexed changes shape when the site moves.
+    // The site has no 404.astro, so there is no page to serve; Netlify's
+    // current 404 is its own generic one. Leave the edge default (a plain 404)
+    // rather than pointing at a file that does not exist.
+    "html_handling": "auto-trailing-slash"
+  }
+}

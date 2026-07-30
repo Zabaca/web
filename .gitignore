@@ -169,10 +169,10 @@ packages/**/build/
 *.backup
 *.bak
 
-# Lock files (keep pnpm-lock.yaml for reproducible builds)
+# Lock files (bun.lock is committed for reproducible builds)
 package-lock.json
 yarn.lock
-bun.lockb
+pnpm-lock.yaml
 
 # Test coverage
 coverage/
