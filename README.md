@@ -162,7 +162,9 @@ There is no CI deploy. Applies run from the operator's machine, which is why
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Make your changes
-4. Ensure all checks pass (`bun run typecheck && bun run lint`)
+4. Ensure `bun run typecheck` and `bun run build` pass. Do **not** use
+   `bun run lint` as a gate: it cannot currently pass, and it edits your source
+   files when it fails. See the gotcha in [WORKSPACE.md](./WORKSPACE.md).
 5. Commit your changes (`git commit -m 'Add amazing feature'`)
 6. Push to the branch (`git push origin feature/amazing-feature`)
 7. Open a Pull Request

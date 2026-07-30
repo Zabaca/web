@@ -61,19 +61,31 @@ Note it only covers the bare specifier. A subpath import
 Nothing imports that way today; if something needs to, add an explicit entry
 rather than widening the glob.
 
-## Gotcha: `bun run lint` fails after a build
+## Gotcha: `bun run lint` cannot pass, and mutates source when it fails
 
-Biome walks `apps/web/dist`, so once you have built, `bun run lint` reports a few
-thousand errors in minified build output and exits non-zero. Delete `dist/` and it
-passes. This predates the bun conversion: the same thing happens on `main` with
-pnpm, it is just easy to miss because a fresh clone has no `dist` to walk.
+**There is no clean state to get it into.** On a fresh clone that has never been
+built, `bun run lint` exits 1 with 40 errors, and because `lint` is wired to
+`biome check --write` it also rewrites 19 files under `apps/web/src` on its way
+out. Building first makes it worse rather than better: biome then also walks
+`apps/web/dist`, and the count goes to roughly 3,950.
 
-Worse, `lint` is wired to `biome check --write`, so a failing run also rewrites
-source files as a side effect. Two things need fixing together: an ignore for
-`dist` that biome actually honours (`files.includes` and `vcs.useIgnoreFile` were
-both tried and neither took effect from the nested `"root": false` config), and
-splitting the mutating fix step out of `lint` so checking is not the same verb as
-changing. Not attempted here because it is unrelated to the deploy work.
+So deleting `dist/` is not a workaround. It only takes you back to the 40.
+
+None of this is new. `apps/web/src` and `apps/web/biome.json` are byte-identical
+to `main`, so the same thing happens under pnpm; it is easy to miss only because
+nobody runs it. Use `bun run typecheck` as the pre-commit check instead, which is
+genuinely clean.
+
+Fixing it is two changes that belong together, and neither belongs in a deploy
+commit:
+
+1. **Separate checking from changing.** `lint` should not be `--write`. A command
+   that edits your tree when it fails is not a check.
+2. **Make the ignores take effect.** `apps/web/biome.json` sets `"root": false`
+   while no biome config exists at the repo root. In biome 2.x a nested
+   `root: false` config expects a parent to inherit from, and without one,
+   `files.includes` and `vcs.useIgnoreFile` in that file do nothing. Both were
+   tried here and neither worked; the fix is at the root config, not in that file.
 
 ## Adding a package
 

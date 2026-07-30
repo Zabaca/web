@@ -1,10 +1,10 @@
 ---
 entity_type: ArchitectureDecision
 decision_title: "pnpm Workspace Monorepo Architecture"
-status: accepted
+status: superseded-in-part
 decision_date: "2025-01-07"
 impact_scope: system-wide
-technology_stack: ["pnpm", "Workspaces", "TypeScript", "Monorepo"]
+technology_stack: ["bun", "Workspaces", "TypeScript", "Monorepo"]
 decision_topic: project_structure
 ---
 
