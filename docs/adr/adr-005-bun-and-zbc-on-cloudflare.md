@@ -72,6 +72,10 @@ bun. That is what couples the two decisions: adopting zbc means adopting bun.
   WORKSPACE.md.
 
 ## Review Criteria
-Revisit if the site needs SSR or per-request logic (the assets-only Worker gains a
-`main`), if deploys need to run in CI, or if the 307 canonicalization measurably
+Revisit if deploys need to run in CI, or if the 307 canonicalization measurably
 costs search ranking.
+
+The "needs per-request logic" trigger has already fired: the 2026-07-30 cutover
+gave the Worker a `main` so the apex could redirect to www. That does not reopen
+this decision, but it does mean the next such request is an incremental change
+rather than a new one.

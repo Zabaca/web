@@ -4,6 +4,11 @@
 # CNAME. Everything else, in particular MX, SPF, DKIM and DMARC, is untouched.
 # To roll back, restore the two records marked CUTOVER below to these values
 # with proxied=false.
+#
+# TTLs are deliberately not captured here. Both records were on Cloudflare's
+# default, and the rollback example in dns-cutover-zabaca.md picks 300 rather
+# than restoring an original: a short TTL is what you want while rolling back
+# anyway. Nothing else in this file depends on it.
 
 A      zabaca.com                       proxied=false 75.2.60.5  # CUTOVER
 CNAME  health.zabaca.com                proxied=false 092cefca4a6ad05d.vercel-dns-017.com
