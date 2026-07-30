@@ -106,10 +106,31 @@ Do not conclude the cutover failed from an un-pinned `curl`.
 
 ## Rolling back
 
-Restore the two records to the values in the snapshot, unproxied, and remove the
-`routes` block from `apps/web/wrangler.jsonc` so the next apply does not recreate
-them. The Netlify site is not deleted by this change and keeps serving at
-`zabaca.netlify.app`, so rollback is a DNS change only, with no rebuild.
+**Detach the custom domain first.** This is the step that is easy to miss under
+pressure, and it is the mirror image of the gotcha above: the hostname no longer
+holds an ordinary DNS record, it holds a Workers-managed `AAAA` placeholder at
+`100::`. You cannot write an A or CNAME over that while the Worker still claims
+the hostname. Order per hostname:
+
+```bash
+# 1. find the attachment, then remove it
+curl -s ".../accounts/$ACCOUNT/workers/domains?zone_id=$ZONE&hostname=$H" \
+  -H "Authorization: Bearer $TOKEN"
+curl -X DELETE ".../accounts/$ACCOUNT/workers/domains/$DOMAIN_ID" \
+  -H "Authorization: Bearer $TOKEN"
+# 2. recreate the original record from the snapshot, proxied=false
+curl -X POST ".../zones/$ZONE/dns_records" -H "Authorization: Bearer $TOKEN" \
+  -d '{"type":"CNAME","name":"www","content":"zabaca.netlify.app","proxied":false,"ttl":300}'
+```
+
+Then remove the `routes` block from `apps/web/wrangler.jsonc` so the next apply
+does not recreate the attachment. The Netlify site is not deleted by this change
+and keeps serving at `zabaca.netlify.app` (verified still 200), so rollback is a
+DNS change only, with no rebuild.
+
+The detach ordering is reasoned from how the forward direction behaved, not
+tested: testing it would mean taking the live site down. If you are rolling back
+for real, do the apex first, exactly as on the way in.
 
 Do not delete the Netlify site until the Cloudflare version has served real
 traffic for a while. It is the rollback target.

@@ -99,4 +99,9 @@ which is also what gets it symlinked.
 
 See the Deployment section of [README.md](./README.md). Short version:
 `bunx @zabaca/zbc apply production` builds `apps/web/dist` and ships it as a
-Cloudflare Worker; www.zabaca.com is still on Netlify until the DNS cutover.
+Cloudflare Worker.
+
+**That command publishes the live company site.** Since the 2026-07-30 cutover,
+www.zabaca.com and zabaca.com both resolve to that Worker, and there is no
+staging environment in between. The workers.dev URL serves the same deployment,
+so use it to compare a build, not as a safety net.

@@ -1,0 +1,22 @@
+{
+	// The Worker gets its own tsconfig because its globals are not the browser's.
+	// Folding @cloudflare/workers-types into the Astro config would put Workers
+	// runtime types in scope for every React component, where they conflict with
+	// the DOM lib. Two small configs beat one config that lies to both.
+	//
+	// `astro check` only looks at src/**, so without this file worker/index.ts is
+	// typechecked by nothing at all: wrangler bundles it through esbuild, which
+	// strips types without checking them.
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"lib": ["esnext"],
+		"types": ["@cloudflare/workers-types"],
+		"strict": true,
+		"noEmit": true,
+		"skipLibCheck": true,
+		"isolatedModules": true
+	},
+	"include": ["**/*.ts"]
+}
