@@ -41,5 +41,23 @@
 		// the edge default (a plain 404) rather than pointing at a file that does
 		// not exist.
 		"html_handling": "auto-trailing-slash"
-	}
+	},
+	// Backs /web-contract: one row per client agreement link plus its
+	// countersignature. Provisioned by packages/infra/environments/production/
+	// web-contracts-db.ts. Schema in ./migrations, applied with `bun run db:migrate`,
+	// which is a manual step: nothing sequences it against deploy, so migrate BEFORE
+	// applying or /api/contract returns 500 until you do.
+	//
+	// database_id is COPIED BY HAND from that module's apply output, not resolved
+	// from it. The cloudflare module has no D1 binding resolver, so nothing keeps
+	// these two in sync. If the database is ever destroyed and re-applied, a new
+	// uuid is minted and this line has to be updated or the worker binds nothing.
+	"d1_databases": [
+		{
+			"binding": "CONTRACTS",
+			"database_name": "zabaca-contracts",
+			"database_id": "137ecea6-b84c-445d-9cf0-93f77f9eebce",
+			"migrations_dir": "migrations"
+		}
+	]
 }
