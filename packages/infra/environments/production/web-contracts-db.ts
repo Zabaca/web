@@ -4,9 +4,10 @@ import { d1Module } from '../../modules/d1'
 // minted for and, once they accept, their countersignature.
 //
 // The agreement TEXT is deliberately not in here. It lives in the Astro page, in
-// git, and the signature row stores a SHA-256 of the exact text the signer saw.
-// That hash is the whole point: without it, editing the page later would silently
-// change what someone already agreed to, and the record would be decorative.
+// git, and the signature row stores a SHA-256 of the text the signer's browser
+// rendered. That hash is a drift detector, not evidence: the client computes and
+// sends it, and nothing recomputes it. Storing the rendered text itself, or the
+// deployed commit sha, would do more for record integrity than the hash does.
 //
 // database_id lands in apps/web/wrangler.jsonc's d1_databases binding, same shape
 // as foothill-inbox's AUTH_DB.

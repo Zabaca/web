@@ -11,6 +11,12 @@ export interface Props {
 	 * (client agreements), where unguessable is the access control and indexing
 	 * would defeat it. Pair with an exclusion in astro.config.mjs's sitemap(). */
 	noindex?: boolean;
+	/** Render the PostHog snippet. Default on. Turn it OFF for any page whose URL
+	 * carries a secret: PostHog's default pageview captures window.location.href
+	 * verbatim as $current_url and persists it, so a page reached by a private
+	 * link would ship that link to a third party on every view. Separate from
+	 * `noindex` on purpose, since a page can be unlisted without being secret. */
+	analytics?: boolean;
 }
 
 const {
@@ -18,7 +24,8 @@ const {
 	description = "Zabaca builds AI-powered tools for the future of work.",
 	canonicalUrl,
 	ogImage,
-	noindex = false
+	noindex = false,
+	analytics = true
 } = Astro.props;
 ---
 
@@ -62,8 +69,8 @@ const {
 			}
 		</style>
 		
-		<!-- PostHog Analytics -->
-		<PostHog />
+		<!-- PostHog Analytics. Suppressed on secret-URL pages; see the `analytics` prop. -->
+		{analytics && <PostHog />}
 	</head>
 	<body>
 		<slot />

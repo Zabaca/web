@@ -18,6 +18,7 @@ import Layout from "../layouts/layout.astro";
 	title="Services Agreement - Zabaca"
 	description="Client services agreement."
 	noindex
+	analytics={false}
 >
 	<main class="contract-page">
 		<div class="contract-shell">
@@ -31,10 +32,14 @@ import Layout from "../layouts/layout.astro";
 				</header>
 
 				<!-- Everything inside #agreement is fingerprinted (SHA-256 of its
-				     normalized text) and stored with the signature. Editing any word in
-				     here after someone signs makes the stored hash stop matching, which
-				     is the point: it is what stops the page quietly becoming a different
-				     agreement than the one that was accepted. -->
+				     normalized text) and stored with the signature, so an edit made after
+				     someone signs is detectable.
+				     Be honest about how strong that is. The hash is computed and sent by
+				     the CLIENT, the server only checks it is 64 hex characters, and nothing
+				     in this repo ever recomputes it. Zabaca controls the page, the database,
+				     and the row. So it catches accidental drift, which is worth having. It
+				     is not dispute-grade evidence, and it does not cover the "Prepared for"
+				     line, which sits outside this element. -->
 				<section id="agreement">
 					<p>
 						<strong>Between:</strong> Zabaca LLC, a California limited liability
@@ -249,7 +254,16 @@ import Layout from "../layouts/layout.astro";
 							you a receipt each month. You can update the card or cancel any time,
 							and there is no minimum term.
 						</p>
-						<a id="pay-link" class="pay-btn" href="#" rel="noopener">Set up payment</a>
+						<!-- referrerpolicy is load-bearing, not hygiene: without it the browser
+						     sends Referer: .../web-contract?t=<token> to Stripe, handing the
+						     signing secret to a third party the moment anyone clicks pay. -->
+						<a
+							id="pay-link"
+							class="pay-btn"
+							href="#"
+							referrerpolicy="no-referrer"
+							rel="noopener noreferrer">Set up payment</a
+						>
 					</div>
 
 					<p class="retain">
@@ -270,6 +284,9 @@ import Layout from "../layouts/layout.astro";
 	// A hosted link rather than a Checkout Session built here, so zabaca.com holds
 	// no Stripe credential and there is no webhook to keep alive for one client.
 	const PAY_LINK = "https://buy.stripe.com/14A3cvadYcc6fM00yS2B203";
+
+	/** The one agreement this page renders. Checked against the token's row. */
+	const SLUG = "lee-and-co";
 
 	const el = (id: string) => document.getElementById(id) as HTMLElement;
 	const stateEl = el("state");
@@ -324,6 +341,13 @@ import Layout from "../layouts/layout.astro";
 		if (!res.ok) return fail("This signing link is not valid.");
 		const data = await res.json();
 
+		// This page renders exactly one agreement. A link minted with a different
+		// slug must NOT quietly render this one and record a signature against it:
+		// that is a wrong-agreement-signed footgun on a legal record.
+		if (data.contractSlug !== SLUG) {
+			return fail("This link points at a different agreement. Ask for a new one.");
+		}
+
 		contractId = data.contractId ?? null;
 		el("client-name").textContent = data.clientEntity ?? data.clientName;
 		stateEl.hidden = true;
@@ -357,13 +381,18 @@ import Layout from "../layouts/layout.astro";
 		});
 		const data = await res.json();
 		// 409 means someone already signed it, which is a state to render, not an error.
-		if (res.ok || data.alreadySigned) return renderSigned(data.signed);
+		if (res.ok || data.alreadySigned) {
+			contractId = data.contractId ?? contractId;
+			return renderSigned(data.signed);
+		}
 		errEl.textContent = data.error ?? "Could not record the signature.";
 		errEl.hidden = false;
 		syncButton();
 	});
 
-	load();
+	// Without the catch, a network failure leaves "Loading agreement..." on screen
+	// forever and the client has no idea whether to wait or call.
+	load().catch(() => fail("Could not load the agreement. Please reload the page."));
 </script>
 
 <style>

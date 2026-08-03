@@ -2,15 +2,23 @@ import { z } from 'zod'
 import { defineModule } from '../../src/define-module'
 
 /**
- * d1 — provisions a Cloudflare D1 database via the REST API (turso-style:
- * token from ctx.secrets, idempotent list→create, console.log progress).
+ * d1: provisions a Cloudflare D1 database via the REST API (turso-style, token
+ * from ctx.secrets, idempotent list-then-create, console.log progress).
  *
- * Exists so bucket lifecycle is owned by infra instead of being a side effect
- * of `wrangler deploy` prompting to create a missing bucket. A worker wires
- * the bucket in through the cloudflare module's a d1_databases binding in wrangler.jsonc (database_id from this module's output), typically
- * as a `{ binding, from, output }` reference into this instance's outputs.
+ * Exists so database lifecycle is owned by infra instead of being a side effect
+ * of someone running `wrangler d1 create` by hand.
  *
- * Token scope: CLOUDFLARE_API_TOKEN needs Account → D1: Edit.
+ * ⚠️ THE BINDING IS NOT WIRED FROM THIS MODULE'S OUTPUT. Unlike r2, the
+ * cloudflare module implements no D1 binding resolver, so there is no
+ * `{ binding, from, output }` reference to declare. A consumer copies the
+ * `databaseId` printed on apply into its own wrangler.jsonc `d1_databases`
+ * entry by hand. That means the two are UNLINKED: destroy and re-apply this
+ * instance and it mints a fresh uuid while wrangler.jsonc keeps the dead one,
+ * and the worker binds a database that no longer exists. Re-copy the id after
+ * any destroy. Closing this properly means a D1 resolver in the cloudflare
+ * module, upstream in zbc.
+ *
+ * Token scope: CLOUDFLARE_API_TOKEN needs Account to D1: Edit.
  */
 
 const API = 'https://api.cloudflare.com/client/v4'
@@ -58,9 +66,9 @@ async function cfFetch<T>(
 export const d1Module = defineModule({
   name: 'd1',
   configSchema: z.object({
-    /** Cloudflare account id (not a secret — it's in the dashboard URL). */
+    /** Cloudflare account id (not a secret, it is in the dashboard URL). */
     accountId: z.string(),
-    /** Database name — account-scoped, namespace it per project/env. */
+    /** Database name, account-scoped, so namespace it per project and env. */
     databaseName: z.string(),
   }),
   outputs: z.object({
