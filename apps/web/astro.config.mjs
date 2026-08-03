@@ -40,5 +40,11 @@ export default defineConfig({
 		},
 	},
 
-	integrations: [react(), sitemap()],
+	// /web-contract is reached by a private per-client link, so it is kept out of
+	// the sitemap as well as noindex'd in the layout. Listing it would hand a
+	// crawler the one thing the link's unguessability is protecting.
+	integrations: [
+		react(),
+		sitemap({ filter: (page) => !page.includes("/web-contract") }),
+	],
 });

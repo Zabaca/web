@@ -41,5 +41,17 @@
 		// the edge default (a plain 404) rather than pointing at a file that does
 		// not exist.
 		"html_handling": "auto-trailing-slash"
-	}
+	},
+	// Backs /web-contract: one row per client agreement link plus its
+	// countersignature. Provisioned by packages/infra/environments/production/
+	// web-contracts-db.ts; database_id is that module's output. Schema in
+	// ./migrations, applied with `bun run db:migrate`.
+	"d1_databases": [
+		{
+			"binding": "CONTRACTS",
+			"database_name": "zabaca-contracts",
+			"database_id": "137ecea6-b84c-445d-9cf0-93f77f9eebce",
+			"migrations_dir": "migrations"
+		}
+	]
 }

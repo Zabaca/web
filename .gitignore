@@ -185,3 +185,7 @@ storybook-static/
 # Temporary folders
 tmp/
 temp/
+# Local wrangler state: the local D1 database used by `bun run dev` and the
+# migration/mint scripts. Machine-local, never shared.
+.wrangler/
+apps/**/.wrangler/

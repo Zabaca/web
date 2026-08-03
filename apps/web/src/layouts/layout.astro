@@ -7,13 +7,18 @@ export interface Props {
 	description?: string;
 	canonicalUrl?: string;
 	ogImage?: string;
+	/** Keep the page out of search results. For pages reached by a private link
+	 * (client agreements), where unguessable is the access control and indexing
+	 * would defeat it. Pair with an exclusion in astro.config.mjs's sitemap(). */
+	noindex?: boolean;
 }
 
 const {
 	title,
 	description = "Zabaca builds AI-powered tools for the future of work.",
 	canonicalUrl,
-	ogImage
+	ogImage,
+	noindex = false
 } = Astro.props;
 ---
 
@@ -22,6 +27,7 @@ const {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
+		{noindex && <meta name="robots" content="noindex, nofollow" />}
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="canonical" href={canonicalUrl || Astro.url.href} />
 		<meta property="og:title" content={title} />

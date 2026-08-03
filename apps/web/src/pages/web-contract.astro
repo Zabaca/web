@@ -1,0 +1,490 @@
+---
+import Layout from "../layouts/layout.astro";
+
+// Client agreement, opened by unique link: /web-contract?t=<token>. The token is
+// looked up against D1 (worker/index.ts) to learn who it was minted for and
+// whether it has already been signed. Everything below the fold is the agreement
+// itself, which lives here in git rather than in the database, so it is diffable.
+//
+// noindex because a signing link is not a public page. It is unguessable rather
+// than authenticated, which is the right bar for a two-party services agreement
+// and the wrong bar for anything with real secrets in it.
+//
+// ponytail: one agreement body, because there is one client. A second contract
+// shape means a second slug and a second page, not a templating layer.
+---
+
+<Layout
+	title="Services Agreement - Zabaca"
+	description="Client services agreement."
+	noindex
+>
+	<main class="contract-page">
+		<div class="contract-shell">
+			<p class="state" id="state">Loading agreement...</p>
+
+			<article id="doc" hidden>
+				<header class="doc-head">
+					<p class="eyebrow">Zabaca LLC</p>
+					<h1>Website Services Agreement</h1>
+					<p class="for-line">Prepared for <strong id="client-name"></strong></p>
+				</header>
+
+				<!-- Everything inside #agreement is fingerprinted (SHA-256 of its
+				     normalized text) and stored with the signature. Editing any word in
+				     here after someone signs makes the stored hash stop matching, which
+				     is the point: it is what stops the page quietly becoming a different
+				     agreement than the one that was accepted. -->
+				<section id="agreement">
+					<p>
+						<strong>Between:</strong> Zabaca LLC, a California limited liability
+						company ("Zabaca"), and Lee &amp; Company Construction Holdings Inc., a
+						California corporation, CSLB license #1038450, of 411 E Huntington Dr.,
+						Ste 107-322, Arcadia, CA 91006 ("Lee &amp; Co").
+					</p>
+
+					<h2>1. What Zabaca builds and launches</h2>
+					<p>
+						A replacement website for leeandcoconstruction.com, moved off Wix. The
+						launch includes:
+					</p>
+					<ul>
+						<li>
+							The new site, built and hosted by Zabaca, carrying over Lee &amp; Co's
+							existing content plus a guided project estimate form.
+						</li>
+						<li>
+							Migration of the domain leeandcoconstruction.com off Wix, with the
+							name staying registered to Lee &amp; Co.
+						</li>
+						<li>
+							Lead notifications. Every estimate request is delivered to Lee &amp; Co
+							by email, text message, or Telegram, whichever Lee &amp; Co prefers.
+						</li>
+						<li>
+							Reconnection of Lee &amp; Co's existing Google Analytics and Google Ads
+							accounts after the move, so historical data and any running ads keep
+							working.
+						</li>
+					</ul>
+					<p>
+						There is no separate build fee. The build is covered by the monthly fee
+						in section 4.
+					</p>
+
+					<h2>2. What Lee &amp; Co provides</h2>
+					<p>The one-week target in section 3 depends on all of the following:</p>
+					<ul>
+						<li>
+							Access to the Wix account, the domain registrar, Google Analytics, and
+							Google Ads.
+						</li>
+						<li>
+							Review time. Zabaca walks through each screen and Lee &amp; Co responds
+							with changes.
+						</li>
+						<li>
+							Photographs of Lee &amp; Co's own completed projects. The site currently
+							uses stock photography, and real project photos are the single largest
+							improvement available to it.
+						</li>
+						<li>
+							Confirmation of whether any email address runs through Wix or through
+							the domain. If one does, it must be identified before the domain is
+							moved.
+						</li>
+					</ul>
+					<p>
+						Lee &amp; Co keeps its Wix subscription active until the new site is live
+						and confirmed working. Cancelling Wix early can take the existing site,
+						and any Wix-hosted email, offline.
+					</p>
+
+					<h2>3. Launch</h2>
+					<p>
+						Target is one week from the day Zabaca has the access listed in section 2
+						and Lee &amp; Co is available to review. Revisions continue until Lee &amp;
+						Co approves the site for launch. If Lee &amp; Co does not respond for 10
+						business days, the site is treated as approved and launches.
+					</p>
+
+					<h2>4. Fee</h2>
+					<p>
+						<strong>$200 per month</strong>, beginning the month the site goes live. It
+						covers:
+					</p>
+					<ul>
+						<li>
+							Hosting, SSL certificate, domain management, and keeping the site
+							online.
+						</li>
+						<li>
+							Up to two change requests per month, such as text edits, swapping
+							photographs, or adding or updating a page. Unused requests do not carry
+							over.
+						</li>
+					</ul>
+					<p>
+						Work beyond that, including new features, new sections of the site, and
+						management of ad campaigns, is quoted and agreed separately before it
+						starts.
+					</p>
+
+					<h2>5. Product feedback</h2>
+					<p>
+						The $200 rate reflects that Lee &amp; Co is a design partner, not only a
+						client. Lee &amp; Co agrees to make Chris Lee available for up to two hours
+						per month to review and give feedback on software Zabaca is developing for
+						the construction trade.
+					</p>
+					<p>
+						Zabaca owns everything it builds, including work informed by that
+						feedback. Lee &amp; Co receives no ownership, equity, or royalty in it, and
+						owes Zabaca nothing for it.
+					</p>
+					<p>
+						If Lee &amp; Co stops participating, Zabaca may change the monthly fee on
+						30 days' written notice. Lee &amp; Co may end this agreement instead of
+						accepting a new fee.
+					</p>
+
+					<h2>6. Who owns what</h2>
+					<ul>
+						<li>
+							<strong>Lee &amp; Co owns</strong> the domain name, its business name and
+							logo, all text and photographs it supplies, and every lead and customer
+							detail the site collects.
+						</li>
+						<li>
+							<strong>Zabaca owns</strong> the site's code and the underlying tooling,
+							and licenses it to Lee &amp; Co for use on leeandcoconstruction.com for
+							as long as this agreement is in effect.
+						</li>
+						<li>
+							<strong>When this agreement ends, for any reason,</strong> Zabaca provides
+							a complete copy of the finished website as standard web files that any
+							hosting company can serve, and transfers full control of the domain to
+							Lee &amp; Co. Lee &amp; Co is not left without a website.
+						</li>
+					</ul>
+
+					<h2>7. What is not promised</h2>
+					<p>
+						Zabaca does not promise any search ranking, level of traffic, or number of
+						leads. Those outcomes depend on factors outside Zabaca's control.
+					</p>
+
+					<h2>8. Term, ending it, and limits</h2>
+					<p>
+						The initial term is 12 months from launch. After that this agreement
+						continues month to month.
+					</p>
+					<p>
+						Either side may end it with 30 days' written notice once the initial term
+						is complete, or at any time if the other side materially breaches it and
+						does not fix the breach within 15 days of being told about it in writing.
+					</p>
+					<p>
+						Zabaca's total liability under this agreement is limited to the fees Lee
+						&amp; Co paid in the 12 months before the claim. Neither side is liable to
+						the other for lost profits or other indirect losses. This agreement is
+						governed by the laws of the State of California.
+					</p>
+				</section>
+
+				<section class="signatures">
+					<h2>Signatures</h2>
+
+					<div class="sig-block signed">
+						<p class="sig-party">Zabaca LLC</p>
+						<p class="sig-name">James Lee, Member</p>
+						<p class="sig-meta">Signed on issue of this agreement.</p>
+					</div>
+
+					<div class="sig-block" id="client-sig">
+						<p class="sig-party">Lee &amp; Company Construction Holdings Inc.</p>
+
+						<div id="sign-form">
+							<label for="signer-name">Full legal name</label>
+							<input
+								id="signer-name"
+								type="text"
+								autocomplete="name"
+								placeholder="Chris Lee"
+							/>
+
+							<label for="signer-title">Title</label>
+							<input
+								id="signer-title"
+								type="text"
+								autocomplete="organization-title"
+								placeholder="Owner"
+							/>
+
+							<label class="agree-line">
+								<input id="agree" type="checkbox" />
+								<span>
+									I have read this agreement and I agree to it on behalf of Lee &amp;
+									Company Construction Holdings Inc. I intend this to be my electronic
+									signature.
+								</span>
+							</label>
+
+							<button id="sign-btn" type="button" disabled>Sign agreement</button>
+							<p class="err" id="err" hidden></p>
+						</div>
+
+						<div id="signed-state" hidden>
+							<p class="sig-name" id="signed-name"></p>
+							<p class="sig-meta" id="signed-meta"></p>
+						</div>
+					</div>
+
+					<p class="retain">
+						This page stays at this link after signing. Print or save it for your
+						records.
+					</p>
+				</section>
+			</article>
+		</div>
+	</main>
+</Layout>
+
+<script>
+	const params = new URLSearchParams(location.search);
+	const token = params.get("t");
+
+	const el = (id: string) => document.getElementById(id) as HTMLElement;
+	const stateEl = el("state");
+	const doc = el("doc");
+
+	function fail(message: string) {
+		stateEl.textContent = message;
+		stateEl.hidden = false;
+		doc.hidden = true;
+	}
+
+	/**
+	 * Fingerprint of the agreement as rendered. Whitespace is collapsed so that
+	 * reformatting the markup (which changes indentation, not meaning) does not
+	 * invalidate a signature, while any change to the words does.
+	 */
+	async function agreementHash(): Promise<string> {
+		const text = (el("agreement").textContent ?? "").replace(/\s+/g, " ").trim();
+		const digest = await crypto.subtle.digest(
+			"SHA-256",
+			new TextEncoder().encode(text),
+		);
+		return [...new Uint8Array(digest)]
+			.map((b) => b.toString(16).padStart(2, "0"))
+			.join("");
+	}
+
+	function renderSigned(signed: { at: string; name: string; title: string | null }) {
+		el("sign-form").hidden = true;
+		el("signed-state").hidden = false;
+		el("signed-name").textContent = signed.title
+			? `${signed.name}, ${signed.title}`
+			: signed.name;
+		el("signed-meta").textContent = `Signed ${new Date(signed.at).toLocaleString()}`;
+		el("client-sig").classList.add("signed");
+	}
+
+	async function load() {
+		if (!token) return fail("This signing link is not valid.");
+		const res = await fetch(`/api/contract?t=${encodeURIComponent(token)}`);
+		if (!res.ok) return fail("This signing link is not valid.");
+		const data = await res.json();
+
+		el("client-name").textContent = data.clientEntity ?? data.clientName;
+		stateEl.hidden = true;
+		doc.hidden = false;
+		if (data.signed) renderSigned(data.signed);
+	}
+
+	const agree = el("agree") as HTMLInputElement;
+	const nameInput = el("signer-name") as HTMLInputElement;
+	const btn = el("sign-btn") as HTMLButtonElement;
+
+	function syncButton() {
+		btn.disabled = !(agree.checked && nameInput.value.trim().length >= 2);
+	}
+	agree.addEventListener("change", syncButton);
+	nameInput.addEventListener("input", syncButton);
+
+	btn.addEventListener("click", async () => {
+		btn.disabled = true;
+		const errEl = el("err");
+		errEl.hidden = true;
+		const res = await fetch("/api/contract/sign", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				t: token,
+				name: nameInput.value,
+				title: (el("signer-title") as HTMLInputElement).value,
+				agreementSha256: await agreementHash(),
+			}),
+		});
+		const data = await res.json();
+		// 409 means someone already signed it, which is a state to render, not an error.
+		if (res.ok || data.alreadySigned) return renderSigned(data.signed);
+		errEl.textContent = data.error ?? "Could not record the signature.";
+		errEl.hidden = false;
+		syncButton();
+	});
+
+	load();
+</script>
+
+<style>
+	.contract-page {
+		background: #f7f7f5;
+		min-height: 100vh;
+		padding: 3rem 1.25rem 5rem;
+	}
+	.contract-shell {
+		max-width: 46rem;
+		margin: 0 auto;
+		background: #fff;
+		border: 1px solid #e3e3df;
+		border-radius: 4px;
+		padding: 2.5rem 2rem 3rem;
+	}
+	.state {
+		color: #6b6b66;
+		text-align: center;
+		padding: 3rem 0;
+	}
+	.doc-head {
+		border-bottom: 2px solid #131416;
+		padding-bottom: 1.25rem;
+		margin-bottom: 2rem;
+	}
+	.eyebrow {
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		font-size: 0.75rem;
+		color: #6b6b66;
+		margin: 0 0 0.5rem;
+	}
+	.doc-head h1 {
+		font-size: 1.75rem;
+		line-height: 1.2;
+		margin: 0 0 0.5rem;
+	}
+	.for-line {
+		margin: 0;
+		color: #46464a;
+	}
+	#agreement h2 {
+		font-size: 1.05rem;
+		margin: 2rem 0 0.6rem;
+	}
+	#agreement p,
+	#agreement li {
+		line-height: 1.6;
+		color: #26262a;
+	}
+	/* Both of these fight global.css, which zeroes paragraph margins and strips
+	   list markers for the marketing pages. A contract needs its clauses visually
+	   separated and its lists to read as lists. */
+	#agreement p {
+		margin: 0 0 0.85rem;
+	}
+	#agreement ul {
+		list-style: disc;
+		padding-left: 1.35rem;
+		margin: 0 0 1rem;
+	}
+	#agreement li {
+		margin-bottom: 0.5rem;
+	}
+	.signatures {
+		margin-top: 3rem;
+		border-top: 2px solid #131416;
+		padding-top: 1.5rem;
+	}
+	.sig-block {
+		border: 1px solid #e3e3df;
+		border-radius: 4px;
+		padding: 1.25rem;
+		margin-bottom: 1rem;
+	}
+	.sig-block.signed {
+		border-color: #b9d8c0;
+		background: #f4faf5;
+	}
+	.sig-party {
+		font-weight: 700;
+		margin: 0 0 0.4rem;
+	}
+	.sig-name {
+		margin: 0;
+		font-size: 1.05rem;
+	}
+	.sig-meta {
+		margin: 0.25rem 0 0;
+		font-size: 0.85rem;
+		color: #6b6b66;
+	}
+	label {
+		display: block;
+		font-size: 0.85rem;
+		font-weight: 600;
+		margin: 0.9rem 0 0.3rem;
+	}
+	input[type="text"] {
+		width: 100%;
+		padding: 0.6rem 0.7rem;
+		border: 1px solid #c9c9c3;
+		border-radius: 3px;
+		font-size: 1rem;
+	}
+	.agree-line {
+		display: flex;
+		gap: 0.6rem;
+		align-items: flex-start;
+		font-weight: 400;
+		line-height: 1.5;
+		margin-top: 1.1rem;
+	}
+	.agree-line input {
+		margin-top: 0.25rem;
+		flex-shrink: 0;
+	}
+	#sign-btn {
+		margin-top: 1.25rem;
+		width: 100%;
+		padding: 0.85rem 1rem;
+		font-size: 1rem;
+		font-weight: 600;
+		border: 0;
+		border-radius: 3px;
+		background: #131416;
+		color: #fff;
+		cursor: pointer;
+	}
+	#sign-btn:disabled {
+		background: #c9c9c3;
+		cursor: not-allowed;
+	}
+	.err {
+		color: #a3232b;
+		font-size: 0.9rem;
+		margin-top: 0.75rem;
+	}
+	.retain {
+		font-size: 0.85rem;
+		color: #6b6b66;
+		margin-top: 1.5rem;
+	}
+	@media (max-width: 640px) {
+		.contract-page {
+			padding: 1.5rem 0.75rem 3rem;
+		}
+		.contract-shell {
+			padding: 1.5rem 1.1rem 2rem;
+		}
+	}
+</style>
