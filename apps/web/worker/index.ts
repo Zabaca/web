@@ -19,6 +19,7 @@ interface Env {
 }
 
 interface ContractRow {
+  id: number
   client_name: string
   client_entity: string | null
   contract_slug: string
@@ -49,6 +50,10 @@ const NOT_FOUND = { error: 'This signing link is not valid.' }
 
 function payload(row: ContractRow) {
   return {
+    // Row id, not the token. Rides along to Stripe as client_reference_id so a
+    // payment can be traced back to the agreement it belongs to. Not a secret:
+    // knowing it grants nothing, since every read is keyed on the token hash.
+    contractId: row.id,
     clientName: row.client_name,
     clientEntity: row.client_entity,
     contractSlug: row.contract_slug,
@@ -61,7 +66,7 @@ function payload(row: ContractRow) {
 async function lookup(env: Env, token: string | null): Promise<ContractRow | null> {
   if (!token) return null
   const row = await env.CONTRACTS.prepare(
-    `SELECT client_name, client_entity, contract_slug, signed_at, signed_name, signed_title
+    `SELECT id, client_name, client_entity, contract_slug, signed_at, signed_name, signed_title
        FROM contract_links WHERE token_hash = ?`,
   )
     .bind(await sha256Hex(token))

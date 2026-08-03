@@ -239,6 +239,19 @@ import Layout from "../layouts/layout.astro";
 						</div>
 					</div>
 
+					<!-- Step two, deliberately after signing rather than beside it. Asking for
+					     a card in the same breath as a signature makes an agreement feel like a
+					     checkout. -->
+					<div class="pay-step" id="pay-step" hidden>
+						<p class="pay-head">Last step: set up payment</p>
+						<p class="pay-copy">
+							$200 per month, starting this month. Stripe handles the card and emails
+							you a receipt each month. You can update the card or cancel any time,
+							and there is no minimum term.
+						</p>
+						<a id="pay-link" class="pay-btn" href="#" rel="noopener">Set up payment</a>
+					</div>
+
 					<p class="retain">
 						This page stays at this link after signing. Print or save it for your
 						records.
@@ -253,9 +266,17 @@ import Layout from "../layouts/layout.astro";
 	const params = new URLSearchParams(location.search);
 	const token = params.get("t");
 
+	// Stripe Payment Link for Website Care ($200/mo, price_1U0SkGGjg7ucF7U37ynxTvYm).
+	// A hosted link rather than a Checkout Session built here, so zabaca.com holds
+	// no Stripe credential and there is no webhook to keep alive for one client.
+	const PAY_LINK = "https://buy.stripe.com/14A3cvadYcc6fM00yS2B203";
+
 	const el = (id: string) => document.getElementById(id) as HTMLElement;
 	const stateEl = el("state");
 	const doc = el("doc");
+
+	/** Set from whichever response arrives first: the initial load or the sign POST. */
+	let contractId: number | null = null;
 
 	function fail(message: string) {
 		stateEl.textContent = message;
@@ -287,6 +308,14 @@ import Layout from "../layouts/layout.astro";
 			: signed.name;
 		el("signed-meta").textContent = `Signed ${new Date(signed.at).toLocaleString()}`;
 		el("client-sig").classList.add("signed");
+
+		// client_reference_id ties the Stripe payment back to this agreement row, so
+		// the two records can be reconciled without any webhook on our side.
+		const pay = el("pay-link") as HTMLAnchorElement;
+		pay.href = contractId
+			? `${PAY_LINK}?client_reference_id=${encodeURIComponent(String(contractId))}`
+			: PAY_LINK;
+		el("pay-step").hidden = false;
 	}
 
 	async function load() {
@@ -295,6 +324,7 @@ import Layout from "../layouts/layout.astro";
 		if (!res.ok) return fail("This signing link is not valid.");
 		const data = await res.json();
 
+		contractId = data.contractId ?? null;
 		el("client-name").textContent = data.clientEntity ?? data.clientName;
 		stateEl.hidden = true;
 		doc.hidden = false;
@@ -472,6 +502,31 @@ import Layout from "../layouts/layout.astro";
 		color: #a3232b;
 		font-size: 0.9rem;
 		margin-top: 0.75rem;
+	}
+	.pay-step {
+		border: 1px solid #131416;
+		border-radius: 4px;
+		padding: 1.25rem;
+		margin-bottom: 1rem;
+	}
+	.pay-head {
+		font-weight: 700;
+		margin: 0 0 0.4rem;
+	}
+	.pay-copy {
+		margin: 0 0 1rem;
+		line-height: 1.55;
+		color: #26262a;
+	}
+	.pay-btn {
+		display: block;
+		text-align: center;
+		padding: 0.85rem 1rem;
+		font-weight: 600;
+		border-radius: 3px;
+		background: #131416;
+		color: #fff;
+		text-decoration: none;
 	}
 	.retain {
 		font-size: 0.85rem;
