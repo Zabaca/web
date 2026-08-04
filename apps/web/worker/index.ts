@@ -13,7 +13,9 @@
  * The site is low traffic and static, so the invocations are cheap.
  */
 
-interface Env {
+import { sendTelegram, type TelegramEnv } from './telegram'
+
+interface Env extends TelegramEnv {
   ASSETS: Fetcher
   CONTRACTS: D1Database
 }
@@ -133,6 +135,16 @@ async function handleSign(request: Request, env: Env): Promise<Response> {
     const fresh = await lookup(env, token)
     return json(fresh ? { ...payload(fresh), alreadySigned: true } : NOT_FOUND, 409)
   }
+
+  // Fired only on the transition to signed, and only after the UPDATE won, so a
+  // reload or a losing concurrent submit cannot ping twice. Awaited but never
+  // thrown from: the signature is already committed by this point.
+  await sendTelegram(
+    env,
+    `✍️ ${name}${title ? `, ${title}` : ''} signed the ${row.contract_slug} agreement\n` +
+      `${row.client_entity ?? row.client_name}\n` +
+      `Next step for them is the $200/mo Website Care subscription.`,
+  )
 
   return json({ ...payload(row), signed: { at: signedAt, name, title: title || null } }, 200)
 }

@@ -22,5 +22,13 @@ export default cloudflareModule.instance({
       command: 'bun run build',
       cwd: '.',
     },
+    // Signing pings to the CEO Telegram. The per-service prefix follows
+    // FEEDBACK_TELEGRAM_BOT_TOKEN / LOV_TELEGRAM_BOT_TOKEN / FOOTHILL_INBOX_
+    // TELEGRAM_TOKEN; same CEO bot, one token per service so revoking one
+    // service does not silence the others.
+    workerSecrets: ['WEB_TELEGRAM_BOT_TOKEN'],
+    // The chat id is a var, not a secret. An address is not a credential, which
+    // is how packages/feedback already treats the same value.
+    workerVars: [{ name: 'TELEGRAM_CHAT_ID', value: '8600737093' }],
   },
 })
